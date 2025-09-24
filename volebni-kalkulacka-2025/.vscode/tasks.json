@@ -1,0 +1,262 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "test",
+			"type": "shell",
+			"command": "npm test",
+			"isBackground": false,
+			"group": "test"
+		},
+		{
+			"label": "run-tests",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"test"
+			],
+			"isBackground": false,
+			"group": "test"
+		},
+		{
+			"label": "run-tests",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"test"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "dev-server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true
+		},
+		{
+			"label": "run-tests-vitest",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"test:run"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "validate-data",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"data:validate"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "run-vitest",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"vitest",
+				"run",
+				"--reporter=verbose"
+			],
+			"isBackground": false,
+			"group": "test"
+		},
+		{
+			"label": "build-app",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"build"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "npm run build"
+		},
+		{
+			"label": "nextjs-build",
+			"type": "shell",
+			"command": "npm run build",
+			"group": "build"
+		},
+		{
+			"label": "validate-data",
+			"type": "shell",
+			"command": "npm run data:validate"
+		},
+		{
+			"label": "validate-tsx",
+			"type": "shell",
+			"command": "npx tsx data/validate.ts"
+		},
+		{
+			"label": "data-validate",
+			"type": "shell",
+			"command": "cd /d c:\\Volby2025\\volebni-kalkulacka-2025 && npx tsx data/validate.ts",
+			"group": "test"
+		},
+		{
+			"label": "dev-server",
+			"type": "shell",
+			"command": "npm run dev",
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "dev-test",
+			"type": "shell",
+			"command": "cd /d c:\\Volby2025\\volebni-kalkulacka-2025 && npm run dev",
+			"isBackground": true
+		},
+		{
+			"label": "build-check",
+			"type": "shell",
+			"command": "npm run build",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "dev",
+			"type": "shell",
+			"command": "npm run dev",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Start Development Server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "dev-server-new",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "npm run build",
+			"problemMatcher": [
+				"$tsc",
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "nextjs-build",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build"
+			],
+			"problemMatcher": [
+				"$tsc",
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "dev-server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "validate-data",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"data:validate"
+			]
+		},
+		{
+			"label": "dev-server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "lint-check",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"lint"
+			],
+			"group": "test"
+		},
+		{
+			"label": "test-run",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"test:run"
+			],
+			"group": "test"
+		},
+		{
+			"label": "vitest-run",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"test",
+				"--run",
+				"--reporter=verbose"
+			],
+			"group": "test"
+		},
+		{
+			"label": "development",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

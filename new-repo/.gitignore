@@ -1,0 +1,11 @@
+# Node
+node_modules/
+.npm/
+package-lock.json
+
+# Next.js
+.next/
+
+# Misc
+.DS_Store
+.vscode/

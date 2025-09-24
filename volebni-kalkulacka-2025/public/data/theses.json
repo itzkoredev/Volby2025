@@ -1,0 +1,202 @@
+[
+  {
+    "id": "thesis_001",
+    "issueId": "ekonomika",
+    "text": "Daně pro střední třídu by měly být sníženy",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "thesis_002", 
+    "issueId": "ekonomika",
+    "text": "Stát by měl více investovat do infrastruktury a veřejných služeb",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "thesis_003",
+    "issueId": "ekonomika",
+    "text": "Minimální mzda by měla růst rychleji než inflace",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "thesis_004",
+    "issueId": "socialni", 
+    "text": "Důchodový věk by měl být postupně zvyšován",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "thesis_005",
+    "issueId": "socialni",
+    "text": "Zdravotní péče by měla zůstat bezplatná pro všechny občany",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025", 
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "thesis_006",
+    "issueId": "socialni",
+    "text": "Sociální dávky by měly být podmíněné aktivní spoluprací příjemců",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "thesis_007",
+    "issueId": "bydleni",
+    "text": "Stát by měl více investovat do výstavby obecních bytů",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "thesis_008",
+    "issueId": "bydleni",
+    "text": "Hypotéky by měly být dostupnější pro mladé rodiny",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 8,
+    "isActive": true
+  },
+  {
+    "id": "thesis_009",
+    "issueId": "vzdelavani",
+    "text": "Školné na vysokých školách by mělo být zavedeno",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 9,
+    "isActive": true
+  },
+  {
+    "id": "thesis_010",
+    "issueId": "vzdelavani",
+    "text": "Více prostředků by mělo jít do vědy a výzkumu",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 10,
+    "isActive": true
+  },
+  {
+    "id": "thesis_011",
+    "issueId": "bezpecnost",
+    "text": "Výdaje na obranu by měly dosáhnout 3% HDP",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 11,
+    "isActive": true
+  },
+  {
+    "id": "thesis_012",
+    "issueId": "bezpecnost",
+    "text": "Česká republika by měla zůstat členem NATO",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 12,
+    "isActive": true
+  },
+  {
+    "id": "thesis_013",
+    "issueId": "zivotni-prostredi",
+    "text": "Nové jaderné elektrárny jsou klíčové pro energetickou bezpečnost",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 13,
+    "isActive": true
+  },
+  {
+    "id": "thesis_014",
+    "issueId": "zivotni-prostredi",
+    "text": "Green Deal EU by měl být zmírněn ve prospěch konkurenceschopnosti",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 14,
+    "isActive": true
+  },
+  {
+    "id": "thesis_015",
+    "issueId": "migrace",
+    "text": "Česká republika by měla odmítnout povinné kvóty pro uprchlíky",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 15,
+    "isActive": true
+  },
+  {
+    "id": "thesis_016",
+    "issueId": "migrace",
+    "text": "Kontroly na hranicích EU by měly být posíleny",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 16,
+    "isActive": true
+  },
+  {
+    "id": "thesis_017",
+    "issueId": "eu-zahranici",
+    "text": "Česká republika by měla přijmout euro",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 17,
+    "isActive": true
+  },
+  {
+    "id": "thesis_018",
+    "issueId": "eu-zahranici",
+    "text": "EU by se měla více zaměřit na konkurenceschopnost než na regulace",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 18,
+    "isActive": true
+  },
+  {
+    "id": "thesis_019",
+    "issueId": "digitalizace",
+    "text": "Česko by mělo více investovat do umělé inteligence a digitálních technologií",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 19,
+    "isActive": true
+  },
+  {
+    "id": "thesis_020",
+    "issueId": "spravedlnost",
+    "text": "Soudní řízení by měla být rychlejší a efektivnější",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
+    "order": 20,
+    "isActive": true
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "stem-2025-01-15",
+    "date": "2025-01-15",
+    "agency": "STEM",
+    "sampleSize": 1018,
+    "methodology": "CATI, reprezentativní vzorek obyvatel ČR 18+",
+    "results": [
+      { "partyId": "ano", "percentage": 32.5, "change": "+0.8" },
+      { "partyId": "spolu", "percentage": 22.8, "change": "-1.2" },
+      { "partyId": "stan", "percentage": 15.2, "change": "+0.5" },
+      { "partyId": "stacilo", "percentage": 9.2, "change": "+0.3" },
+      { "partyId": "spd", "percentage": 8.5, "change": "-0.2" },
+      { "partyId": "pirati", "percentage": 7.8, "change": "-0.4" },
+      { "partyId": "motoriste", "percentage": 6.1, "change": "+0.7" },
+      { "partyId": "prisaha", "percentage": 5.7, "change": "+0.2" },
+      { "partyId": "volt", "percentage": 4.3, "change": "+0.1" },
+      { "partyId": "ceskarepublika1", "percentage": 2.1, "change": "+0.1" },
+      { "partyId": "slovan", "percentage": 1.8, "change": "0.0" }
+    ]
+  },
+  {
+    "id": "stem-2025-01-01",
+    "date": "2025-01-01",
+    "agency": "STEM",
+    "sampleSize": 1012,
+    "methodology": "CATI, reprezentativní vzorek obyvatel ČR 18+",
+    "results": [
+      { "partyId": "ano", "percentage": 31.7, "change": "+0.3" },
+      { "partyId": "spolu", "percentage": 24.0, "change": "-0.5" },
+      { "partyId": "stan", "percentage": 14.7, "change": "-0.2" },
+      { "partyId": "stacilo", "percentage": 8.9, "change": "+0.4" },
+      { "partyId": "spd", "percentage": 8.7, "change": "+0.1" },
+      { "partyId": "pirati", "percentage": 8.2, "change": "-0.3" },
+      { "partyId": "motoriste", "percentage": 5.4, "change": "+0.2" },
+      { "partyId": "prisaha", "percentage": 5.5, "change": "-0.1" },
+      { "partyId": "volt", "percentage": 4.2, "change": "+0.1" },
+      { "partyId": "ceskarepublika1", "percentage": 2.0, "change": "0.0" },
+      { "partyId": "slovan", "percentage": 1.8, "change": "0.0" }
+    ]
+  },
+  {
+    "id": "stem-2024-12-15",
+    "date": "2024-12-15",
+    "agency": "STEM",
+    "sampleSize": 1025,
+    "methodology": "CATI, reprezentativní vzorek obyvatel ČR 18+",
+    "results": [
+      { "partyId": "ano", "percentage": 31.4, "change": "-0.6" },
+      { "partyId": "spolu", "percentage": 24.5, "change": "+0.3" },
+      { "partyId": "stan", "percentage": 14.9, "change": "+0.4" },
+      { "partyId": "stacilo", "percentage": 8.5, "change": "+0.2" },
+      { "partyId": "spd", "percentage": 8.6, "change": "-0.1" },
+      { "partyId": "pirati", "percentage": 8.5, "change": "+0.2" },
+      { "partyId": "motoriste", "percentage": 5.2, "change": "+0.3" },
+      { "partyId": "prisaha", "percentage": 5.6, "change": "+0.1" },
+      { "partyId": "volt", "percentage": 4.1, "change": "0.0" },
+      { "partyId": "ceskarepublika1", "percentage": 2.0, "change": "+0.1" },
+      { "partyId": "slovan", "percentage": 1.8, "change": "0.0" }
+    ]
+  },
+  {
+    "id": "stem-2024-12-01",
+    "date": "2024-12-01",
+    "agency": "STEM",
+    "sampleSize": 1008,
+    "methodology": "CATI, reprezentativní vzorek obyvatel ČR 18+",
+    "results": [
+      { "partyId": "ano", "percentage": 32.0, "change": "+0.4" },
+      { "partyId": "spolu", "percentage": 24.2, "change": "-0.8" },
+      { "partyId": "stan", "percentage": 14.5, "change": "+0.1" },
+      { "partyId": "stacilo", "percentage": 8.3, "change": "+0.3" },
+      { "partyId": "spd", "percentage": 8.7, "change": "+0.2" },
+      { "partyId": "pirati", "percentage": 8.3, "change": "-0.2" },
+      { "partyId": "motoriste", "percentage": 4.9, "change": "+0.1" },
+      { "partyId": "prisaha", "percentage": 5.5, "change": "0.0" },
+      { "partyId": "volt", "percentage": 4.1, "change": "+0.1" },
+      { "partyId": "ceskarepublika1", "percentage": 1.9, "change": "0.0" },
+      { "partyId": "slovan", "percentage": 1.8, "change": "0.0" }
+    ]
+  },
+  {
+    "id": "stem-2024-11-15",
+    "date": "2024-11-15",
+    "agency": "STEM",
+    "sampleSize": 1015,
+    "methodology": "CATI, reprezentativní vzorek obyvatel ČR 18+",
+    "results": [
+      { "partyId": "ano", "percentage": 31.6, "change": "-0.3" },
+      { "partyId": "spolu", "percentage": 25.0, "change": "+0.5" },
+      { "partyId": "stan", "percentage": 14.4, "change": "-0.2" },
+      { "partyId": "stacilo", "percentage": 8.0, "change": "+0.1" },
+      { "partyId": "spd", "percentage": 8.5, "change": "0.0" },
+      { "partyId": "pirati", "percentage": 8.5, "change": "+0.3" },
+      { "partyId": "motoriste", "percentage": 4.8, "change": "+0.2" },
+      { "partyId": "prisaha", "percentage": 5.5, "change": "+0.1" },
+      { "partyId": "volt", "percentage": 4.0, "change": "0.0" },
+      { "partyId": "ceskarepublika1", "percentage": 1.9, "change": "0.0" },
+      { "partyId": "slovan", "percentage": 1.8, "change": "0.0" }
+    ]
+  },
+  {
+    "id": "stem-2024-11-01",
+    "date": "2024-11-01",
+    "agency": "STEM",
+    "sampleSize": 1021,
+    "methodology": "CATI, reprezentativní vzorek obyvatel ČR 18+",
+    "results": [
+      { "partyId": "ano", "percentage": 31.9, "change": "+0.2" },
+      { "partyId": "spolu", "percentage": 24.5, "change": "-0.3" },
+      { "partyId": "stan", "percentage": 14.6, "change": "+0.4" },
+      { "partyId": "stacilo", "percentage": 7.9, "change": "+0.2" },
+      { "partyId": "spd", "percentage": 8.5, "change": "+0.1" },
+      { "partyId": "pirati", "percentage": 8.2, "change": "-0.1" },
+      { "partyId": "motoriste", "percentage": 4.6, "change": "+0.1" },
+      { "partyId": "prisaha", "percentage": 5.4, "change": "-0.1" },
+      { "partyId": "volt", "percentage": 4.0, "change": "0.0" },
+      { "partyId": "ceskarepublika1", "percentage": 1.9, "change": "0.0" },
+      { "partyId": "slovan", "percentage": 1.8, "change": "0.0" }
+    ]
+  }
+]

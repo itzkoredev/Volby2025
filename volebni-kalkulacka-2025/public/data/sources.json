@@ -1,0 +1,236 @@
+[
+  {
+    "id": "src_ano_program_2025",
+    "url": "https://www.anobudelip.cz/program",
+    "title": "Volební program ANO 2025",
+    "date": "2025-01-15T10:00:00Z",
+    "type": "program",
+    "partyId": "ano",
+    "description": "Oficiální volební program hnutí ANO pro volby 2025"
+  },
+  {
+    "id": "src_ods_program_2025",
+    "url": "https://www.ods.cz/program", 
+    "title": "Volební program ODS 2025",
+    "date": "2025-01-10T10:00:00Z",
+    "type": "program",
+    "partyId": "ods",
+    "description": "Oficiální volební program ODS pro volby 2025"
+  },
+  {
+    "id": "src_spd_program_2025",
+    "url": "https://www.spd.cz/program",
+    "title": "Volební program SPD 2025", 
+    "date": "2025-01-20T10:00:00Z",
+    "type": "program",
+    "partyId": "spd",
+    "description": "Oficiální volební program SPD pro volby 2025"
+  },
+  {
+    "id": "src_pirati_program_2025",
+    "url": "https://www.pirati.cz/program",
+    "title": "Volební program Pirátů 2025",
+    "date": "2025-01-12T10:00:00Z",
+    "type": "program",
+    "partyId": "pirati", 
+    "description": "Oficiální volební program České pirátské strany pro volby 2025"
+  },
+  {
+    "id": "src_motoriste_program_2025",
+    "url": "https://motoristesobe.cz/program2025",
+    "title": "Volební program Motoristů sobě 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "motoriste",
+    "description": "Oficiální volební program strany Motoristé sobě pro volby 2025"
+  },
+  {
+    "id": "src_volt_program_2025",
+    "url": "https://www.volteuropa.org/policies",
+    "title": "Politický program Volt Europa 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "volt",
+    "description": "Program evropského hnutí Volt - 5+1 výzev pro 21. století"
+  },
+  {
+    "id": "src_hnutigenerace_program_2025",
+    "url": "https://hnutigenerace.cz/program/",
+    "title": "Program Hnutí generace 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "hnutigenerace",
+    "description": "Volební program Hnutí generace zaměřený na budoucí generace a dlouhodobou udržitelnost"
+  },
+  {
+    "id": "src_prisaha_program_2025",
+    "url": "https://www.prisaha2017.cz/program",
+    "title": "Volební program Přísaha 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "prisaha",
+    "description": "Program Přísahy občanského hnutí - boj proti korupci a za spravedlnost"
+  },
+  {
+    "id": "src_korunaceska_program_2025",
+    "url": "https://www.koruna-ceska.cz/program",
+    "title": "Program Koruna Česká 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "korunaceska",
+    "description": "Volební program monarchistické strany Koruna Česká"
+  },
+  {
+    "id": "src_ceskarepublika1_program_2025",
+    "url": "https://www.ceskarepublika1.cz/program",
+    "title": "Program Česká republika na 1. místě 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "ceskarepublika1",
+    "description": "Volební program strany Česká republika na 1. místě!"
+  },
+  {
+    "id": "src_cssdsocialni_program_2025",
+    "url": "https://www.cssd.cz/program",
+    "title": "Program ČSSD – Česká suverenita 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "cssdsocialni",
+    "description": "Volební program ČSSD – Česká suverenita sociální demokracie"
+  },
+  {
+    "id": "src_hnutikruh_program_2025",
+    "url": "https://www.hnutikruh.cz/program",
+    "title": "Program Hnutí Kruh 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "hnutikruh",
+    "description": "Volební program Hnutí Kruh - alternativní liberální pohled"
+  },
+  {
+    "id": "src_hnutiobcanu_program_2025",
+    "url": "https://www.hophydra.cz/program",
+    "title": "Program HOP Hydra 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "hnutiobcanu",
+    "description": "Volební program Hnutí občanů a podnikatelů"
+  },
+  {
+    "id": "src_jasnysignal_program_2025",
+    "url": "https://www.jasnysignal.cz/program",
+    "title": "Program JaSaN 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "jasnysignal",
+    "description": "Volební program Jasného Signálu Nezávislých"
+  },
+  {
+    "id": "src_levice_program_2025",
+    "url": "https://www.levice.cz/program",
+    "title": "Program Levice 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "levice",
+    "description": "Volební program strany Levice - sociální spravedlnost"
+  },
+  {
+    "id": "src_moravskezemske_program_2025",
+    "url": "https://www.moravskezemske.cz/program",
+    "title": "Program Moravského zemského hnutí 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "moravskezemske",
+    "description": "Volební program Moravského zemského hnutí - moravská autonomie"
+  },
+  {
+    "id": "src_nevolteurza_program_2025",
+    "url": "https://www.urza.cz/program",
+    "title": "Program Nevolte Urza.cz 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "nevolteurza",
+    "description": "Volební program anarchokapitalistické strany Nevolte Urza.cz"
+  },
+  {
+    "id": "src_rebelove_program_2025",
+    "url": "https://www.rebelove.cz/program",
+    "title": "Program Rebelové 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "rebelove",
+    "description": "Volební program strany Rebelové - změna systému"
+  },
+  {
+    "id": "src_sms_program_2025",
+    "url": "https://www.sms.cz/program",
+    "title": "Program SMS 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "sms",
+    "description": "Volební program SMS – Stát Má Sloužit"
+  },
+  {
+    "id": "src_svycarska_program_2025",
+    "url": "https://www.svycarskadem.cz/program",
+    "title": "Program Švýcarská demokracie 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "svycarska",
+    "description": "Volební program Švýcarské demokracie - přímá demokracie"
+  },
+  {
+    "id": "src_voluntia_program_2025",
+    "url": "https://www.voluntia.cz/program",
+    "title": "Program Voluntia 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "voluntia",
+    "description": "Volební program liberálně pravicové strany Voluntia"
+  },
+  {
+    "id": "src_voltepravyblok_program_2025",
+    "url": "https://www.cibulka.net/program",
+    "title": "Program Volte Pravý Blok 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "voltepravyblok",
+    "description": "Volební program Volte Pravý Blok www.cibulka.net"
+  },
+  {
+    "id": "src_balbinova_program_2025",
+    "url": "https://www.balbinovapoetickastrana.cz/program",
+    "title": "Program Balbínova poetická strana 2025",
+    "date": "2025-09-24T10:00:00Z",
+    "type": "program",
+    "partyId": "balbinova",
+    "description": "Volební program Balbínovy poetické strany"
+  },
+  {
+    "id": "src_stan_program_2025",
+    "url": "https://www.starostove.cz/program",
+    "title": "Dobrý program",
+    "date": "2025-01-08T10:00:00Z",
+    "type": "program",
+    "partyId": "stan",
+    "description": "Oficiální volební program Starostů a nezávislých pro volby 2025"
+  },
+  {
+    "id": "src_spolu_program_2025",
+    "url": "https://spolu25.cz/program",
+    "title": "Svoboda a prosperita",
+    "date": "2025-01-05T10:00:00Z",
+    "type": "program",
+    "partyId": "spolu",
+    "description": "Oficiální volební program koalice SPOLU pro volby 2025"
+  },
+  {
+    "id": "src_stacilo_program_2025",
+    "url": "https://www.stacilo.cz/program",
+    "title": "Program Stačilo!",
+    "date": "2025-01-18T10:00:00Z",
+    "type": "program",
+    "partyId": "stacilo",
+    "description": "Oficiální volební program koalice Stačilo! pro volby 2025"
+  }
+]

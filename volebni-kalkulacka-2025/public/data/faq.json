@@ -1,0 +1,29 @@
+[
+  {
+    "id": "faq_001",
+    "question": "Jak funguje volební kalkulačka?",
+    "answer": "Volební kalkulačka porovnává vaše odpovědi na politické otázky s pozicemi jednotlivých stran. Výsledek vám ukáže, které strany se nejvíce shodují s vašimi názory.",
+    "sources": [],
+    "category": "obecne",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "faq_002", 
+    "question": "Odkud pocházejí data o pozicích stran?",
+    "answer": "Data vycházejí z oficiálních volebních programů, hlasování v Parlamentu, veřejných prohlášení a rozhovorů představitelů stran. Všechny zdroje jsou citovány.",
+    "sources": [],
+    "category": "data",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "faq_003",
+    "question": "Je volební kalkulačka nestranná?",
+    "answer": "Ano, kalkulačka je vytvořena s důrazem na objektivitu. Otázky jsou formulovány neutrálně a pozice stran jsou založeny na ověřitelných zdrojích.",
+    "sources": [],
+    "category": "objektvita",
+    "order": 3,
+    "isActive": true
+  }
+]

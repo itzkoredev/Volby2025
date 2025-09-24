@@ -1,0 +1,19 @@
+{
+  "name": "volby2025",
+  "version": "1.0.0",
+  "description": "Volební kalkulačka a související aplikace pro volby 2025",
+  "scripts": {
+    "dev": "cd volebni-kalkulacka-2025 && npm run dev",
+    "build": "echo Building complete project... && cd volebni-kalkulacka-2025 && npm run build && echo Next.js app built successfully!",
+    "build:full": "echo Building complete project with static files... && cd volebni-kalkulacka-2025 && npm run build && echo Complete build finished!",
+    "start": "cd volebni-kalkulacka-2025 && npm run start",
+    "test": "cd volebni-kalkulacka-2025 && npm run test",
+    "test:run": "cd volebni-kalkulacka-2025 && npm run test:run",
+    "lint": "cd volebni-kalkulacka-2025 && npm run lint",
+    "install-deps": "cd volebni-kalkulacka-2025 && npm install"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^3.2.4",
+    "vitest": "^3.2.4"
+  }
+}

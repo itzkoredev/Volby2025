@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ekonomika",
+    "title": "Ekonomika a daně",
+    "description": "Daňová politika, rozpočet, hospodářská strategie, podnikání",
+    "category": "ekonomie",
+    "order": 1
+  },
+  {
+    "id": "socialni",
+    "title": "Sociální politika",
+    "description": "Důchody, zdravotnictví, sociální dávky, rodinná politika",
+    "category": "sociální",
+    "order": 2
+  },
+  {
+    "id": "bydleni",
+    "title": "Bydlení",
+    "description": "Dostupnost bydlení, hypotéky, výstavba, regulace nájmů",
+    "category": "sociální",
+    "order": 3
+  },
+  {
+    "id": "vzdelavani",
+    "title": "Vzdělávání a věda",
+    "description": "Školství, vysoké školy, věda a výzkum, inovace",
+    "category": "vzdělávání",
+    "order": 4
+  },
+  {
+    "id": "bezpecnost",
+    "title": "Bezpečnost a obrana",
+    "description": "Vnitřní bezpečnost, justice, obrana, NATO",
+    "category": "bezpečnost",
+    "order": 5
+  },
+  {
+    "id": "zivotni-prostredi",
+    "title": "Životní prostředí a energetika",
+    "description": "Ekologie, klimatická změna, energetika, jaderná energie",
+    "category": "životní prostředí",
+    "order": 6
+  },
+  {
+    "id": "migrace",
+    "title": "Migrace a integrace",
+    "description": "Migrační politika, azyl, integrace cizinců, hranice EU",
+    "category": "bezpečnost",
+    "order": 7
+  },
+  {
+    "id": "eu-zahranici",
+    "title": "EU a zahraniční politika",
+    "description": "Evropská unie, euro, zahraniční vztahy, mezinárodní spolupráce",
+    "category": "zahraniční",
+    "order": 8
+  },
+  {
+    "id": "digitalizace",
+    "title": "Digitalizace a inovace",
+    "description": "IT, digitální služby, kybernetická bezpečnost, umělá inteligence",
+    "category": "technologie",
+    "order": 9
+  },
+  {
+    "id": "spravedlnost",
+    "title": "Spravedlnost a demokracie",
+    "description": "Soudnictví, transparentnost, korupce, lidská práva",
+    "category": "demokracie",
+    "order": 10
+  }
+]

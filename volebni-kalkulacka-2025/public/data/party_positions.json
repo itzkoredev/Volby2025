@@ -1,0 +1,1961 @@
+[
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_001",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_001", 
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_001",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_001",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_001",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_001",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_001",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_002",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_002", 
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_002",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_002",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_002",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_002",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_002",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_003",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_003", 
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_003",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_003",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_003",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_003",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_003",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_004",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_004", 
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_004",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_004",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_004",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_004",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_004",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_005",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_005", 
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_005",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_005",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_005",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_005",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_005",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_006",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_006", 
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_006",
+    "value": 0,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_006",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_006",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_006",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_006",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_008",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_008", 
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_008",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_008",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_008",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_008",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_008",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_010",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_010", 
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_010",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_010",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_010",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_010",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_010",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_015",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_015", 
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_015",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_015",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_015",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_015",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_015",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+
+  {
+    "partyId": "ano",
+    "thesisId": "thesis_017",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.anobudelip.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "ANO bude lépe 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "ods",
+    "thesisId": "thesis_017", 
+    "value": 0,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.ods.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Vize 2030"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stan",
+    "thesisId": "thesis_017",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.starostove.cz/program",
+      "date": "2025-09-24T10:00:00Z", 
+      "type": "program",
+      "title": "Dobrý program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spolu",
+    "thesisId": "thesis_017",
+    "value": 0,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://spolu25.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Svoboda a prosperita"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "spd",
+    "thesisId": "thesis_017",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.spd.cz",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program SPD"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "pirati",
+    "thesisId": "thesis_017",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.pirati.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Pirátský program"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "stacilo",
+    "thesisId": "thesis_017",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.stacilo.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program", 
+      "title": "Program Stačilo!"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_001",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_002",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_003",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_004",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_005",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_006",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_007",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_008",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_009",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_010",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_001",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_002",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_003",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_004",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_005",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_006",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_007",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_008",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_009",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_010",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_001",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_002",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_003",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_004",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_005",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_006",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_007",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_008",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_009",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_010",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_011",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_012",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_013",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_014",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_015",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_016",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_017",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_011",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_012",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_013",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_014",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_015",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_016",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_017",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_011",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_012",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_013",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_014",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_015",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_016",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_017",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_018",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_019",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "motoriste",
+    "thesisId": "thesis_020",
+    "value": -2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://motoristesobe.cz/program2025",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Motoristů sobě 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_018",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_019",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "volt",
+    "thesisId": "thesis_020",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.volteuropa.org/policies",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Politický program Volt Europa 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_018",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_019",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "hnutigenerace",
+    "thesisId": "thesis_020",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://hnutigenerace.cz/program/",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Program Hnutí generace 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_001",
+    "value": -1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_002",
+    "value": 1,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_003",
+    "value": 2,
+    "confidence": 0.9,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_004",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_005",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_006",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_007",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_008",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_009",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_010",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_011",
+    "value": -1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_012",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_013",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_014",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_015",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_016",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_017",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_018",
+    "value": 1,
+    "confidence": 0.7,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_019",
+    "value": 0,
+    "confidence": 0.6,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  },
+  {
+    "partyId": "prisaha",
+    "thesisId": "thesis_020",
+    "value": 1,
+    "confidence": 0.8,
+    "source": {
+      "url": "https://www.prisaha2017.cz/program",
+      "date": "2025-09-24T10:00:00Z",
+      "type": "program",
+      "title": "Volební program Přísaha 2025"
+    },
+    "lastUpdated": "2025-09-24T12:00:00Z"
+  }
+]

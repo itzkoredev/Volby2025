@@ -1,0 +1,334 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "vitest-main",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"test",
+				"--run",
+				"--reporter=verbose"
+			],
+			"group": "test"
+		},
+		{
+			"label": "vitest-kalkulacka",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm",
+			"args": [
+				"run",
+				"test"
+			],
+			"group": "test"
+		},
+		{
+			"label": "test-kalkulacka",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"test:run"
+			],
+			"group": "test"
+		},
+		{
+			"label": "dev-server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "build-test",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build"
+			],
+			"group": "build"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "build-fix",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "build-final",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "clean-build",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && rmdir /s /q .next && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "build-suspense",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "clean-build-final",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && rmdir /s /q .next 2>nul & npm run build",
+			"group": "build"
+		},
+		{
+			"label": "test-final",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm test",
+			"group": "test"
+		},
+		{
+			"label": "test-run",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run test",
+			"group": "test"
+		},
+		{
+			"label": "test-verbose",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npx vitest run",
+			"group": "test"
+		},
+		{
+			"label": "dev-final",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run dev",
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "dev-port-3001",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npx next dev -p 3001",
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "full-clean",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && rmdir /s /q .next 2>nul && rmdir /s /q node_modules\\.cache 2>nul && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "lint-fix",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run lint -- --fix",
+			"group": "build"
+		},
+		{
+			"label": "lint-check",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run lint",
+			"group": "build"
+		},
+		{
+			"label": "lint-final-check",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run lint",
+			"group": "build"
+		},
+		{
+			"label": "build-dynamic",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && rmdir /s /q .next 2>nul && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "dev-server-final",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npx next dev -p 3001",
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "dev-server-port-3010",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npx next dev -p 3010",
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "build-final",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "create-not-found",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025/src/app && copy page.tsx not-found.tsx",
+			"group": "build"
+		},
+		{
+			"label": "final-build-test",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && rmdir /s /q .next 2>nul && npm run build",
+			"group": "build"
+		},
+		{
+			"label": "create-index",
+			"type": "shell",
+			"command": "echo. > index.html",
+			"group": "build"
+		},
+		{
+			"label": "create-css",
+			"type": "shell",
+			"command": "echo. > styles.css",
+			"group": "build"
+		},
+		{
+			"label": "create-readme",
+			"type": "shell",
+			"command": "echo. > README.md",
+			"group": "build"
+		},
+		{
+			"label": "create-manifest",
+			"type": "shell",
+			"command": "echo. > manifest.json",
+			"group": "build"
+		},
+		{
+			"label": "open-landing-page",
+			"type": "shell",
+			"command": "start index.html",
+			"group": "test"
+		},
+		{
+			"label": "test-dev-server",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npx next dev -p 3010",
+			"isBackground": true,
+			"group": "test"
+		},
+		{
+			"label": "open-calculator",
+			"type": "shell",
+			"command": "start http://localhost:3010",
+			"group": "test"
+		},
+		{
+			"label": "create-test-html",
+			"type": "shell",
+			"command": "echo. > test-report.html",
+			"group": "test"
+		},
+		{
+			"label": "restart-dev-server",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npx next dev -p 3011",
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "clean-dev-server",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && rmdir /s /q .next 2>nul && npx next dev -p 3020",
+			"isBackground": true,
+			"group": "build"
+		},
+		{
+			"label": "open-app",
+			"type": "shell",
+			"command": "start http://localhost:3020",
+			"group": "build"
+		},
+		{
+			"label": "reinstall-deps",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && rmdir /s /q node_modules 2>nul && del package-lock.json 2>nul && npm install",
+			"group": "build"
+		},
+		{
+			"label": "start-dev-server",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run dev",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "open-calculator",
+			"type": "shell",
+			"command": "start",
+			"args": [
+				"http://localhost:3000"
+			]
+		},
+		{
+			"label": "final-install",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm install"
+		},
+		{
+			"label": "test-calculator",
+			"type": "shell",
+			"command": "start http://localhost:3000"
+		},
+		{
+			"label": "open-main-page",
+			"type": "shell",
+			"command": "start index.html"
+		},
+		{
+			"label": "test-calculator-slider",
+			"type": "shell",
+			"command": "start http://localhost:3000"
+		},
+		{
+			"label": "test-slider-fix",
+			"type": "shell",
+			"command": "start http://localhost:3000/calculator"
+		},
+		{
+			"label": "dev-server-new",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025 && npm run dev",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "open-main-page-new",
+			"type": "shell",
+			"command": "start http://localhost:3001"
+		},
+		{
+			"label": "create-setup-dir",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025\\src\\app && mkdir calculator-setup"
+		},
+		{
+			"label": "create-page-file",
+			"type": "shell",
+			"command": "cd volebni-kalkulacka-2025\\src\\app\\calculator-setup && echo 'use client'; > page.tsx"
+		},
+		{
+			"label": "test-setup-page",
+			"type": "shell",
+			"command": "start http://localhost:3001/calculator-setup"
+		},
+		{
+			"label": "test-complete-flow",
+			"type": "shell",
+			"command": "start http://localhost:3001"
+		}
+	]
+}

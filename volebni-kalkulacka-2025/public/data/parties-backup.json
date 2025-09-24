@@ -1,0 +1,386 @@
+[
+  {
+    "id": "ano",
+    "slug": "ano-2011",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "website": "https://www.anobudelip.cz",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/ANO_2011_logo.svg/200px-ANO_2011_logo.svg.png",
+    "description": "Hnutí ANO 2011 - ANO bude lépe! Program se zaměřuje na levnější energie, dostupné zdravotnictví a bydlení, důstojné důchody a bezpečnost.",
+    "pollPercentage": 32.5,
+    "category": "main",
+    "pros": [
+      "Zkušenosti s vládnutím",
+      "Silná pozice v průzkumech",
+      "Pragmatický přístup k politice",
+      "Podpora digitalizace",
+      "Aktivní sociální politika"
+    ],
+    "cons": [
+      "Střet zájmů Andreje Babiše",
+      "Populistické přístupy",
+      "Kritika od EU",
+      "Časté změny názorů",
+      "Kontrola médií"
+    ],
+    "historicalAchievements": [
+      "2011: Založení hnutí Andrejem Babišem",
+      "2013: První volby do Sněmovny - 18,65%",
+      "2017: Vítězství ve volbách - 29,64%",
+      "2017-2021: Vedení vlády",
+      "2021: Druhé místo ve volbách - 27,12%"
+    ],
+    "controversies": [
+      "Kauza Čapí hnízdo",
+      "Střet zájmů kvůli holdingu Agrofert",
+      "Kritika nezávislosti médií",
+      "Spory s EU o dotace",
+      "Kauza StB - agent Bureš"
+    ],
+    "representatives": [
+      {
+        "name": "Andrej Babiš",
+        "position": "Předseda hnutí",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Andrej_Babi%C5%A1_2018.jpg/220px-Andrej_Babi%C5%A1_2018.jpg",
+        "bio": "Podnikatel a politik, bývalý premiér ČR"
+      },
+      {
+        "name": "Alena Schillerová",
+        "position": "1. místopředsedkyně",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Alena_Schillerov%C3%A1_2019.jpg/220px-Alena_Schillerov%C3%A1_2019.jpg",
+        "bio": "Bývalá ministryně financí"
+      },
+      {
+        "name": "Karel Havlíček",
+        "position": "1. místopředseda",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Karel_Havl%C3%AD%C4%8Dek_2020.jpg/220px-Karel_Havl%C3%AD%C4%8Dek_2020.jpg",
+        "bio": "Bývalý ministr průmyslu a obchodu"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2024-12-15",
+        "title": "Předvolební kampaň 2025",
+        "description": "Zahájení hlavní fáze kampaně",
+        "type": "milestone"
+      },
+      {
+        "date": "2024-11-20",
+        "title": "Programová konference",
+        "description": "Představení volebního programu",
+        "type": "program"
+      }
+    ]
+  },
+  {
+    "id": "ceskarepublika1",
+    "slug": "ceskarepublika1",
+    "name": "Česká republika 1",
+    "website": "https://www.ceskarepublika1.cz",
+    "logo": "/images/logos/ceskarepublika1.png",
+    "description": "Česká republika 1 - konzervativní hodnoty a národní zájmy.",
+    "pollPercentage": 2.1,
+    "category": "secondary"
+  },
+  {
+    "id": "slovan",
+    "slug": "slovan",
+    "name": "Slovan",
+    "website": "https://www.slovan.cz",
+    "logo": "/images/logos/slovan.png",
+    "description": "Slovan - slovanské hodnoty a tradice.",
+    "pollPercentage": 1.5,
+    "category": "secondary"
+  },
+  {
+    "id": "stan",
+    "slug": "starostove-a-nezavisli",
+    "name": "Starostové a nezávislí",
+    "shortName": "STAN",
+    "website": "https://www.starostove-nezavisli.cz",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/STAN_logo_2020.svg/200px-STAN_logo_2020.svg.png",
+    "description": "STAN - Starostové a nezávislí. Komunální politika na celostátní úrovni. Rozumné řešení pro všechny.",
+    "pollPercentage": 15.2,
+    "category": "main",
+    "pros": [
+      "Zkušenosti z komunální politiky",
+      "Pragmatický přístup",
+      "Důraz na digitalizaci",
+      "Podpora malých obcí",
+      "Transparentnost"
+    ],
+    "cons": [
+      "Nedostatek celostátní zkušenosti",
+      "Vnitřní rozpory",
+      "Slabá pozice v některých regionech",
+      "Závislost na koalicích",
+      "Časté změny stanovisek"
+    ],
+    "historicalAchievements": [
+      "2001: Založení STAN",
+      "2012: První mandáty ve Sněmovně",
+      "2017: Úspěch v komunálních volbách",
+      "2021: Účast ve vládní koalici",
+      "2022: Vedení několika ministerstev"
+    ],
+    "controversies": [
+      "Kauza STAP - IT zakázky",
+      "Kritika za změny postojů",
+      "Spory o vedení strany",
+      "Problémy s transparentností",
+      "Konflikty v koalici"
+    ],
+    "representatives": [
+      {
+        "name": "Vít Rakušan",
+        "position": "Předseda STAN",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/V%C3%ADt_Raku%C5%A1an_2021.jpg/220px-V%C3%ADt_Raku%C5%A1an_2021.jpg",
+        "bio": "Ministr vnitra, starosta Kolína"
+      },
+      {
+        "name": "Věra Jourová",
+        "position": "Místopředsedkyně",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/V%C4%9Bra_Jourov%C3%A1_2019.jpg/220px-V%C4%9Bra_Jourov%C3%A1_2019.jpg",
+        "bio": "Bývalá eurokomisařka"
+      },
+      {
+        "name": "Marian Jurečka",
+        "position": "Místopředseda",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Marian_Jure%C4%8Dka_2021.jpg/220px-Marian_Jure%C4%8Dka_2021.jpg",
+        "bio": "Ministr práce a sociálních věcí"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2024-12-01",
+        "title": "Volební strategie 2025",
+        "description": "Představení kampaně zaměřené na digitalizaci",
+        "type": "milestone"
+      }
+    ]
+  },
+  {
+    "id": "spolu",
+    "slug": "spolu",
+    "name": "SPOLU",
+    "shortName": "SPOLU",
+    "website": "https://www.spolecne.cz",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/SPOLU_logo.svg/200px-SPOLU_logo.svg.png",
+    "description": "SPOLU - koalice ODS, KDU-ČSL a TOP 09. Liberální konzervativní politika pro moderní Českou republiku.",
+    "pollPercentage": 22.8,
+    "category": "main",
+    "pros": [
+      "Stabilní vládní zkušenosti",
+      "Prozápadní orientace",
+      "Ekonomická liberalizace",
+      "Silná pozice v EU",
+      "Konzistentní politika"
+    ],
+    "cons": [
+      "Vnitřní napětí v koalici",
+      "Sociální necitlivost",
+      "Kritika za privatizace",
+      "Nedostatek mladých voličů",
+      "Elitářský image"
+    ],
+    "historicalAchievements": [
+      "2021: Vítězství ve volbách (27,79%)",
+      "2021-současnost: Vedení vlády",
+      "Úspěšné předsednictví EU",
+      "Podpora Ukrajiny",
+      "Stabilizace ekonomiky"
+    ],
+    "controversies": [
+      "Vysoká inflace",
+      "Energetická krize",
+      "Kritika za úsporná opatření",
+      "Spory o Green Deal",
+      "Migrace a kvóty"
+    ],
+    "representatives": [
+      {
+        "name": "Petr Fiala",
+        "position": "Premiér, předseda ODS",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Petr_Fiala_2021.jpg/220px-Petr_Fiala_2021.jpg",
+        "bio": "Předseda vlády, politolog"
+      },
+      {
+        "name": "Marian Jurečka",
+        "position": "Předseda KDU-ČSL",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Marian_Jure%C4%8Dka_2021.jpg/220px-Marian_Jure%C4%8Dka_2021.jpg",
+        "bio": "Ministr práce a sociálních věcí"
+      },
+      {
+        "name": "Markéta Pekarová Adamová",
+        "position": "Předsedkyně TOP 09",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Mark%C3%A9ta_Pekarov%C3%A1_Adamov%C3%A1_2021.jpg/220px-Mark%C3%A9ta_Pekarov%C3%A1_Adamov%C3%A1_2021.jpg",
+        "bio": "Předsedkyně Sněmovny"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2024-12-10",
+        "title": "Bilance 3 let vlády",
+        "description": "Představení úspěchů vládnutí",
+        "type": "milestone"
+      }
+    ]
+  },
+  {
+    "id": "spd",
+    "slug": "spd",
+    "name": "Svoboda a přímá demokracie",
+    "shortName": "SPD",
+    "website": "https://www.spd.cz",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Svoboda_a_p%C5%99%C3%ADm%C3%A1_demokracie_logo.svg/200px-Svoboda_a_p%C5%99%C3%ADm%C3%A1_demokracie_logo.svg.png",
+    "description": "SPD - Svoboda a přímá demokracie. Konzervativní hodnoty, přímá demokracie a suverenita České republiky.",
+    "pollPercentage": 9.5,
+    "category": "main"
+  },
+  {
+    "id": "pirati",
+    "slug": "pirati",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "website": "https://www.pirati.cz",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/%C4%8Cesk%C3%A1_pir%C3%A1tsk%C3%A1_strana_logo.svg/200px-%C4%8Cesk%C3%A1_pir%C3%A1tsk%C3%A1_strana_logo.svg.png",
+    "description": "Česká pirátská strana - moderní, otevřená a transparentní politika pro digitální věk.",
+    "pollPercentage": 8.2,
+    "category": "main"
+  },
+  {
+    "id": "stacilo",
+    "slug": "stacilo",
+    "name": "STAČILO!",
+    "shortName": "STAČILO!",
+    "website": "https://www.stacilo.cz",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/STA%C4%8CILO%21_logo.svg/200px-STA%C4%8CILO%21_logo.svg.png",
+    "description": "STAČILO! - levicová alternativa zaměřená na sociální spravedlnost a práva občanů.",
+    "pollPercentage": 6.8,
+    "category": "main"
+  },
+  {
+    "id": "motoriste",
+    "slug": "motoriste-sobe",
+    "name": "Motoristé sobě",
+    "shortName": "Motoristé",
+    "website": "https://www.motoristesobe.cz",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Motorist%C3%A9_sob%C4%9B_%28logo%29.svg/200px-Motorist%C3%A9_sob%C4%9B_%28logo%29.svg.png",
+    "description": "Motoristé sobě - obhájci práv řidičů a rozumné dopravní politiky.",
+    "pollPercentage": 5.1,
+    "category": "main"
+  },
+  {
+    "id": "volt",
+    "slug": "volt-ceska-republika",
+    "name": "Volt Česká republika",
+    "shortName": "Volt",
+    "website": "https://www.volteuropa.org/cs",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Volt_Europa_logo.svg/200px-Volt_Europa_logo.svg.png",
+    "description": "Volt - evropská progresivní strana pro digitální transformaci a klimatickou změnu.",
+    "pollPercentage": 3.2,
+    "category": "secondary"
+  },
+  {
+    "id": "hnutigenerace",
+    "slug": "hnutigenerace",
+    "name": "Hnutí Generace",
+    "website": "https://www.hnutigenerace.cz",
+    "logo": "/images/logos/hnutigenerace.png",
+    "description": "Hnutí Generace - politika pro mladou generaci.",
+    "pollPercentage": 2.8,
+    "category": "secondary"
+  },
+  {
+    "id": "prisaha",
+    "slug": "prisaha",
+    "name": "Přísaha",
+    "shortName": "Přísaha",
+    "website": "https://www.prisaha.cz",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/P%C5%99%C3%ADsaha_logo.png/200px-P%C5%99%C3%ADsaha_logo.png",
+    "description": "Přísaha - Robert Šlachta a jeho tým pro spravedlnost a pořádek.",
+    "pollPercentage": 4.3,
+    "category": "secondary"
+  },
+  {
+    "id": "korunaceska",
+    "slug": "korunaceska",
+    "name": "Koruna česká",
+    "website": "https://www.korunaceska.cz",
+    "logo": "/images/logos/korunaceska.png",
+    "description": "Koruna česká - za silnou českou měnu a ekonomiku.",
+    "pollPercentage": 1.2,
+    "category": "secondary"
+  },
+  {
+    "id": "cssdsocialni",
+    "slug": "cssdsocialni",
+    "name": "ČSSD Sociální",
+    "shortName": "ČSSD",
+    "website": "https://www.cssdsocialni.cz",
+    "logo": "/images/logos/cssdsocialni.png",
+    "description": "ČSSD Sociální - tradiční sociální demokracie.",
+    "pollPercentage": 3.5,
+    "category": "secondary"
+  },
+  {
+    "id": "hnutikruh",
+    "slug": "hnutikruh",
+    "name": "Hnutí Kruh",
+    "website": "https://www.hnutikruh.cz",
+    "logo": "/images/logos/hnutikruh.png",
+    "description": "Hnutí Kruh - občanská alternativa.",
+    "pollPercentage": 1.8,
+    "category": "secondary"
+  },
+  {
+    "id": "hnutiobcanu",
+    "slug": "hnutiobcanu",
+    "name": "Hnutí občanů",
+    "website": "https://www.hnutiobcanu.cz",
+    "logo": "/images/logos/hnutiobcanu.png",
+    "description": "Hnutí občanů - pro práva a svobody občanů.",
+    "pollPercentage": 2.0,
+    "category": "secondary"
+  },
+  {
+    "id": "jasnysignal",
+    "slug": "jasnysignal",
+    "name": "Jasný signál",
+    "website": "https://www.jasnysignal.cz",
+    "logo": "/images/logos/jasnysignal.png",
+    "description": "Jasný signál - jasné postoje k důležitým otázkám.",
+    "pollPercentage": 1.4,
+    "category": "secondary"
+  },
+  {
+    "id": "levice",
+    "slug": "levice",
+    "name": "Levice",
+    "website": "https://www.levice.cz",
+    "logo": "/images/logos/levice.png",
+    "description": "Levice - socialistická alternativa.",
+    "pollPercentage": 2.2,
+    "category": "secondary"
+  },
+  {
+    "id": "moravskezemske",
+    "slug": "moravskezemske",
+    "name": "Moravské zemské",
+    "website": "https://www.moravskezemske.cz",
+    "logo": "/images/logos/moravskezemske.png",
+    "description": "Moravské zemské - za práva Moravy a Slezska.",
+    "pollPercentage": 1.1,
+    "category": "secondary"
+  },
+  {
+    "id": "nevolteurza",
+    "slug": "nevolteurza",
+    "name": "Nevolte Úřad",
+    "website": "https://www.nevolteurza.cz",
+    "logo": "/images/logos/nevolteurza.png",
+    "description": "Nevolte Úřad - proti byrokratickému aparátu.",
+    "pollPercentage": 0.8,
+    "category": "secondary"
+  }
+]

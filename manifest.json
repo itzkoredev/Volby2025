@@ -1,0 +1,26 @@
+{
+  "name": "Volby 2025 - Volební Kalkulačka",
+  "short_name": "Volby2025",
+  "description": "Nestranná volební kalkulačka pro české volby 2025",
+  "start_url": "https://www.itzkore.cz/volby2025/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%232563eb'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>🗳️</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%232563eb'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>🗳️</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["government", "politics", "news"],
+  "lang": "cs",
+  "scope": "https://www.itzkore.cz/volby2025/",
+  "related_applications": []
+}
