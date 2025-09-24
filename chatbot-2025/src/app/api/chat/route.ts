@@ -13,7 +13,8 @@ export async function POST(req: Request) {
       messages,
     });
 
-    return result.toTextStreamResponse();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return result.toTextStreamResponse() as any;
   } catch (error: any) {
     console.error(error);
     const errorMessage = error.message || 'An unexpected error occurred';

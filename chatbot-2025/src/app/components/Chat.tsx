@@ -81,7 +81,8 @@ export default function Chat() {
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
-              handleSubmit(e as any);
+              // Trigger the form's submit event
+              e.currentTarget.form?.requestSubmit();
             }
           }}
         />
