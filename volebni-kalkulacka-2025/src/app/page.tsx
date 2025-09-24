@@ -1,6 +1,10 @@
 ﻿'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
+import { Bot, ArrowRight } from 'lucide-react'
 
 export default function Home() {
   const [statsVisible, setStatsVisible] = useState(false)
@@ -45,8 +49,8 @@ export default function Home() {
     },
     {
       icon: '📊',
-      title: 'Průzkumy STEM',
-      description: 'Aktuální průzkumy preferencí od agentury STEM, trend analýzy a vývoj podpory za poslední 2 měsíce.',
+      title: 'Volební průzkumy',
+      description: 'Aktuální preference od STEM, Median a NMS v interaktivních grafech a trendech.',
       href: '/stem-polls',
       status: '✅ Hotovo',
       statusColor: 'bg-green-500'
@@ -180,6 +184,92 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Sekce Politický Asistent */}
+        <section className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="inline-block p-4 bg-blue-100 rounded-full mb-4">
+              <Bot className="h-10 w-10 text-blue-600" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Zeptejte se našeho Politického Asistenta</h2>
+            <p className="text-lg text-gray-600 mb-6">
+              Máte konkrétní dotaz? Náš AI asistent, postavený na datech z volebních programů a ověřených zdrojů, vám pomůže najít odpověď. Zeptejte se na cokoliv od daní po zahraniční politiku.
+            </p>
+            <Link href="/chat">
+              <Button size="lg" className="text-lg px-8 py-6">
+                Spustit asistenta
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </Button>
+            </Link>
+          </motion.div>
+        </section>
+
+        {/* Jak to funguje */}
+        <section className="text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Jak to funguje?</h2>
+          <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
+            Náš volební portál je navržen tak, aby vám poskytl všechny potřebné informace a nástroje pro snadné a informované rozhodování ve volbách. Zde je několik klíčových funkcí, které nabízíme:
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="text-left">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                1. Volební kalkulačka
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Naše kalkulačka vám pomůže zjistit, která politická strana nejlépe odpovídá vašim názorům na základě vašich odpovědí na klíčové otázky.
+              </p>
+              
+              <Link href="/calculator-setup" className="text-blue-600 hover:underline">
+                Vyzkoušejte kalkulačku
+              </Link>
+            </div>
+
+            <div className="text-left">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                2. AI Chatbot
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Náš AI chatbot je tu pro vás, aby odpověděl na jakékoliv dotazy ohledně voleb, politických stran a témat. Stačí se zeptat!
+              </p>
+              
+              <Link href="/chat" className="text-blue-600 hover:underline">
+                Zeptejte se chatbota
+              </Link>
+            </div>
+
+            <div className="text-left">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                3. Profily stran
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Podívejte se na detailní profily všech politických stran, které se účastní voleb. Zjistěte více o jejich programech a prioritách.
+              </p>
+              
+              <Link href="/party-profiles" className="text-blue-600 hover:underline">
+                Prozkoumat profily stran
+              </Link>
+            </div>
+
+            <div className="text-left">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+                4. Volební události
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Sledujte kalendář předvolebních událostí ve vašem regionu, včetně debat, meetingů a dalších akcí.
+              </p>
+              
+              <Link href="#" className="text-blue-600 hover:underline">
+                Zobrazit události
+              </Link>
             </div>
           </div>
         </section>

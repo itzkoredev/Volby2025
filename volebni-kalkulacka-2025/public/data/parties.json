@@ -41,34 +41,7 @@
       {
         "name": "Andrej Babiš",
         "position": "Předseda hnutí",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Andrej_Babi%C5%A1_2018.jpg/220px-Andrej_Babi%C5%A1_2018.jpg",
-        "bio": "Podnikatel a politik, bývalý premiér ČR"
-      },
-      {
-        "name": "Alena Schillerová",
-        "position": "1. místopředsedkyně",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Alena_Schillerov%C3%A1_2019.jpg/220px-Alena_Schillerov%C3%A1_2019.jpg",
-        "bio": "Bývalá ministryně financí"
-      },
-      {
-        "name": "Karel Havlíček",
-        "position": "1. místopředseda",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Karel_Havl%C3%AD%C4%8Dek_2020.jpg/220px-Karel_Havl%C3%AD%C4%8Dek_2020.jpg",
-        "bio": "Bývalý ministr průmyslu a obchodu"
-      }
-    ],
-    "timeline": [
-      {
-        "date": "2024-12-15",
-        "title": "Předvolební kampaň 2025",
-        "description": "Zahájení hlavní fáze kampaně",
-        "type": "milestone"
-      },
-      {
-        "date": "2024-11-20",
-        "title": "Programová konference",
-        "description": "Představení volebního programu",
-        "type": "program"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/ANO_2011_logo.svg/200px-ANO_2011_logo.svg.png"
       }
     ]
   },
@@ -77,7 +50,7 @@
     "slug": "ceskarepublika1",
     "name": "Česká republika 1",
     "website": "https://www.ceskarepublika1.cz",
-    "logo": "/images/logos/ceskarepublika1.png",
+    "logo": "",
     "description": "Česká republika 1 - konzervativní hodnoty a národní zájmy.",
     "pollPercentage": 2.1,
     "category": "secondary"
@@ -87,7 +60,7 @@
     "slug": "slovan",
     "name": "Slovan",
     "website": "https://www.slovan.cz",
-    "logo": "/images/logos/slovan.png",
+    "logo": "",
     "description": "Slovan - slovanské hodnoty a tradice.",
     "pollPercentage": 1.5,
     "category": "secondary"
@@ -140,22 +113,8 @@
       {
         "name": "Věra Jourová",
         "position": "Místopředsedkyně",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/V%C4%9Bra_Jourov%C3%A1_2019.jpg/220px-V%C4%9Bra_Jourov%C3%A1_2019.jpg",
-        "bio": "Bývalá eurokomisařka"
-      },
-      {
-        "name": "Marian Jurečka",
-        "position": "Místopředseda",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Marian_Jure%C4%8Dka_2021.jpg/220px-Marian_Jure%C4%8Dka_2021.jpg",
-        "bio": "Ministr práce a sociálních věcí"
-      }
-    ],
-    "timeline": [
-      {
-        "date": "2024-12-01",
-        "title": "Volební strategie 2025",
-        "description": "Představení kampaně zaměřené na digitalizaci",
-        "type": "milestone"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Vera_Jourova_2019.jpg/220px-Vera_Jourova_2019.jpg",
+        "bio": "Eurokomisařka"
       }
     ]
   },
@@ -232,9 +191,9 @@
     "name": "Svoboda a přímá demokracie",
     "shortName": "SPD",
     "website": "https://www.spd.cz",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Svoboda_a_p%C5%99%C3%ADm%C3%A1_demokracie_logo.svg/200px-Svoboda_a_p%C5%99%C3%ADm%C3%A1_demokracie_logo.svg.png",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Logo_SPD.svg/200px-Logo_SPD.svg.png",
     "description": "SPD - Svoboda a přímá demokracie. Konzervativní hodnoty, přímá demokracie a suverenita České republiky.",
-    "pollPercentage": 12.0,
+    "pollPercentage": 12,
     "category": "main"
   },
   {
@@ -243,7 +202,7 @@
     "name": "Česká pirátská strana",
     "shortName": "Piráti",
     "website": "https://www.pirati.cz",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/%C4%8Cesk%C3%A1_pir%C3%A1tsk%C3%A1_strana_logo.svg/200px-%C4%8Cesk%C3%A1_pir%C3%A1tsk%C3%A1_strana_logo.svg.png",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Pirate_Party_Czech_Republic_logo.svg/200px-Pirate_Party_Czech_Republic_logo.svg.png",
     "description": "Česká pirátská strana - moderní, otevřená a transparentní politika pro digitální věk.",
     "pollPercentage": 9.3,
     "category": "main"
@@ -254,7 +213,7 @@
     "name": "STAČILO!",
     "shortName": "STAČILO!",
     "website": "https://www.stacilo.cz",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/STA%C4%8CILO%21_logo.svg/200px-STA%C4%8CILO%21_logo.svg.png",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Stapilo_logo.svg/200px-Stapilo_logo.svg.png",
     "description": "STAČILO! - levicová alternativa zaměřená na sociální spravedlnost a práva občanů.",
     "pollPercentage": 7.7,
     "category": "main"
@@ -286,7 +245,7 @@
     "slug": "hnutigenerace",
     "name": "Hnutí Generace",
     "website": "https://www.hnutigenerace.cz",
-    "logo": "/images/logos/hnutigenerace.png",
+    "logo": "",
     "description": "Hnutí Generace - politika pro mladou generaci.",
     "pollPercentage": 2.8,
     "category": "secondary"
@@ -297,9 +256,9 @@
     "name": "Přísaha",
     "shortName": "Přísaha",
     "website": "https://www.prisaha.cz",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/P%C5%99%C3%ADsaha_logo.png/200px-P%C5%99%C3%ADsaha_logo.png",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/P%C5%93%C3%ADsaha_logo.png/200px-P%C5%93%C3%Ísaha_logo.png",
     "description": "Přísaha - Robert Šlachta a jeho tým pro spravedlnost a pořádek.",
-    "pollPercentage": 2.0,
+    "pollPercentage": 2,
     "category": "secondary"
   },
   {
@@ -307,7 +266,7 @@
     "slug": "korunaceska",
     "name": "Koruna česká",
     "website": "https://www.korunaceska.cz",
-    "logo": "/images/logos/korunaceska.png",
+    "logo": "",
     "description": "Koruna česká - za silnou českou měnu a ekonomiku.",
     "pollPercentage": 1.2,
     "category": "secondary"
@@ -318,7 +277,7 @@
     "name": "ČSSD Sociální",
     "shortName": "ČSSD",
     "website": "https://www.cssdsocialni.cz",
-    "logo": "/images/logos/cssdsocialni.png",
+    "logo": "",
     "description": "ČSSD Sociální - tradiční sociální demokracie.",
     "pollPercentage": 3.5,
     "category": "secondary"
@@ -328,7 +287,7 @@
     "slug": "hnutikruh",
     "name": "Hnutí Kruh",
     "website": "https://www.hnutikruh.cz",
-    "logo": "/images/logos/hnutikruh.png",
+    "logo": "",
     "description": "Hnutí Kruh - občanská alternativa.",
     "pollPercentage": 1.8,
     "category": "secondary"
@@ -338,9 +297,9 @@
     "slug": "hnutiobcanu",
     "name": "Hnutí občanů",
     "website": "https://www.hnutiobcanu.cz",
-    "logo": "/images/logos/hnutiobcanu.png",
+    "logo": "",
     "description": "Hnutí občanů - pro práva a svobody občanů.",
-    "pollPercentage": 2.0,
+    "pollPercentage": 2,
     "category": "secondary"
   },
   {
@@ -348,7 +307,7 @@
     "slug": "jasnysignal",
     "name": "Jasný signál",
     "website": "https://www.jasnysignal.cz",
-    "logo": "/images/logos/jasnysignal.png",
+    "logo": "",
     "description": "Jasný signál - jasné postoje k důležitým otázkám.",
     "pollPercentage": 1.4,
     "category": "secondary"
@@ -358,7 +317,7 @@
     "slug": "levice",
     "name": "Levice",
     "website": "https://www.levice.cz",
-    "logo": "/images/logos/levice.png",
+    "logo": "",
     "description": "Levice - socialistická alternativa.",
     "pollPercentage": 2.2,
     "category": "secondary"
@@ -368,7 +327,7 @@
     "slug": "moravskezemske",
     "name": "Moravské zemské",
     "website": "https://www.moravskezemske.cz",
-    "logo": "/images/logos/moravskezemske.png",
+    "logo": "",
     "description": "Moravské zemské - za práva Moravy a Slezska.",
     "pollPercentage": 1.1,
     "category": "secondary"
@@ -378,7 +337,7 @@
     "slug": "nevolteurza",
     "name": "Nevolte Úřad",
     "website": "https://www.nevolteurza.cz",
-    "logo": "/images/logos/nevolteurza.png",
+    "logo": "",
     "description": "Nevolte Úřad - proti byrokratickému aparátu.",
     "pollPercentage": 0.8,
     "category": "secondary"

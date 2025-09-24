@@ -4,6 +4,21 @@
     "thesisId": "thesis_001",
     "value": 1,
     "confidence": 0.8,
+    "justification": "Snížení daní pro střední třídu považujeme za klíčové pro podporu domácí spotřeby a ekonomického růstu. Chceme, aby lidem zbylo více peněz v peněženkách.",
+    "details": {
+      "arguments": [
+        "Podpora kupní síly obyvatelstva.",
+        "Stimulace ekonomického růstu skrze vyšší spotřebu.",
+        "Zatraktivnění práce a snížení motivace k šedé ekonomice."
+      ],
+      "quotes": [
+        {
+          "text": "Naší prioritou je, aby se lidem, kteří pracují a starají se o rodiny, dařilo lépe. Snížení daní je přímá cesta, jak toho dosáhnout.",
+          "author": "Alena Schillerová",
+          "source": "https://www.anobudelip.cz/tiskova-zprava/danovy-balicek"
+        }
+      ]
+    },
     "source": {
       "url": "https://www.anobudelip.cz/program",
       "date": "2025-09-24T10:00:00Z",
@@ -17,6 +32,21 @@
     "thesisId": "thesis_001", 
     "value": -2,
     "confidence": 0.9,
+    "justification": "Jsme přesvědčeni, že plošné snižování daní bez odpovídajících úspor by vedlo k dalšímu zadlužování státu. Prioritou je konsolidace veřejných financí.",
+    "details": {
+      "arguments": [
+        "Prioritou je odpovědné hospodaření a snižování státního dluhu.",
+        "Plošné snížení daní by ohrozilo financování klíčových služeb jako školství a obrana.",
+        "Podporujeme cílené daňové úlevy, nikoli neudržitelné plošné škrty."
+      ],
+      "relatedVotes": [
+        {
+          "name": "Hlasování o vládním konsolidačním balíčku",
+          "url": "https://www.psp.cz/sqw/hlasy.sqw?g=80123",
+          "result": "pro"
+        }
+      ]
+    },
     "source": {
       "url": "https://www.ods.cz/program",
       "date": "2025-09-24T10:00:00Z",
@@ -30,6 +60,7 @@
     "thesisId": "thesis_001",
     "value": -1,
     "confidence": 0.7,
+    "justification": "Podporujeme cílené daňové úlevy, například pro rodiny s dětmi, ale jsme proti plošnému snižování, které by ohrozilo financování regionálních služeb.",
     "source": {
       "url": "https://www.starostove.cz/program",
       "date": "2025-09-24T10:00:00Z", 
@@ -43,6 +74,7 @@
     "thesisId": "thesis_001",
     "value": -1,
     "confidence": 0.8,
+    "justification": "Naší prioritou je odpovědné hospodaření a snižování státního dluhu. Plošné snížení daní by tento cíl ohrozilo.",
     "source": {
       "url": "https://spolu25.cz/program",
       "date": "2025-09-24T10:00:00Z",
@@ -56,6 +88,7 @@
     "thesisId": "thesis_001",
     "value": -1,
     "confidence": 0.8,
+    "justification": "Prosazujeme daňové změny, které podpoří pracující občany a rodiny, nikoli plošné a nekoncepční snižování.",
     "source": {
       "url": "https://www.spd.cz",
       "date": "2025-09-24T10:00:00Z",
@@ -69,6 +102,21 @@
     "thesisId": "thesis_001",
     "value": 2,
     "confidence": 0.9,
+    "justification": "Podporujeme progresivní zdanění a snížení daňové zátěže pro nízkopříjmové skupiny. Snížení daní pro střední třídu je součástí naší vize spravedlivějšího systému.",
+    "details": {
+        "arguments": [
+            "Zavedení daňové progrese zajistí spravedlivější rozdělení daňového břemene.",
+            "Snížení odvodů pro nízkopříjmové zaměstnance a OSVČ.",
+            "Transparentní a jednoduchý daňový systém."
+        ],
+        "quotes": [
+            {
+                "text": "Chceme systém, kde se vyplatí pracovat a kde ti nejzranitelnější nepadají do dluhových pastí. Progresivní zdanění je k tomu klíčem.",
+                "author": "Ivan Bartoš",
+                "source": "https://www.pirati.cz/program/dane"
+            }
+        ]
+    },
     "source": {
       "url": "https://www.pirati.cz/program",
       "date": "2025-09-24T10:00:00Z",
@@ -82,6 +130,7 @@
     "thesisId": "thesis_001",
     "value": 2,
     "confidence": 0.9,
+    "justification": "Snížení daní pro střední a nízkopříjmové skupiny je pro nás prioritou. Bohatí a korporace musí platit více.",
     "source": {
       "url": "https://www.stacilo.cz/program",
       "date": "2025-09-24T10:00:00Z",
@@ -1724,7 +1773,7 @@
     },
     "lastUpdated": "2025-09-24T12:00:00Z"
   },
-  {
+   {
     "partyId": "prisaha",
     "thesisId": "thesis_003",
     "value": 2,

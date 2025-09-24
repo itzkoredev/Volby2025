@@ -1,0 +1,640 @@
+[
+  {
+    "id": "stem-cnn-prima-2025-09-20",
+    "date": "2025-09-20",
+    "dateLabel": "20. září 2025",
+    "agency": "STEM",
+    "client": "CNN Prima",
+    "source": "STEM (CNN Prima)",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 30.9,
+        "originalValue": "30.9",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 19.5,
+        "originalValue": "19.5",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 12,
+        "originalValue": "12.0",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 12.2,
+        "originalValue": "12.2",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 9.3,
+        "originalValue": "9.3",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 7.7,
+        "originalValue": "7.7",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 5.7,
+        "originalValue": "5.7",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 2,
+        "originalValue": "2.0",
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "stem-irozhlas-2025-09-14",
+    "date": "2025-09-14",
+    "dateLabel": "14. září 2025",
+    "agency": "STEM",
+    "client": "iROZHLAS",
+    "source": "STEM (iROZHLAS)",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 31.3,
+        "originalValue": "31.3",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 20.2,
+        "originalValue": "20.2",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 12.5,
+        "originalValue": "12.5",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 10,
+        "originalValue": "10.0",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 10,
+        "originalValue": "10.0",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 7.4,
+        "originalValue": "7.4",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 6,
+        "originalValue": "6.0",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 2.9,
+        "originalValue": "pod 3%",
+        "note": "pod 3%"
+      }
+    ]
+  },
+  {
+    "id": "nms-2025-09-06",
+    "date": "2025-09-06",
+    "dateLabel": "6. září 2025",
+    "agency": "NMS",
+    "client": null,
+    "source": "NMS",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 31,
+        "originalValue": "31.0",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 19.9,
+        "originalValue": "19.9",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 12.3,
+        "originalValue": "12.3",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 12.6,
+        "originalValue": "12.6",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 9,
+        "originalValue": "9.0",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 5,
+        "originalValue": "5.0",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 5,
+        "originalValue": "5.0",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 2.9,
+        "originalValue": "2.9",
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "stem-echo24-2025-08-26",
+    "date": "2025-08-26",
+    "dateLabel": "26. srpna 2025",
+    "agency": "STEM",
+    "client": "Echo24",
+    "source": "STEM (Echo24)",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 32.7,
+        "originalValue": "32.7",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 21.3,
+        "originalValue": "21.3",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 11,
+        "originalValue": "11.0",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 10.9,
+        "originalValue": "10.9",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 8.5,
+        "originalValue": "8.5",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 7,
+        "originalValue": "7.0",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 3.9,
+        "originalValue": "3.9",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 3.3,
+        "originalValue": "3.3",
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "median-2025-09-16",
+    "date": "2025-09-16",
+    "dateLabel": "16. září 2025",
+    "agency": "Median",
+    "client": null,
+    "source": "Median",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 30.5,
+        "originalValue": "30.5",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 19.5,
+        "originalValue": "19.5",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 14,
+        "originalValue": "14.0",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 11,
+        "originalValue": "11.0",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 6.5,
+        "originalValue": "6.5",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 9,
+        "originalValue": "9.0",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 5,
+        "originalValue": "5.0",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 1.5,
+        "originalValue": "1.5",
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "nms-2025-08-11",
+    "date": "2025-08-11",
+    "dateLabel": "11. srpna 2025",
+    "agency": "NMS",
+    "client": null,
+    "source": "NMS",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 29.8,
+        "originalValue": "29.8",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 18.7,
+        "originalValue": "18.7",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 14.6,
+        "originalValue": "14.6",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 10.7,
+        "originalValue": "10.7",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 8.8,
+        "originalValue": "8.8",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 8.2,
+        "originalValue": "8.2",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 5.7,
+        "originalValue": "5.7",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 2.9,
+        "originalValue": "pod 3%",
+        "note": "pod 3%"
+      }
+    ]
+  },
+  {
+    "id": "nms-2025-07-09",
+    "date": "2025-07-09",
+    "dateLabel": "9. července 2025",
+    "agency": "NMS",
+    "client": null,
+    "source": "NMS",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 28.7,
+        "originalValue": "28.7",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 21.5,
+        "originalValue": "21.5",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 13.3,
+        "originalValue": "13.3",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 12,
+        "originalValue": "12.0",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 7.9,
+        "originalValue": "7.9",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 5.8,
+        "originalValue": "5.8",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 3.2,
+        "originalValue": "3.2",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 3.2,
+        "originalValue": "3.2",
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "median-2025-07-07",
+    "date": "2025-07-07",
+    "dateLabel": "7. července 2025",
+    "agency": "Median",
+    "client": null,
+    "source": "Median",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 33,
+        "originalValue": "33.0",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 19.5,
+        "originalValue": "19.5",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 14,
+        "originalValue": "14.0",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 11,
+        "originalValue": "11.0",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 7.5,
+        "originalValue": "7.5",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 5,
+        "originalValue": "5.0",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 4.5,
+        "originalValue": "4.5",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 1.5,
+        "originalValue": "1.5",
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "median-2025-07-11",
+    "date": "2025-07-11",
+    "dateLabel": "11. července 2025",
+    "agency": "Median",
+    "client": null,
+    "source": "Median",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 32,
+        "originalValue": "32.0",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 19,
+        "originalValue": "19.0",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 14,
+        "originalValue": "14.0",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 9,
+        "originalValue": "9.0",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 8,
+        "originalValue": "8.0",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 5.5,
+        "originalValue": "5.5",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 5.5,
+        "originalValue": "5.5",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 2.5,
+        "originalValue": "2.5",
+        "note": null
+      }
+    ]
+  },
+  {
+    "id": "nms-2025-06-05",
+    "date": "2025-06-05",
+    "dateLabel": "5. června 2025",
+    "agency": "NMS",
+    "client": null,
+    "source": "NMS",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 30.5,
+        "originalValue": "30.5",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 19.7,
+        "originalValue": "19.7",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 16.7,
+        "originalValue": "16.7",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 12,
+        "originalValue": "12.0",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 6.2,
+        "originalValue": "6.2",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 5,
+        "originalValue": "5.0",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 3.6,
+        "originalValue": "3.6",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": 2.9,
+        "originalValue": "pod 3%",
+        "note": "pod 3%"
+      }
+    ]
+  },
+  {
+    "id": "median-2025-05-16",
+    "date": "2025-05-16",
+    "dateLabel": "16. května 2025",
+    "agency": "Median",
+    "client": null,
+    "source": "Median",
+    "results": [
+      {
+        "partyId": "ano",
+        "percentage": 32,
+        "originalValue": "32.0",
+        "note": null
+      },
+      {
+        "partyId": "spolu",
+        "percentage": 21,
+        "originalValue": "21.0",
+        "note": null
+      },
+      {
+        "partyId": "spd",
+        "percentage": 13.5,
+        "originalValue": "13.5",
+        "note": null
+      },
+      {
+        "partyId": "stan",
+        "percentage": 10.5,
+        "originalValue": "10.5",
+        "note": null
+      },
+      {
+        "partyId": "pirati",
+        "percentage": 5.5,
+        "originalValue": "5.5",
+        "note": null
+      },
+      {
+        "partyId": "stacilo",
+        "percentage": 6.5,
+        "originalValue": "6.5",
+        "note": null
+      },
+      {
+        "partyId": "motoriste",
+        "percentage": 3,
+        "originalValue": "3.0",
+        "note": null
+      },
+      {
+        "partyId": "prisaha",
+        "percentage": null,
+        "originalValue": "-",
+        "note": null
+      }
+    ]
+  }
+]

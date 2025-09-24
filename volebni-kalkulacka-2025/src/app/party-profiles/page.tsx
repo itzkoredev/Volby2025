@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ExternalLink, Users, TrendingUp, Calendar, Globe } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Users, TrendingUp, Calendar, Globe, ChevronDown, Quote, ListChecks, Vote } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Party } from '@/lib/types';
+import { Party, PartyPosition, Thesis } from '@/lib/types';
 import { 
   Chart as ChartJS, 
   CategoryScale, 
@@ -18,11 +19,8 @@ import {
   ArcElement,
   Title, 
   Tooltip, 
-  Legend,
-  ChartData,
-  ChartOptions
+  Legend
 } from 'chart.js';
-import { Radar, Bar } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -67,18 +65,6 @@ const partyColors: Record<string, { primary: string; secondary: string; accent: 
   'balbinova': { primary: '#AD1457', secondary: '#C2185B', accent: '#E91E63', light: '#FCE4EC' }
 };
 
-interface ChartDataType {
-  labels: string[];
-  datasets: Array<{
-    label: string;
-    data: number[];
-    backgroundColor?: string | string[];
-    borderColor?: string;
-    borderWidth?: number;
-    pointBackgroundColor?: string;
-  }>;
-}
-
 async function loadParties(): Promise<Party[]> {
   const response = await fetch('/data/parties.json');
   if (!response.ok) {
@@ -87,16 +73,41 @@ async function loadParties(): Promise<Party[]> {
   return response.json();
 }
 
-export default function PartyProfilesPage() {
+// Nové funkce pro načtení dat postojů a tezí
+async function loadPartyPositions(): Promise<PartyPosition[]> {
+  const response = await fetch('/data/party_positions.json');
+  if (!response.ok) {
+    throw new Error('Nepodařilo se načíst data o postojích stran');
+  }
+  return response.json();
+}
+
+async function loadTheses(): Promise<Thesis[]> {
+  const response = await fetch('/data/theses.json');
+  if (!response.ok) {
+    throw new Error('Nepodařilo se načíst data tezí');
+  }
+  return response.json();
+}
+
+function PartyProfilesContent() {
+  const searchParams = useSearchParams();
   const [parties, setParties] = useState<Party[]>([]);
   const [selectedParty, setSelectedParty] = useState<Party | null>(null);
+  const [partyPositions, setPartyPositions] = useState<PartyPosition[]>([]);
+  const [theses, setTheses] = useState<Thesis[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchParties() {
+    async function fetchAllData() {
       try {
-        const partiesData = await loadParties();
+        const [partiesData, positionsData, thesesData] = await Promise.all([
+          loadParties(),
+          loadPartyPositions(),
+          loadTheses(),
+        ]);
+        
         // Řazení podle průzkumů (nejvyšší procenta první)
         const sortedParties = partiesData.sort((a, b) => {
           const aPercent = a.pollPercentage || 0;
@@ -104,16 +115,27 @@ export default function PartyProfilesPage() {
           return bPercent - aPercent;
         });
         setParties(sortedParties);
+        setPartyPositions(positionsData);
+        setTheses(thesesData);
         setLoading(false);
+
+        // Zpracování URL parametru pro přímé zobrazení strany
+        const partyIdFromUrl = searchParams.get('party');
+        if (partyIdFromUrl) {
+          const partyToShow = sortedParties.find(p => p.id === partyIdFromUrl);
+          if (partyToShow) {
+            setSelectedParty(partyToShow);
+          }
+        }
       } catch (err) {
-        console.error('Chyba při načítání stran:', err);
-        setError('Nepodařilo se načíst data stran');
+        console.error('Chyba při načítání dat:', err);
+        setError('Nepodařilo se načíst všechna potřebná data');
         setLoading(false);
       }
     }
 
-    fetchParties();
-  }, []);
+    fetchAllData();
+  }, [searchParams]);
 
   const getPartyColor = (partyId: string) => {
     return partyColors[partyId] || { 
@@ -122,51 +144,6 @@ export default function PartyProfilesPage() {
       accent: '#AAAAAA', 
       light: '#F5F5F5' 
     };
-  };
-
-  const generateMockData = (partyId: string): { spectrumData: ChartDataType; supportData: ChartDataType } => {
-    // Mock data pro demonstrační účely - v reálné aplikaci by tato data přišla z API
-    const spectrumData: ChartDataType = {
-      labels: ['Ekonomika', 'Sociální politika', 'Bezpečnost', 'Životní prostředí', 'EU', 'Migrace'],
-      datasets: [{
-        label: 'Pozice strany',
-        data: [
-          Math.floor(Math.random() * 10) + 1,
-          Math.floor(Math.random() * 10) + 1,
-          Math.floor(Math.random() * 10) + 1,
-          Math.floor(Math.random() * 10) + 1,
-          Math.floor(Math.random() * 10) + 1,
-          Math.floor(Math.random() * 10) + 1
-        ],
-        backgroundColor: getPartyColor(partyId).accent + '40',
-        borderColor: getPartyColor(partyId).primary,
-        borderWidth: 2,
-        pointBackgroundColor: getPartyColor(partyId).primary
-      }]
-    };
-
-    const supportData: ChartDataType = {
-      labels: ['18-29', '30-44', '45-59', '60+'],
-      datasets: [{
-        label: 'Podpora podle věku (%)',
-        data: [
-          Math.floor(Math.random() * 30) + 10,
-          Math.floor(Math.random() * 35) + 15,
-          Math.floor(Math.random() * 25) + 10,
-          Math.floor(Math.random() * 20) + 5
-        ],
-        backgroundColor: [
-          getPartyColor(partyId).accent + '80',
-          getPartyColor(partyId).accent + '60',
-          getPartyColor(partyId).accent + '40',
-          getPartyColor(partyId).accent + '20'
-        ],
-        borderColor: getPartyColor(partyId).primary,
-        borderWidth: 2
-      }]
-    };
-
-    return { spectrumData, supportData };
   };
 
   if (loading) {
@@ -230,7 +207,8 @@ export default function PartyProfilesPage() {
             party={selectedParty} 
             onBack={() => setSelectedParty(null)}
             colors={getPartyColor(selectedParty.id)}
-            mockData={generateMockData(selectedParty.id)}
+            positions={partyPositions.filter(p => p.partyId === selectedParty.id)}
+            theses={theses}
           />
         ) : (
           <div className="space-y-12">
@@ -415,48 +393,11 @@ interface DetailedPartyProfileProps {
   party: Party;
   colors: { primary: string; secondary: string; accent: string; light: string };
   onBack: () => void;
-  mockData: {
-    spectrumData: ChartDataType;
-    supportData: ChartDataType;
-  };
+  positions: PartyPosition[];
+  theses: Thesis[];
 }
 
-function DetailedPartyProfile({ party, colors, onBack, mockData }: DetailedPartyProfileProps) {
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false
-      }
-    },
-    scales: {
-      r: {
-        beginAtZero: true,
-        max: 10,
-        ticks: {
-          stepSize: 2
-        }
-      }
-    }
-  };
-
-  const barChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false
-      }
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 50
-      }
-    }
-  };
-
+function DetailedPartyProfile({ party, colors, onBack, positions, theses }: DetailedPartyProfileProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -523,131 +464,116 @@ function DetailedPartyProfile({ party, colors, onBack, mockData }: DetailedParty
       </div>
 
       {/* Hlavní obsah */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Základní informace */}
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center" style={{ color: colors.primary }}>
-              <Users className="h-5 w-5 mr-2" />
-              Základní informace
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div>
-              <h4 className="font-semibold text-gray-700 mb-2">Oficiální název</h4>
-              <p className="text-gray-600">{party.name}</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-700 mb-2">Zkratka</h4>
-              <p className="text-gray-600">{party.shortName}</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-700 mb-2">Web</h4>
-              <a 
-                href={party.website} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center hover:underline"
-                style={{ color: colors.primary }}
-              >
-                {party.website}
-                <ExternalLink className="h-4 w-4 ml-1" />
-              </a>
-            </div>
-            {party.pollPercentage && (
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Základní informace - sloupec 1 */}
+        <div className="lg:col-span-1 space-y-8">
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="flex items-center" style={{ color: colors.primary }}>
+                <Users className="h-5 w-5 mr-2" />
+                Základní informace
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
               <div>
-                <h4 className="font-semibold text-gray-700 mb-2">Aktuální preference</h4>
-                <div className="flex items-center">
-                  <TrendingUp className="h-4 w-4 mr-2" style={{ color: colors.primary }} />
-                  <span className="text-2xl font-bold" style={{ color: colors.primary }}>
-                    {party.pollPercentage}%
-                  </span>
-                  <span className="text-sm text-gray-500 ml-2">v průzkumech</span>
-                </div>
+                <h4 className="font-semibold text-gray-700 mb-2">Oficiální název</h4>
+                <p className="text-gray-600">{party.name}</p>
               </div>
-            )}
-            <div>
-              <h4 className="font-semibold text-gray-700 mb-2">Poslední aktualizace</h4>
-              <p className="text-gray-600">
-                {party.lastUpdated ? new Date(party.lastUpdated).toLocaleDateString('cs-CZ') : 'Neuvedeno'}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Politické spektrum */}
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center" style={{ color: colors.primary }}>
-              <TrendingUp className="h-5 w-5 mr-2" />
-              Politické postoje
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="h-64">
-              <Radar data={mockData.spectrumData} options={chartOptions} />
-            </div>
-            <p className="text-sm text-gray-500 mt-4 text-center">
-              Hodnocení pozic strany v klíčových oblastech (1-10)
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* Podpora podle věkových skupin */}
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center" style={{ color: colors.primary }}>
-              <Users className="h-5 w-5 mr-2" />
-              Demografická podpora
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="h-64">
-              <Bar data={mockData.supportData} options={barChartOptions} />
-            </div>
-            <p className="text-sm text-gray-500 mt-4 text-center">
-              Odhad podpory podle věkových skupin (demo data)
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* Klíčové politiky */}
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle className="flex items-center" style={{ color: colors.primary }}>
-              <TrendingUp className="h-5 w-5 mr-2" />
-              Programové priority
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {/* Mock klíčové body - v reálné aplikaci by se načetly z dat */}
-              {[
-                'Ekonomický růst a konkurenceschopnost',
-                'Sociální spravedlnost a solidarita', 
-                'Bezpečnost a obrana',
-                'Životní prostředí a udržitelnost',
-                'Digitalizace a inovace'
-              ].map((item, index) => (
-                <div key={index} className="flex items-center p-3 rounded-lg" style={{ backgroundColor: colors.light }}>
-                  <div 
-                    className="w-3 h-3 rounded-full mr-3 flex-shrink-0"
-                    style={{ backgroundColor: colors.primary }}
-                  ></div>
-                  <span className="text-gray-700">{item}</span>
+              <div>
+                <h4 className="font-semibold text-gray-700 mb-2">Zkratka</h4>
+                <p className="text-gray-600">{party.shortName}</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-700 mb-2">Web</h4>
+                <a 
+                  href={party.website} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:underline"
+                  style={{ color: colors.primary }}
+                >
+                  {party.website}
+                  <ExternalLink className="h-4 w-4 ml-1" />
+                </a>
+              </div>
+              {party.pollPercentage && (
+                <div>
+                  <h4 className="font-semibold text-gray-700 mb-2">Aktuální preference</h4>
+                  <div className="flex items-center">
+                    <TrendingUp className="h-4 w-4 mr-2" style={{ color: colors.primary }} />
+                    <span className="text-2xl font-bold" style={{ color: colors.primary }}>
+                      {party.pollPercentage}%
+                    </span>
+                    <span className="text-sm text-gray-500 ml-2">v průzkumech</span>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+              )}
+              <div>
+                <h4 className="font-semibold text-gray-700 mb-2">Poslední aktualizace</h4>
+                <p className="text-gray-600">
+                  {party.lastUpdated ? new Date(party.lastUpdated).toLocaleDateString('cs-CZ') : 'Neuvedeno'}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        
+          {/* Klíčoví představitelé */}
+          {party.representatives && party.representatives.length > 0 && (
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center" style={{ color: colors.primary }}>
+                  <Users className="h-5 w-5 mr-2" />
+                  Klíčoví představitelé
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {party.representatives.map((rep, index) => (
+                    <div key={index} className="flex items-center gap-4">
+                      <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+                        {rep.photo ? (
+                          <img 
+                            src={rep.photo} 
+                            alt={rep.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div 
+                            className="w-full h-full flex items-center justify-center text-white font-bold text-xl"
+                            style={{ backgroundColor: colors.primary }}
+                          >
+                            {rep.name.charAt(0)}
+                          </div>
+                        )}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-800">{rep.name}</h4>
+                        <p className="text-sm text-gray-600">{rep.position}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+
+        {/* Politické postoje - sloupec 2 a 3 */}
+        <div className="lg:col-span-2">
+          <PartyPositionsDisplay 
+            positions={positions}
+            theses={theses}
+            colors={colors}
+          />
+        </div>
       </div>
 
-      {/* Nové sekce */}
+      {/* Ostatní sekce pod hlavní mřížkou */}
       <div className="mt-8 space-y-8">
         {/* PRO a PROTI */}
-        {(party.pros || party.cons) && (
+        {(party.pros && party.pros.length > 0) || (party.cons && party.cons.length > 0) ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {party.pros && (
+            {party.pros && party.pros.length > 0 && (
               <Card className="shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-green-600">
@@ -668,7 +594,7 @@ function DetailedPartyProfile({ party, colors, onBack, mockData }: DetailedParty
               </Card>
             )}
 
-            {party.cons && (
+            {party.cons && party.cons.length > 0 && (
               <Card className="shadow-lg">
                 <CardHeader>
                   <CardTitle className="flex items-center text-red-600">
@@ -689,53 +615,8 @@ function DetailedPartyProfile({ party, colors, onBack, mockData }: DetailedParty
               </Card>
             )}
           </div>
-        )}
-
-        {/* Představitelé */}
-        {party.representatives && party.representatives.length > 0 && (
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center" style={{ color: colors.primary }}>
-                <Users className="h-5 w-5 mr-2" />
-                Klíčoví představitelé
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {party.representatives.map((rep, index) => (
-                  <div key={index} className="text-center">
-                    <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden bg-gray-200">
-                      {rep.photo ? (
-                        <img 
-                          src={rep.photo} 
-                          alt={rep.name}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                            const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
-                            if (nextElement) nextElement.style.display = 'flex';
-                          }}
-                        />
-                      ) : null}
-                      <div 
-                        className={`w-full h-full flex items-center justify-center text-white font-bold text-xl ${rep.photo ? 'hidden' : ''}`}
-                        style={{ backgroundColor: colors.primary }}
-                      >
-                        {rep.name.charAt(0)}
-                      </div>
-                    </div>
-                    <h4 className="font-semibold text-gray-800">{rep.name}</h4>
-                    <p className="text-sm text-gray-600 mb-2">{rep.position}</p>
-                    {rep.bio && (
-                      <p className="text-xs text-gray-500 line-clamp-2">{rep.bio}</p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
+        ) : null}
+        
         {/* Historické úspěchy */}
         {party.historicalAchievements && party.historicalAchievements.length > 0 && (
           <Card className="shadow-lg">
@@ -855,5 +736,178 @@ function DetailedPartyProfile({ party, colors, onBack, mockData }: DetailedParty
         )}
       </div>
     </motion.div>
+  );
+}
+
+// Nová komponenta pro zobrazení postojů strany
+interface PartyPositionsDisplayProps {
+  positions: PartyPosition[];
+  theses: Thesis[];
+  colors: { primary: string; secondary: string; accent: string; light: string };
+}
+
+function PartyPositionItem({ position, thesis, colors }: { position: PartyPosition; thesis: Thesis; colors: any }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const getPositionLabel = (value: number) => {
+    switch (value) {
+      case -2: return 'Rozhodně nesouhlasí';
+      case -1: return 'Spíše nesouhlasí';
+      case 0: return 'Neutrální / Nevyhraněno';
+      case 1: return 'Spíše souhlasí';
+      case 2: return 'Rozhodně souhlasí';
+      default: return 'Neznámý postoj';
+    }
+  };
+
+  return (
+    <div className="p-4 rounded-lg" style={{ backgroundColor: colors.light }}>
+      <p className="font-semibold text-gray-700 mb-2">{thesis.text}</p>
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center">
+          <span 
+            className="font-bold text-sm px-2 py-1 rounded"
+            style={{ 
+              backgroundColor: colors.accent + '30',
+              color: colors.primary
+            }}
+          >
+            {getPositionLabel(position.value)}
+          </span>
+          <span className="text-xs text-gray-500 ml-3">
+            (Důvěra: {Math.round(position.confidence * 100)}%)
+          </span>
+        </div>
+        {position.details && (
+          <Button variant="ghost" size="sm" onClick={() => setIsExpanded(!isExpanded)} className="flex items-center text-xs">
+            Detaily
+            <ChevronDown className={`h-4 w-4 ml-1 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+          </Button>
+        )}
+      </div>
+      
+      {position.justification && (
+        <p className="text-sm text-gray-600 italic mb-2">
+          "{position.justification}"
+        </p>
+      )}
+
+      {isExpanded && position.details && (
+        <motion.div 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          className="mt-3 pt-3 border-t"
+          style={{ borderColor: colors.accent + '50' }}
+        >
+          {position.details.arguments && position.details.arguments.length > 0 && (
+            <div className="mb-3">
+              <h5 className="font-semibold text-sm flex items-center mb-1" style={{ color: colors.primary }}><ListChecks className="h-4 w-4 mr-2" /> Argumenty</h5>
+              <ul className="list-disc list-inside text-sm text-gray-600 space-y-1 pl-2">
+                {position.details.arguments.map((arg, i) => <li key={i}>{arg}</li>)}
+              </ul>
+            </div>
+          )}
+          {position.details.quotes && position.details.quotes.length > 0 && (
+            <div className="mb-3">
+              <h5 className="font-semibold text-sm flex items-center mb-1" style={{ color: colors.primary }}><Quote className="h-4 w-4 mr-2" /> Citace</h5>
+              {position.details.quotes.map((quote, i) => (
+                <blockquote key={i} className="border-l-4 pl-3 text-sm italic text-gray-700" style={{ borderColor: colors.secondary }}>
+                  "{quote.text}"
+                  <footer className="text-xs not-italic mt-1 text-gray-500">- {quote.author}</footer>
+                </blockquote>
+              ))}
+            </div>
+          )}
+          {position.details.relatedVotes && position.details.relatedVotes.length > 0 && (
+            <div>
+              <h5 className="font-semibold text-sm flex items-center mb-1" style={{ color: colors.primary }}><Vote className="h-4 w-4 mr-2" /> Související hlasování</h5>
+              <ul className="text-sm space-y-1">
+                {position.details.relatedVotes.map((vote, i) => (
+                  <li key={i}>
+                    <a href={vote.url} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                      {vote.name} <ExternalLink className="h-3 w-3 ml-1" />
+                      <span className={`ml-2 text-xs font-bold ${vote.result === 'pro' ? 'text-green-600' : 'text-red-600'}`}>({vote.result})</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </motion.div>
+      )}
+
+      <a 
+        href={position.source.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs flex items-center hover:underline mt-2"
+        style={{ color: colors.secondary }}
+      >
+        <ExternalLink className="h-3 w-3 mr-1" />
+        Zdroj: {position.source.title || 'Odkaz'} ({new Date(position.source.date).toLocaleDateString('cs-CZ')})
+      </a>
+    </div>
+  );
+}
+
+function PartyPositionsDisplay({ positions, theses, colors }: PartyPositionsDisplayProps) {
+  const thesesById = new Map(theses.map(t => [t.id, t]));
+  
+  const positionsByIssue = positions.reduce((acc, position) => {
+    const thesis = thesesById.get(position.thesisId);
+    if (!thesis) return acc;
+    
+    const issueId = thesis.issueId || 'ostatni';
+    if (!acc[issueId]) {
+      acc[issueId] = [];
+    }
+    acc[issueId].push(position);
+    return acc;
+  }, {} as Record<string, PartyPosition[]>);
+
+  return (
+    <Card className="shadow-lg">
+      <CardHeader>
+        <CardTitle className="flex items-center" style={{ color: colors.primary }}>
+          <TrendingUp className="h-5 w-5 mr-2" />
+          Klíčové postoje
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {Object.entries(positionsByIssue).map(([issueId, issuePositions]) => (
+          <div key={issueId}>
+            <h3 className="text-lg font-semibold text-gray-800 capitalize mb-3" id={issueId}>
+              {issueId.replace('-', ' ')}
+            </h3>
+            <div className="space-y-4">
+              {issuePositions.map(position => {
+                const thesis = thesesById.get(position.thesisId);
+                if (!thesis) return null;
+
+                return (
+                  <PartyPositionItem 
+                    key={position.thesisId}
+                    position={position}
+                    thesis={thesis}
+                    colors={colors}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        ))}
+        {positions.length === 0 && (
+          <p className="text-gray-500">Pro tuto stranu zatím nebyly zpracovány žádné postoje.</p>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+export default function PartyProfilesPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center"><div className="text-lg">Načítám profily...</div></div>}>
+      <PartyProfilesContent />
+    </Suspense>
   );
 }

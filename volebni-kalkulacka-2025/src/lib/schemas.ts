@@ -1,16 +1,42 @@
 import { z } from 'zod';
 
+// Schéma pro představitele strany
+export const RepresentativeSchema = z.object({
+  name: z.string().min(1, 'Jméno představitele je povinné'),
+  position: z.string().optional(),
+  photo: z.string().url('Neplatná URL fotografie').optional(),
+  bio: z.string().optional(),
+});
+
+// Schéma pro událost na časové ose
+export const TimelineEventSchema = z.object({
+  // Accept simple date strings (YYYY-MM-DD) or full datetimes; keep validation lenient
+  date: z.string().min(1, 'Neplatné datum události'),
+  title: z.string().min(1, 'Název události je povinný'),
+  description: z.string().optional(),
+  type: z.enum(['success', 'controversy', 'poll', 'election', 'program', 'milestone']).optional(),
+});
+
 // Schéma pro politickou stranu
 export const PartySchema = z.object({
   id: z.string().min(1, 'ID strany je povinné'),
   slug: z.string().min(1, 'Slug je povinný'),
   name: z.string().min(1, 'Název strany je povinný'),
-  shortName: z.string().min(1, 'Zkratka strany je povinná'),
+  // Short name is optional in data; logo may be an URL or an empty string when not available
+  shortName: z.string().min(1, 'Zkratka strany je povinná').optional(),
   website: z.string().url('Neplatná URL webové stránky').optional(),
-  logo: z.string().url('Neplatná URL loga').optional(),
+  logo: z.union([z.string().url('Neplatná URL loga'), z.literal('')]).optional(),
   description: z.string().optional(),
   sources: z.array(z.string()).default([]),
   lastUpdated: z.string().datetime().optional(),
+  pollPercentage: z.number().min(0).max(100).optional(),
+  category: z.enum(['main', 'secondary']).default('secondary'),
+  pros: z.array(z.string()).optional(),
+  cons: z.array(z.string()).optional(),
+  historicalAchievements: z.array(z.string()).optional(),
+  controversies: z.array(z.string()).optional(),
+  representatives: z.array(RepresentativeSchema).optional(),
+  timeline: z.array(TimelineEventSchema).optional(),
 });
 
 // Schéma pro téma/oblast
@@ -32,21 +58,6 @@ export const ThesisSchema = z.object({
   evidencePolicy: z.string().optional(),
   order: z.number().int().min(0).default(0),
   isActive: z.boolean().default(true),
-});
-
-// Schéma pro pozici strany k tezi
-export const PartyPositionSchema = z.object({
-  partyId: z.string().min(1, 'ID strany je povinné'),
-  thesisId: z.string().min(1, 'ID teze je povinné'),
-  value: z.number().min(-2).max(2, 'Hodnota musí být mezi -2 a 2'),
-  confidence: z.number().min(0).max(1, 'Konfidence musí být mezi 0 a 1'),
-  source: z.object({
-    url: z.string().url('Neplatná URL zdroje'),
-    date: z.string().datetime('Neplatné datum'),
-    type: z.enum(['program', 'hlasovani', 'prohlaseni', 'rozhovor', 'finance']),
-    title: z.string().optional(),
-  }),
-  lastUpdated: z.string().datetime().optional(),
 });
 
 // Schéma pro FAQ
@@ -86,6 +97,38 @@ export const UserAnswersSchema = z.object({
   answers: z.record(z.string(), z.number().min(-2).max(2)),
   weights: z.record(z.string(), z.number().min(1).max(3)),
   timestamp: z.string().datetime(),
+});
+
+// Schéma pro pozici strany k tezi
+export const PartyPositionSchema = z.object({
+  partyId: z.string().min(1, 'ID strany je povinné'),
+  thesisId: z.string().min(1, 'ID teze je povinné'),
+  value: z.number().min(-2).max(2, 'Hodnota musí být mezi -2 a 2'),
+  confidence: z.number().min(0).max(1, 'Konfidence musí být mezi 0 a 1'),
+  justification: z.string().optional(), // Krátké zdůvodnění postoje
+
+  // Nová detailní pole
+  details: z.object({
+    arguments: z.array(z.string()).optional(), // Klíčové argumenty pro postoj
+    quotes: z.array(z.object({
+      text: z.string(),
+      author: z.string(),
+      source: z.string().url().optional(),
+    })).optional(), // Přímé citace
+    relatedVotes: z.array(z.object({
+      name: z.string(),
+      url: z.string().url(),
+      result: z.enum(['pro', 'proti', 'zdržel se']),
+    })).optional(), // Související hlasování
+  }).optional(),
+
+  source: z.object({
+    url: z.string().url('Neplatná URL zdroje'),
+    date: z.string().datetime('Neplatné datum'),
+    type: z.enum(['program', 'hlasovani', 'prohlaseni', 'rozhovor', 'finance']),
+    title: z.string().optional(),
+  }),
+  lastUpdated: z.string().datetime().optional(),
 });
 
 // Exporty typů
