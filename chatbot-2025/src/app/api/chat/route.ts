@@ -1,50 +1,58 @@
-﻿import { streamText } from 'ai';
+﻿import { streamText, safeValidateUIMessages, convertToModelMessages } from 'ai';
 import { openai } from '@ai-sdk/openai';
+import type { ModelMessage, UIMessage } from 'ai';
 
 // Set the runtime to edge for best performance
 export const runtime = 'edge';
 
-type ChatMessageRole = 'system' | 'user' | 'assistant';
-
-type ChatRequest = {
-  messages: Array<{
-    role: ChatMessageRole;
-    content: string;
-  }>;
-};
-
-const isChatMessageRole = (value: unknown): value is ChatMessageRole =>
-  typeof value === 'string' &&
-  (value === 'system' || value === 'user' || value === 'assistant');
-
-const isChatRequest = (value: unknown): value is ChatRequest => {
-  if (!value || typeof value !== 'object') {
-    return false;
+const stringifyError = (error: unknown): string => {
+  if (typeof error === 'string') {
+    return error;
   }
 
-  const { messages } = value as { messages?: unknown };
-  if (!Array.isArray(messages)) {
-    return false;
+  if (error instanceof Error) {
+    return error.message;
   }
 
-  return messages.every((message: unknown) => {
-    if (!message || typeof message !== 'object') {
-      return false;
-    }
-
-    const { role, content } = message as {
-      role?: unknown;
-      content?: unknown;
+  if (error && typeof error === 'object') {
+    const { message, code } = error as {
+      message?: unknown;
+      code?: unknown;
     };
 
-    return isChatMessageRole(role) && typeof content === 'string';
-  });
+    if (typeof message === 'string') {
+      return message;
+    }
+
+    if (typeof code === 'string') {
+      return `Error code: ${code}`;
+    }
+  }
+
+  return 'An unexpected error occurred.';
+};
+
+const parseMessages = async (
+  value: unknown,
+): Promise<ModelMessage[] | null> => {
+  const validation = await safeValidateUIMessages<UIMessage>({ messages: value });
+
+  if (!validation.success) {
+    console.error('Invalid chat payload', validation.error);
+    return null;
+  }
+
+  return convertToModelMessages(validation.data);
 };
 
 export async function POST(req: Request) {
   const body: unknown = await req.json();
+  const messages =
+    body && typeof body === 'object'
+      ? await parseMessages((body as { messages?: unknown }).messages)
+      : null;
 
-  if (!isChatRequest(body)) {
+  if (!messages) {
     return new Response(
       JSON.stringify({ error: 'Invalid request payload' }),
       {
@@ -57,14 +65,18 @@ export async function POST(req: Request) {
   try {
     const result = await streamText({
       model: openai('gpt-3.5-turbo'),
-      messages: body.messages,
+      messages,
     });
 
-    return result.toTextStreamResponse();
+    return result.toUIMessageStreamResponse({
+      onError: (error) => {
+        console.error('Chat stream error', error);
+        return stringifyError(error);
+      },
+    });
   } catch (error: unknown) {
     console.error(error);
-    const errorMessage =
-      error instanceof Error ? error.message : 'An unexpected error occurred';
+    const errorMessage = stringifyError(error);
     return new Response(JSON.stringify({ error: errorMessage }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

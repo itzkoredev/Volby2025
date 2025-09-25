@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -149,4 +149,58 @@ body {
   50% {
     transform: translateY(-4px);
   }
+}
+
+.message-citations {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(17, 24, 39, 0.08);
+  font-size: 0.85rem;
+  color: #374151;
+}
+
+.message-citations__label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #111827;
+}
+
+.message-citations ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.message-citations__id {
+  font-family: inherit;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.message-citations a {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.message-citations__accessed {
+  color: #6b7280;
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+}
+.message-citations__toggle {
+  margin-bottom: 0.35rem;
+  background: transparent;
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  color: #2563eb;
+  border-radius: 9999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.message-citations__toggle:hover {
+  background: rgba(37, 99, 235, 0.08);
 }
