@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volby 2025 - Volební Kalkulačka</title>
-    <meta name="description" content="Nestranná volební kalkulačka pro české volby 2025. Zjistěte, která        .feature-card:hover {
+    <title>Volby 2025 - VolebnĂ­ KalkulaÄŤka</title>
+    <meta name="description" content="NestrannĂˇ volebnĂ­ kalkulaÄŤka pro ÄŤeskĂ© volby 2025. ZjistÄ›te, kterĂˇ        .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
         }
@@ -32,7 +32,10 @@
 
         .feature-status.coming-soon {
             background: #f59e0b;
-        }itická strana nejlépe odpovídá vašim názorům.">
+        }
+        .feature-status.online {
+            background: #10b981;
+        }itickĂˇ strana nejlĂ©pe odpovĂ­dĂˇ vaĹˇim nĂˇzorĹŻm.">
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
@@ -42,7 +45,7 @@
     <meta name="apple-mobile-web-app-title" content="Volby 2025">
     
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%232563eb'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>🗳️</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%232563eb'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-family='Arial'>đź—łď¸Ź</text></svg>">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -496,7 +499,7 @@
                 <i class="fas fa-vote-yea"></i> Volby 2025
             </a>
             <ul class="nav-links">
-                <li><a href="#home">Domů</a></li>
+                <li><a href="#home">DomĹŻ</a></li>
                 <li><a href="#features">Funkce</a></li>
                 <li><a href="#about">O projektu</a></li>
                 <li><a href="#contact">Kontakt</a></li>
@@ -511,20 +514,20 @@
             <div class="hero-content">
                 <h1>
                     <i class="fas fa-poll"></i>
-                    Volby 2025 - Hlavní rozcestník
+                    Volby 2025 - HlavnĂ­ rozcestnĂ­k
                 </h1>
                 <p>
-                    Vítejte v kompletním volebním portálu pro české volby 2025. 
-                    Vyberte si, co vás zajímá - kalkulačka, AI chatbot, profily stran a mnoho dalšího.
+                    VĂ­tejte v kompletnĂ­m volebnĂ­m portĂˇlu pro ÄŤeskĂ© volby 2025. 
+                    Vyberte si, co vĂˇs zajĂ­mĂˇ - kalkulaÄŤka, AI chatbot, profily stran a mnoho dalĹˇĂ­ho.
                 </p>
                 <div class="cta-buttons">
                     <a href="https://www.itzkore.cz/volby2025/volebni-kalkulacka-2025/" class="btn btn-primary" target="_blank">
                         <i class="fas fa-calculator"></i>
-                        Volební kalkulačka
+                        VolebnĂ­ kalkulaÄŤka
                     </a>
                     <a href="#features" class="btn btn-secondary">
                         <i class="fas fa-list"></i>
-                        Všechny funkce
+                        VĹˇechny funkce
                     </a>
                 </div>
             </div>
@@ -533,55 +536,55 @@
         <!-- Features Section -->
         <section class="features fade-in" id="features">
             <div class="features-container">
-                <h2>Vyberte si, co vás zajímá</h2>
+                <h2>Vyberte si, co vĂˇs zajĂ­mĂˇ</h2>
                 <div class="features-grid">
                     <div class="feature-card clickable" onclick="openApp('https://www.itzkore.cz/volby2025/volebni-kalkulacka-2025/')">
                         <div class="feature-icon">
                             <i class="fas fa-calculator"></i>
                         </div>
-                        <h3>Volební kalkulačka</h3>
-                        <p>Zjistěte, která politická strana nejlépe odpovídá vašim názorům. 26 stran, 20 témat, 100% transparentnost.</p>
-                        <div class="feature-status">✅ Hotovo</div>
+                        <h3>VolebnĂ­ kalkulaÄŤka</h3>
+                        <p>ZjistÄ›te, kterĂˇ politickĂˇ strana nejlĂ©pe odpovĂ­dĂˇ vaĹˇim nĂˇzorĹŻm. 26 stran, 20 tĂ©mat, 100% transparentnost.</p>
+                        <div class="feature-status">âś… Hotovo</div>
                     </div>
-                    <div class="feature-card clickable" onclick="showComingSoon('AI Chatbot')">
+                                        <div class="feature-card clickable" onclick="openApp('https://www.itzkore.cz/volby2025/chatbot-2025/')">
                         <div class="feature-icon">
                             <i class="fas fa-robot"></i>
                         </div>
                         <h3>AI Chatbot</h3>
                         <p>Ptejte se AI na cokoliv o volbách, programech stran a politických tématech. Rychlé a přesné odpovědi.</p>
-                        <div class="feature-status coming-soon">🚧 Připravujeme</div>
+                        <div class="feature-status online">&#x2705; Chatbot spu&#353;t&#283;n</div>
                     </div>
                     <div class="feature-card clickable" onclick="showComingSoon('Profily stran')">
                         <div class="feature-icon">
                             <i class="fas fa-users"></i>
                         </div>
                         <h3>Profily stran</h3>
-                        <p>Detailní profily všech politických stran - programy, kandidáti, historie, financování a více.</p>
-                        <div class="feature-status coming-soon">🚧 Připravujeme</div>
+                        <p>DetailnĂ­ profily vĹˇech politickĂ˝ch stran - programy, kandidĂˇti, historie, financovĂˇnĂ­ a vĂ­ce.</p>
+                        <div class="feature-status coming-soon">đźš§ PĹ™ipravujeme</div>
                     </div>
-                    <div class="feature-card clickable" onclick="showComingSoon('Volební mapa')">
+                    <div class="feature-card clickable" onclick="showComingSoon('VolebnĂ­ mapa')">
                         <div class="feature-icon">
                             <i class="fas fa-map-marked-alt"></i>
                         </div>
-                        <h3>Interaktivní mapa</h3>
-                        <p>Zjistěte volební preference ve vašem regionu, výsledky z minulých voleb a průzkumy veřejného mínění.</p>
-                        <div class="feature-status coming-soon">🚧 Připravujeme</div>
+                        <h3>InteraktivnĂ­ mapa</h3>
+                        <p>ZjistÄ›te volebnĂ­ preference ve vaĹˇem regionu, vĂ˝sledky z minulĂ˝ch voleb a prĹŻzkumy veĹ™ejnĂ©ho mĂ­nÄ›nĂ­.</p>
+                        <div class="feature-status coming-soon">đźš§ PĹ™ipravujeme</div>
                     </div>
-                    <div class="feature-card clickable" onclick="showComingSoon('Průzkumy a statistiky')">
+                    <div class="feature-card clickable" onclick="showComingSoon('PrĹŻzkumy a statistiky')">
                         <div class="feature-icon">
                             <i class="fas fa-chart-pie"></i>
                         </div>
-                        <h3>Průzkumy a statistiky</h3>
-                        <p>Aktuální průzkumy preferencí, trend analýzy a predikce výsledků na základě dat z různých zdrojů.</p>
-                        <div class="feature-status coming-soon">🚧 Připravujeme</div>
+                        <h3>PrĹŻzkumy a statistiky</h3>
+                        <p>AktuĂˇlnĂ­ prĹŻzkumy preferencĂ­, trend analĂ˝zy a predikce vĂ˝sledkĹŻ na zĂˇkladÄ› dat z rĹŻznĂ˝ch zdrojĹŻ.</p>
+                        <div class="feature-status coming-soon">đźš§ PĹ™ipravujeme</div>
                     </div>
-                    <div class="feature-card clickable" onclick="showComingSoon('Volební události')">
+                    <div class="feature-card clickable" onclick="showComingSoon('VolebnĂ­ udĂˇlosti')">
                         <div class="feature-icon">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
-                        <h3>Volební události</h3>
-                        <p>Kalendář předvolebních debat, meetingů s kandidáty a dalších důležitých událostí ve vašem regionu.</p>
-                        <div class="feature-status coming-soon">🚧 Připravujeme</div>
+                        <h3>VolebnĂ­ udĂˇlosti</h3>
+                        <p>KalendĂˇĹ™ pĹ™edvolebnĂ­ch debat, meetingĹŻ s kandidĂˇty a dalĹˇĂ­ch dĹŻleĹľitĂ˝ch udĂˇlostĂ­ ve vaĹˇem regionu.</p>
+                        <div class="feature-status coming-soon">đźš§ PĹ™ipravujeme</div>
                     </div>
                 </div>
             </div>
@@ -592,11 +595,11 @@
             <div class="stats-container">
                 <div class="stat-item">
                     <span class="stat-number">26</span>
-                    <div class="stat-label">Politických stran</div>
+                    <div class="stat-label">PolitickĂ˝ch stran</div>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">20</span>
-                    <div class="stat-label">Klíčových témat</div>
+                    <div class="stat-label">KlĂ­ÄŤovĂ˝ch tĂ©mat</div>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">100%</span>
@@ -604,7 +607,7 @@
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">0</span>
-                    <div class="stat-label">Politické předsudky</div>
+                    <div class="stat-label">PolitickĂ© pĹ™edsudky</div>
                 </div>
             </div>
         </section>
@@ -614,12 +617,12 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="https://www.itzkore.cz/volby2025/volebni-kalkulacka-2025/">Kalkulačka</a>
+                <a href="https://www.itzkore.cz/volby2025/volebni-kalkulacka-2025/">KalkulaÄŤka</a>
                 <a href="#about">O projektu</a>
                 <a href="#privacy">Ochrana dat</a>
                 <a href="#contact">Kontakt</a>
             </div>
-            <p>&copy; 2025 Volby 2025. Nestranný nástroj pro informované volby.</p>
+            <p>&copy; 2025 Volby 2025. NestrannĂ˝ nĂˇstroj pro informovanĂ© volby.</p>
         </div>
     </footer>
 
@@ -668,20 +671,24 @@
             }
         });
 
-        // App navigation functions
+                // App navigation functions
         function openApp(url) {
-            // Pro development použij localhost, pro production použij produkční URL
-            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                // Zkusíme nejdřív port 3002, pak 3001, pak 3000
-                const devUrl = url.replace('https://www.itzkore.cz/volby2025/volebni-kalkulacka-2025/', 'http://localhost:3002/');
-                window.open(devUrl, '_blank');
-            } else {
-                window.open(url, '_blank');
+            const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+            if (isLocal) {
+                if (url.includes("volebni-kalkulacka-2025")) {
+                    window.open("http://localhost:3002/", "_blank");
+                    return;
+                }
+                if (url.includes("chatbot-2025")) {
+                    window.open("http://localhost:3001/", "_blank");
+                    return;
+                }
             }
+            window.open(url, "_blank");
         }
 
         function showComingSoon(feature) {
-            alert(`${feature} bude brzy k dispozici! 🚀\n\nPracujeme na této funkci a bude přidána v následujících týdnech. Zatím si můžete vyzkoušet Volební kalkulačku.`);
+            alert(`${feature} bude brzy k dispozici! đźš€\n\nPracujeme na tĂ©to funkci a bude pĹ™idĂˇna v nĂˇsledujĂ­cĂ­ch tĂ˝dnech. ZatĂ­m si mĹŻĹľete vyzkouĹˇet VolebnĂ­ kalkulaÄŤku.`);
         }
 
         // Counter animation

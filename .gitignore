@@ -1,0 +1,45 @@
+# Node
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+.next/
+**/.next/
+.nuxt/
+dist/
+build/
+out/
+coverage/
+.turbo/
+.cache/
+**/.cache/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# OS/files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Misc
+*.local
+*.log
+*.tmp
+*.swp
+
+# Generated lock backups
+node_modules/.package-lock.json
+
+# Project-specific
+volebni-kalkulacka-2025/public/data/parties.json.tmp
+volebni-kalkulacka-2025/public/data/parties.json.win

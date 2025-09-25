@@ -31,6 +31,8 @@ declare global {
 
 const PUTER_SCRIPT_SRC = "https://js.puter.com/v2/";
 const DEFAULT_MODEL = "gpt-5-nano";
+const MAX_CONTEXT_MESSAGES = 8;
+const CACHE_LIMIT = 20;
 const SYSTEM_PROMPT = `Jsi poradce "Chatbot 2025" zaměřený výhradně na české prezidentské a parlamentní volby 2025.
 - Odpovídej česky, s energií a empatií, přidej 1–3 vhodné emoji.
 - Chovej se jako špičkový profesor politologie a živá encyklopedie: vysvětluj historický vývoj stran, klíčové osobnosti, ideologii i aktuální program 2025.
@@ -148,7 +150,7 @@ const extractAssistantText = (payload: unknown): string => {
               "text" in part &&
               typeof (part as { text?: unknown }).text === "string"
             ) {
-              return (part as { text: string }).text;
+                return (part as { text: string }).text;
             }
             return "";
           })
@@ -176,7 +178,7 @@ const extractAssistantText = (payload: unknown): string => {
                 "text" in part &&
                 typeof (part as { text?: unknown }).text === "string"
               ) {
-                return (part as { text: string }).text;
+                  return (part as { text: string }).text;
               }
               return "";
             })
@@ -231,6 +233,9 @@ export default function Chat() {
   const [expandedCitations, setExpandedCitations] = useState<string[]>([]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const responseCacheRef = useRef<
+    Map<string, { text: string; citations: KnowledgeCitation[] }>
+  >(new Map());
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -285,13 +290,32 @@ export default function Chat() {
     setIsLoading(true);
 
     try {
-      const puter = await ensurePuter();
-      const history = [...messages, userMessage].map((message) => ({
+      const nextHistory = [...messages, userMessage];
+      const trimmedHistory = nextHistory.slice(-MAX_CONTEXT_MESSAGES);
+      const history = trimmedHistory.map((message) => ({
         role: message.role,
         text: message.text,
       }));
       const knowledge = buildKnowledgeContext(trimmed, history);
-
+      const cacheKey = JSON.stringify({
+        q: trimmed,
+        context: history.slice(-2).map((item) => item.text),
+        knowledge: knowledge.citations.map((item) => item.id),
+      });
+      const cached = responseCacheRef.current.get(cacheKey);
+      if (cached) {
+        setMessages((previous) => [
+          ...previous,
+          {
+            id: createId(),
+            role: "assistant",
+            text: cached.text,
+            citations: cached.citations,
+          },
+        ]);
+        return;
+      }
+      const puter = await ensurePuter();
       const conversation: PuterChatPayload = [{ role: "system", content: SYSTEM_PROMPT }];
       if (knowledge.prompt) {
         conversation.push({ role: "system", content: knowledge.prompt });
@@ -302,9 +326,7 @@ export default function Chat() {
           content: item.text,
         })),
       );
-
       let response: unknown;
-
       try {
         response = await puter.ai?.chat?.(conversation, { model: DEFAULT_MODEL });
       } catch (conversationError) {
@@ -317,9 +339,20 @@ export default function Chat() {
         }Uživatel: ${userMessage.text}\nPoradce:`;
         response = await puter.ai?.chat?.(fallbackPrompt, { model: DEFAULT_MODEL });
       }
-
       const assistantText = extractAssistantText(response);
-
+      const cache = responseCacheRef.current;
+      if (!cache.has(cacheKey)) {
+        if (cache.size >= CACHE_LIMIT) {
+          const oldestKey = cache.keys().next().value;
+          if (oldestKey) {
+            cache.delete(oldestKey);
+          }
+        }
+        cache.set(cacheKey, {
+          text: assistantText,
+          citations: knowledge.citations,
+        });
+      }
       setMessages((previous) => [
         ...previous,
         {
@@ -350,14 +383,18 @@ export default function Chat() {
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <h2>Chatbot 2025</h2>
+        <div className="chat-header__identity">
+          <span className="chat-header__badge">Beta</span>
+          <h2>Chatbot 2025</h2>
+        </div>
+        <p>Ověřené odpovědi k českým volbám 2025. Vše z naší ověřené knowledge base.</p>
       </div>
-      <div className="chat-messages" role="log" aria-live="polite">
-        {messages.map((message) => {
-          const isExpanded = expandedCitations.includes(message.id);
-          return (
-            <div key={message.id} className={`message ${message.role}`}>
-              <div className="message-bubble">
+      <div className="chat-body">
+        <div className="chat-messages" role="log" aria-live="polite">          {messages.map((message) => {
+            const isExpanded = expandedCitations.includes(message.id);
+            return (
+              <div key={message.id} className={`message ${message.role}`}>
+                <div className="message-bubble">
                 {(() => {
                   const segments = message.text.split(/\n+/);
                   return segments.map((segment, index) => (
@@ -382,11 +419,21 @@ export default function Chat() {
                           <li key={citation.id}>
                             <span className="message-citations__id">[{citation.id}]</span>{" "}
                             <strong>{citation.title}</strong>
-                            {citation.highlights[0] && (
-                              <>
-                                {": "}
-                                <span>{citation.highlights[0]}</span>
-                              </>
+                            {citation.highlights.length > 0 && (
+                              <ul className="message-citations__highlights">
+                                {citation.highlights.slice(0, 3).map((highlight, highlightIndex) => (
+                                  <li key={`${citation.id}-h${highlightIndex}`}>
+                                    <span>{highlight.bullet}</span>
+                                    {highlight.emphasis && (
+                                      <span
+                                        className={`message-citations__tag message-citations__tag--${highlight.emphasis}`}
+                                      >
+                                        {highlight.emphasis.toUpperCase()}
+                                      </span>
+                                    )}
+                                  </li>
+                                ))}
+                              </ul>
                             )}
                             {citation.sources[0] && (
                               <>
@@ -455,6 +502,17 @@ export default function Chat() {
           </svg>
         </button>
       </form>
+      </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+

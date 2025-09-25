@@ -6,54 +6,62 @@
     "shortName": "ANO",
     "website": "https://www.anobudelip.cz",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/ANO_2011_logo.svg/200px-ANO_2011_logo.svg.png",
-    "description": "Hnutí ANO 2011 - ANO bude lépe! Program se zaměřuje na levnější energie, dostupné zdravotnictví a bydlení, důstojné důchody a bezpečnost.",
+    "description": "Hnut� ANO 2011 stav� kampa� na levn�j�� energii, dostupn�m bydlen� a soci�ln�ch jistot�ch.",
     "pollPercentage": 30.9,
     "category": "main",
     "pros": [
-      "Zkušenosti s vládnutím",
-      "Silná pozice v průzkumech",
-      "Pragmatický přístup k politice",
-      "Podpora digitalizace",
-      "Aktivní sociální politika"
+      "Siln� pozice v celost�tn�ch pr�zkumech",
+      "M� zku�enost z veden� vl�dy",
+      "Akcentuje cenovou regulaci energi�"
     ],
     "cons": [
-      "Střet zájmů Andreje Babiše",
-      "Populistické přístupy",
-      "Kritika od EU",
-      "Časté změny názorů",
-      "Kontrola médií"
+      "Dlouhodob� st�et z�jm� Andreje Babi�e",
+      "Kritika centralizovan�ho rozhodov�n�",
+      "Populistick� t�n kampan�"
     ],
     "historicalAchievements": [
-      "2011: Založení hnutí Andrejem Babišem",
-      "2013: První volby do Sněmovny - 18,65%",
-      "2017: Vítězství ve volbách - 29,64%",
-      "2017-2021: Vedení vlády",
-      "2021: Druhé místo ve volbách - 27,12%"
+      "2014�2017: poprv� ve vl�d�",
+      "2017: v�t�z sn�movn�ch voleb",
+      "2021: hlavn� opozi�n� s�la s 27 % hlas�"
     ],
     "controversies": [
-      "Kauza Čapí hnízdo",
-      "Střet zájmů kvůli holdingu Agrofert",
-      "Kritika nezávislosti médií",
-      "Spory s EU o dotace",
-      "Kauza StB - agent Bureš"
+      "Kauza �ap� hn�zdo",
+      "Audity evropsk�ch dotac� pro Agrofert",
+      "Napjat� vztahy s institucemi EU"
     ],
     "representatives": [
       {
-        "name": "Andrej Babiš",
-        "position": "Předseda hnutí",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/ANO_2011_logo.svg/200px-ANO_2011_logo.svg.png"
+        "name": "Andrej Babi�",
+        "position": "p�edseda hnut�",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/ANO_2011_logo.svg/200px-ANO_2011_logo.svg.png",
+        "bio": "B�val� premi�r a zakladatel hnut� ANO."
       }
-    ]
+    ],
+    "sources": []
   },
   {
     "id": "ceskarepublika1",
     "slug": "ceskarepublika1",
-    "name": "Česká republika 1",
+    "name": "�esk� republika 1",
     "website": "https://www.ceskarepublika1.cz",
     "logo": "",
-    "description": "Česká republika 1 - konzervativní hodnoty a národní zájmy.",
+    "description": "Konzervativn� hnut�, kter� zd�raz�uje n�rodn� z�jmy, podporu rodiny a ochranu tradic.",
     "pollPercentage": 2.1,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "D�raz na sob�sta�nost st�tu",
+      "Akcentuje podporu rodin",
+      "Chce rovnov�hu mezi regiony"
+    ],
+    "cons": [
+      "Mal� zastoupen� v komun�ln� politice",
+      "Nejasn� ekonomick� vize",
+      "Omezen� ve�ejn� zn�most"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "slovan",
@@ -61,62 +69,66 @@
     "name": "Slovan",
     "website": "https://www.slovan.cz",
     "logo": "",
-    "description": "Slovan - slovanské hodnoty a tradice.",
+    "description": "Strana Slovan stav� na slovansk� identit�, vlastenectv� a kulturn� kontinuit�.",
     "pollPercentage": 1.5,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "Propaguje kulturn� d�dictv�",
+      "Podporuje dom�c� v�robu",
+      "Prosazuje p��mou demokracii"
+    ],
+    "cons": [
+      "Nejasn� financov�n� kampan�",
+      "Skeptick� vztah k EU",
+      "Nedostatek zku�enost� v parlamentu"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "stan",
     "slug": "starostove-a-nezavisli",
-    "name": "Starostové a nezávislí",
+    "name": "Starostov� a nez�visl�",
     "shortName": "STAN",
     "website": "https://www.starostove-nezavisli.cz",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/STAN_logo_2020.svg/200px-STAN_logo_2020.svg.png",
-    "description": "STAN - Starostové a nezávislí. Komunální politika na celostátní úrovni. Rozumné řešení pro všechny.",
+    "description": "STAN vych�z� z komun�ln� politiky a klade d�raz na decentralizaci, transparentn� hospoda�en� a kvalitn� ve�ejn� slu�by.",
     "pollPercentage": 12.2,
     "category": "main",
     "pros": [
-      "Zkušenosti z komunální politiky",
-      "Pragmatický přístup",
-      "Důraz na digitalizaci",
-      "Podpora malých obcí",
-      "Transparentnost"
+      "Siln� s� komun�ln�ch l�dr�",
+      "Prosazuje digitalizaci st�tu",
+      "Akcent na transparentn� ve�ejn� zak�zky"
     ],
     "cons": [
-      "Nedostatek celostátní zkušenosti",
-      "Vnitřní rozpory",
-      "Slabá pozice v některých regionech",
-      "Závislost na koalicích",
-      "Časté změny stanovisek"
+      "Z�vislost na koali�n�ch partnerech",
+      "Rozd�len� vn�m�n� ve velk�ch m�stech",
+      "Kritika kv�li partnerstv� s Pir�ty v p�edchoz� vl�d�"
     ],
     "historicalAchievements": [
-      "2001: Založení STAN",
-      "2012: První mandáty ve Sněmovně",
-      "2017: Úspěch v komunálních volbách",
-      "2021: Účast ve vládní koalici",
-      "2022: Vedení několika ministerstev"
+      "2001: ZaloĹľenĂ­ STAN",
+      "2012: PrvnĂ­ mandĂˇty ve SnÄ›movnÄ›",
+      "2017: ĂšspÄ›ch v komunĂˇlnĂ­ch volbĂˇch",
+      "2021: ĂšÄŤast ve vlĂˇdnĂ­ koalici",
+      "2022: VedenĂ­ nÄ›kolika ministerstev"
     ],
     "controversies": [
-      "Kauza STAP - IT zakázky",
-      "Kritika za změny postojů",
-      "Spory o vedení strany",
-      "Problémy s transparentností",
+      "Kauza STAP - IT zakĂˇzky",
+      "Kritika za zmÄ›ny postojĹŻ",
+      "Spory o vedenĂ­ strany",
+      "ProblĂ©my s transparentnostĂ­",
       "Konflikty v koalici"
     ],
     "representatives": [
       {
-        "name": "Vít Rakušan",
-        "position": "Předseda STAN",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/V%C3%ADt_Raku%C5%A1an_2021.jpg/220px-V%C3%ADt_Raku%C5%A1an_2021.jpg",
-        "bio": "Ministr vnitra, starosta Kolína"
-      },
-      {
-        "name": "Věra Jourová",
-        "position": "Místopředsedkyně",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Vera_Jourova_2019.jpg/220px-Vera_Jourova_2019.jpg",
-        "bio": "Eurokomisařka"
+        "name": "V�t Raku�an",
+        "position": "p�edseda hnut� a ministr vnitra",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Vit_Rakusan_2019.jpg/220px-Vit_Rakusan_2019.jpg"
       }
-    ]
+    ],
+    "sources": []
   },
   {
     "id": "spolu",
@@ -125,192 +137,344 @@
     "shortName": "SPOLU",
     "website": "https://www.spolecne.cz",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/SPOLU_logo.svg/200px-SPOLU_logo.svg.png",
-    "description": "SPOLU - koalice ODS, KDU-ČSL a TOP 09. Liberální konzervativní politika pro moderní Českou republiku.",
+    "description": "Koalice SPOLU (ODS, KDU-�SL a TOP 09) prosazuje liber�ln�-konzervativn� sm��ov�n�, d�raz na rozpo�tovou odpov�dnost a pevn� ukotven� v EU a NATO. ODS kandiduje v roce 2025 v�hradn� v r�mci SPOLU.",
     "pollPercentage": 19.5,
     "category": "main",
     "pros": [
-      "Stabilní vládní zkušenosti",
-      "Prozápadní orientace",
-      "Ekonomická liberalizace",
-      "Silná pozice v EU",
-      "Konzistentní politika"
+      "Spojuje t�i tradi�n� pravicov� strany",
+      "D�raz na konsolidaci ve�ejn�ch financ�",
+      "Proevropsk� a prodemokratick� ukotven�"
     ],
     "cons": [
-      "Vnitřní napětí v koalici",
-      "Sociální necitlivost",
-      "Kritika za privatizace",
-      "Nedostatek mladých voličů",
-      "Elitářský image"
+      "Slo�it� slad�n� program� v�ech partner�",
+      "Kritika fisk�ln� restrikce",
+      "Z�vislost na kompromisu mezi stranami"
     ],
     "historicalAchievements": [
-      "2021: Vítězství ve volbách (27,79%)",
-      "2021-současnost: Vedení vlády",
-      "Úspěšné předsednictví EU",
+      "2021: VĂ­tÄ›zstvĂ­ ve volbĂˇch (27,79%)",
+      "2021-souÄŤasnost: VedenĂ­ vlĂˇdy",
+      "ĂšspÄ›ĹˇnĂ© pĹ™edsednictvĂ­ EU",
       "Podpora Ukrajiny",
       "Stabilizace ekonomiky"
     ],
     "controversies": [
-      "Vysoká inflace",
-      "Energetická krize",
-      "Kritika za úsporná opatření",
+      "VysokĂˇ inflace",
+      "EnergetickĂˇ krize",
+      "Kritika za ĂşspornĂˇ opatĹ™enĂ­",
       "Spory o Green Deal",
-      "Migrace a kvóty"
+      "Migrace a kvĂłty"
     ],
     "representatives": [
       {
         "name": "Petr Fiala",
-        "position": "Premiér, předseda ODS",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Petr_Fiala_2021.jpg/220px-Petr_Fiala_2021.jpg",
-        "bio": "Předseda vlády, politolog"
-      },
-      {
-        "name": "Marian Jurečka",
-        "position": "Předseda KDU-ČSL",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Marian_Jure%C4%8Dka_2021.jpg/220px-Marian_Jure%C4%8Dka_2021.jpg",
-        "bio": "Ministr práce a sociálních věcí"
-      },
-      {
-        "name": "Markéta Pekarová Adamová",
-        "position": "Předsedkyně TOP 09",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Mark%C3%A9ta_Pekarov%C3%A1_Adamov%C3%A1_2021.jpg/220px-Mark%C3%A9ta_Pekarov%C3%A1_Adamov%C3%A1_2021.jpg",
-        "bio": "Předsedkyně Sněmovny"
+        "position": "premi�r a l�dr koalice",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Petr_Fiala_2021.jpg/220px-Petr_Fiala_2021.jpg"
       }
     ],
     "timeline": [
       {
         "date": "2024-12-10",
-        "title": "Bilance 3 let vlády",
-        "description": "Představení úspěchů vládnutí",
+        "title": "Bilance 3 let vlĂˇdy",
+        "description": "PĹ™edstavenĂ­ ĂşspÄ›chĹŻ vlĂˇdnutĂ­",
         "type": "milestone"
       }
-    ]
+    ],
+    "sources": []
   },
   {
     "id": "spd",
     "slug": "spd",
-    "name": "Svoboda a přímá demokracie",
+    "name": "Svoboda a p��m� demokracie",
     "shortName": "SPD",
     "website": "https://www.spd.cz",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Logo_SPD.svg/200px-Logo_SPD.svg.png",
-    "description": "SPD - Svoboda a přímá demokracie. Konzervativní hodnoty, přímá demokracie a suverenita České republiky.",
+    "description": "SPD stav� na euroskepticismu, p��m� demokracii a d�razu na bezpe�nost a suverenitu �esk� republiky.",
     "pollPercentage": 12,
-    "category": "main"
+    "category": "main",
+    "pros": [
+      "Siln� d�raz na suverenitu st�tu",
+      "Prosazuje prvky p��m� demokracie",
+      "Rezervovan� postoj k migraci"
+    ],
+    "cons": [
+      "Kritika polariza�n� r�toriky",
+      "Odm�tav� vztah k EU a NATO",
+      "Op�r� se o negativn� kampan�"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "pirati",
     "slug": "pirati",
-    "name": "Česká pirátská strana",
-    "shortName": "Piráti",
+    "name": "�esk� pir�tsk� strana",
+    "shortName": "Pir�ti",
     "website": "https://www.pirati.cz",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Pirate_Party_Czech_Republic_logo.svg/200px-Pirate_Party_Czech_Republic_logo.svg.png",
-    "description": "Česká pirátská strana - moderní, otevřená a transparentní politika pro digitální věk.",
+    "description": "Pir�ti prosazuj� otev�en� st�t, digit�ln� pr�va, dostupn� bydlen� a zelenou transformaci ekonomiky.",
     "pollPercentage": 9.3,
-    "category": "main"
+    "category": "main",
+    "pros": [
+      "Siln� IT a data know-how",
+      "D�raz na transparentnost a otev�en� data",
+      "Progresivn� soci�ln� agenda"
+    ],
+    "cons": [
+      "Kritika slo�it�ho rozhodov�n� uvnit� strany",
+      "Men�� ukotven� v konzervativn�j��ch regionech",
+      "��st voli�� vn�m� program jako p��li� progresivn�"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "stacilo",
     "slug": "stacilo",
-    "name": "STAČILO!",
-    "shortName": "STAČILO!",
+    "name": "STA�ILO!",
+    "shortName": "STA�ILO!",
     "website": "https://www.stacilo.cz",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Stapilo_logo.svg/200px-Stapilo_logo.svg.png",
-    "description": "STAČILO! - levicová alternativa zaměřená na sociální spravedlnost a práva občanů.",
+    "description": "Levicov� alternativa kolem KS�M a men��ch uskupen�. Stav� na soci�ln�ch jistot�ch, energetick� sob�sta�nosti a m�rov� politice.",
     "pollPercentage": 7.7,
-    "category": "main"
+    "category": "main",
+    "pros": [
+      "Siln� soci�ln� program",
+      "Prosazuje cenovou regulaci energi�",
+      "M� zku�enosti z komun�ln� politiky"
+    ],
+    "cons": [
+      "N�zk� podpora mezi mlad�mi voli�i",
+      "Skeptick� postoj k NATO",
+      "Historick� z�t� spojen� s minul�m re�imem"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "motoriste",
     "slug": "motoriste-sobe",
-    "name": "Motoristé sobě",
-    "shortName": "Motoristé",
+    "name": "Motorist� sob�",
+    "shortName": "Motorist�",
     "website": "https://www.motoristesobe.cz",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Motorist%C3%A9_sob%C4%9b_%28logo%29.svg/200px-Motorist%C3%A9_sob%C4%9b_%28logo%29.svg.png",
-    "description": "Motoristé sobě - obhájci práv řidičů a rozumné dopravní politiky.",
+    "description": "Strana h�j� pr�va �idi�� a chce zjednodu�it dopravn� p�edpisy, investovat do infrastruktury a omezit byrokracii.",
     "pollPercentage": 5.7,
-    "category": "main"
+    "category": "main",
+    "pros": [
+      "D�raz na dostupnou dopravu",
+      "Kritika zpoplatn�n� vjezd� do m�st",
+      "Podpora investic do silnic"
+    ],
+    "cons": [
+      "�zk� tematick� zam��en�",
+      "Skeptick� pohled na klimatickou politiku",
+      "Men�� �lensk� z�kladna"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "volt",
     "slug": "volt-ceska-republika",
-    "name": "Volt Česká republika",
+    "name": "Volt �esk� republika",
     "shortName": "Volt",
     "website": "https://www.volteuropa.org/cs",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Volt_Europa_logo.svg/200px-Volt_Europa_logo.svg.png",
-    "description": "Volt - evropská progresivní strana pro digitální transformaci a klimatickou změnu.",
+    "description": "Volt je proevropsk� hnut�, kter� prosazuje jednotnou evropskou politiku, klimatick� opat�en� a digit�ln� transformaci.",
     "pollPercentage": 3.2,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "Napojen� na celoevropskou s�",
+      "Modern� agenda pro mlad� voli�e",
+      "D�raz na klimatickou neutralitu"
+    ],
+    "cons": [
+      "Mal� zastoupen� v �esk� politice",
+      "Ambici�zn� evropsk� integrace m��e ��st voli�� odrazovat",
+      "Omezen� finan�n� zdroje"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "hnutigenerace",
     "slug": "hnutigenerace",
-    "name": "Hnutí Generace",
+    "name": "Hnut� Generace",
     "website": "https://www.hnutigenerace.cz",
     "logo": "",
-    "description": "Hnutí Generace - politika pro mladou generaci.",
+    "description": "Nov� hnut� zam��en� na podporu mlad�ch rodin, dostupn� bydlen� a rovn� p��le�itosti nap��� regiony.",
     "pollPercentage": 2.8,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "Tematizuje dostupn� bydlen�",
+      "Chce v�ce investic do vzd�l�v�n�",
+      "D�raz na f�rov� zdan�n�"
+    ],
+    "cons": [
+      "Kr�tk� historie hnut�",
+      "N�zk� medi�ln� viditelnost",
+      "Program zat�m bez konkr�tn�ch ��sel"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "prisaha",
     "slug": "prisaha",
-    "name": "Přísaha",
-    "shortName": "Přísaha",
+    "name": "P��saha",
+    "shortName": "P��saha",
     "website": "https://www.prisaha.cz",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/P%C5%93%C3%ADsaha_logo.png/200px-P%C5%93%C3%Ísaha_logo.png",
-    "description": "Přísaha - Robert Šlachta a jeho tým pro spravedlnost a pořádek.",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/P%C5%93%C3%ADsaha_logo.png/200px-P%C5%93%C3%ĂŤsaha_logo.png",
+    "description": "P��saha Roberta �lachty stav� na boji proti korupci, pos�len� bezpe�nosti a podpo�e bezpe�nostn�ch slo�ek.",
     "pollPercentage": 2,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "Siln� protikorup�n� apel",
+      "Chce pos�lit policii a IZS",
+      "Zd�raz�uje ochranu ob�t� kriminality"
+    ],
+    "cons": [
+      "Z�vislost na Robertu �lachtovi",
+      "Omezen� zku�enost s legislativou",
+      "V�razn� bezpe�nostn� t�n m��e p�sobit jednostrann�"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "korunaceska",
     "slug": "korunaceska",
-    "name": "Koruna česká",
+    "name": "Koruna �esk�",
     "website": "https://www.korunaceska.cz",
     "logo": "",
-    "description": "Koruna česká - za silnou českou měnu a ekonomiku.",
+    "description": "Monarchisticky orientovan� hnut�, kter� prosazuje n�vrat kr�lovsk� tradice, stabiln� m�nu a konzervativn� hodnoty.",
     "pollPercentage": 1.2,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "Zv�raz�uje �esk� historick� tradice",
+      "Chce finan�n� odpov�dn� st�t",
+      "Podporuje region�ln� rozvoj"
+    ],
+    "cons": [
+      "Nerealistick� n�vrh na obnovu monarchie",
+      "N�zk� volebn� podpora",
+      "Omezen� organiza�n� struktura"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "cssdsocialni",
     "slug": "cssdsocialni",
-    "name": "ČSSD Sociální",
-    "shortName": "ČSSD",
+    "name": "�SSD Soci�ln�",
+    "shortName": "�SSD",
     "website": "https://www.cssdsocialni.cz",
     "logo": "",
-    "description": "ČSSD Sociální - tradiční sociální demokracie.",
+    "description": "Soci�ln�demokratick� uskupen� navazuje na tradici �SSD a klade d�raz na soci�ln� st�t, ochranu pracuj�c�ch a dostupn� slu�by.",
     "pollPercentage": 3.5,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "Siln� zna�ka �SSD",
+      "Soci�ln� program pro zam�stnance a seniory",
+      "Podpora ve�ejn�ho zdravotnictv�"
+    ],
+    "cons": [
+      "Roz�t�pen� levice mezi v�ce subjekt�",
+      "Ni��� d�v�ra ��sti voli�� po minul�ch vl�d�ch",
+      "Pot�eba modernizovat komunikaci"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "hnutikruh",
     "slug": "hnutikruh",
-    "name": "Hnutí Kruh",
+    "name": "Hnut� Kruh",
     "website": "https://www.hnutikruh.cz",
     "logo": "",
-    "description": "Hnutí Kruh - občanská alternativa.",
+    "description": "Ob�ansk� hnut�, kter� prosazuje participaci ve�ejnosti na rozhodov�n�, m�stn� referenda a ochranu krajiny.",
     "pollPercentage": 1.8,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "Podpora komunitn�ch projekt�",
+      "Chce roz���it lok�ln� referenda",
+      "D�raz na �ivotn� prost�ed�"
+    ],
+    "cons": [
+      "Mal� person�ln� z�zem�",
+      "Slab� p��tomnost v parlamentn� politice",
+      "Nedostatek financ� na kampa�"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "hnutiobcanu",
     "slug": "hnutiobcanu",
-    "name": "Hnutí občanů",
+    "name": "Hnut� ob�an�",
     "website": "https://www.hnutiobcanu.cz",
     "logo": "",
-    "description": "Hnutí občanů - pro práva a svobody občanů.",
+    "description": "Orientuje se na ochranu ob�ansk�ch svobod, jednoduch� dan� a podporu drobn�ch podnikatel�.",
     "pollPercentage": 2,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "D�raz na osobn� svobody",
+      "Prosazuje sni�ov�n� byrokracie",
+      "Chce zjednodu�it da�ov� syst�m"
+    ],
+    "cons": [
+      "N�zk� pov�dom� mezi voli�i",
+      "Chyb�j�c� zku�enost s legislativou",
+      "Program postr�d� jasn� priority"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "jasnysignal",
     "slug": "jasnysignal",
-    "name": "Jasný signál",
+    "name": "Jasn� sign�l",
     "website": "https://www.jasnysignal.cz",
     "logo": "",
-    "description": "Jasný signál - jasné postoje k důležitým otázkám.",
+    "description": "Politick� hnut�, kter� chce jasn� komunikovat postoje k hlavn�m probl�m�m st�tu a prosazuje d�slednou kontrolu ve�ejn�ch v�daj�.",
     "pollPercentage": 1.4,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "D�raz na p�ehlednou komunikaci",
+      "Kontrola pl�tv�n� ve ve�ejn�m sektoru",
+      "Podpora transparentn�ch zak�zek"
+    ],
+    "cons": [
+      "Zat�m minim�ln� politick� historie",
+      "M�lo detailn� program",
+      "Chyb� zn�m� tv��e"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "levice",
@@ -318,28 +482,70 @@
     "name": "Levice",
     "website": "https://www.levice.cz",
     "logo": "",
-    "description": "Levice - socialistická alternativa.",
+    "description": "Levicov� orientovan� uskupen� prosazuje progresivn� zdan�n�, dostupn� bydlen�, klimatickou politiku a pos�len� odbor�.",
     "pollPercentage": 2.2,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "D�raz na soci�ln� spravedlnost",
+      "Siln� klimatick� agenda",
+      "Podpora dru�stevn�ho bydlen�"
+    ],
+    "cons": [
+      "Omezen� medi�ln� pozornost",
+      "Rozdrobenost levicov� sc�ny",
+      "Skeptick� pohled podnikatel�"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "moravskezemske",
     "slug": "moravskezemske",
-    "name": "Moravské zemské",
+    "name": "Moravsk� zemsk� hnut�",
     "website": "https://www.moravskezemske.cz",
     "logo": "",
-    "description": "Moravské zemské - za práva Moravy a Slezska.",
+    "description": "Region�ln� hnut� usiluje o siln�j�� samospr�vu Moravy a Slezska, investice do infrastruktury a podporu m�stn� kultury.",
     "pollPercentage": 1.1,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "D�raz na region�ln� rozvoj",
+      "Chce v�ce rozhodov�n� na �rovni kraj�",
+      "Podpora moravsk� kultury"
+    ],
+    "cons": [
+      "Omezen� dosah mimo Moravu",
+      "Slab� parlamentn� zku�enosti",
+      "Nedostatek financ� na celost�tn� kampa�"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   },
   {
     "id": "nevolteurza",
     "slug": "nevolteurza",
-    "name": "Nevolte Úřad",
+    "name": "Nevolte ��ad",
     "website": "https://www.nevolteurza.cz",
     "logo": "",
-    "description": "Nevolte Úřad - proti byrokratickému aparátu.",
+    "description": "Protestn� hnut� nam��en� proti byrokratick�mu apar�tu, centralizaci moci a p�ebujel� administrativ�.",
     "pollPercentage": 0.8,
-    "category": "secondary"
+    "category": "secondary",
+    "pros": [
+      "Siln� proti-byrokratick� apel",
+      "Chce transparentnost ��ad�",
+      "Prosazuje digitalizaci st�tn� spr�vy"
+    ],
+    "cons": [
+      "Chyb� konkr�tn� legislativn� n�vrhy",
+      "Protestn� r�torika nemus� oslovit �ir�� publikum",
+      "Mal� lok�ln� struktury"
+    ],
+    "historicalAchievements": [],
+    "controversies": [],
+    "representatives": [],
+    "sources": []
   }
 ]

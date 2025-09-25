@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ExternalLink, Users, TrendingUp, Calendar, Globe, ChevronDown, Quote, ListChecks, Vote } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Users, TrendingUp, Calendar, Globe, ChevronDown, Quote, ListChecks, Vote, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Party, PartyPosition, Thesis } from '@/lib/types';
@@ -911,3 +911,7 @@ export default function PartyProfilesPage() {
     </Suspense>
   );
 }
+
+
+
+

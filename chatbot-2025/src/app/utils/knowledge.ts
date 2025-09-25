@@ -1,14 +1,20 @@
-﻿import { knowledgeEntries, KnowledgeEntry } from "@/data/knowledge-base";
+
+import {
+  knowledgeEntries,
+  KnowledgeEntry,
+  KnowledgeHighlight,
+} from "@/data/knowledge-base";
 
 export type KnowledgeCitation = {
   id: string;
   title: string;
   summary: string;
-  highlights: string[];
+  highlights: KnowledgeHighlight[];
   sources: {
     label: string;
     url: string;
     accessed: string;
+    note?: string;
   }[];
 };
 
@@ -25,7 +31,7 @@ const normalize = (text: string) =>
 const tokenize = (text: string) => normalize(text).split(/\s+/).filter(Boolean);
 
 const calculateScore = (queryTokens: string[], entry: KnowledgeEntry) => {
-  const fields = [entry.title, entry.summary, entry.content, entry.tags.join(" ")];
+  const fields = [entry.title, entry.summary, entry.content, entry.tags.join(" "), entry.kind];
   const entryTokens = tokenize(fields.join(" "));
   const tokenSet = new Set(entryTokens);
   let score = 0;
@@ -35,7 +41,7 @@ const calculateScore = (queryTokens: string[], entry: KnowledgeEntry) => {
     }
   }
   for (const highlight of entry.highlights) {
-    const highlightTokens = tokenize(highlight);
+    const highlightTokens = tokenize(highlight.bullet);
     for (const token of queryTokens) {
       if (highlightTokens.includes(token)) {
         score += 2;
@@ -43,6 +49,11 @@ const calculateScore = (queryTokens: string[], entry: KnowledgeEntry) => {
     }
   }
   return score;
+};
+
+const formatHighlight = (highlight: KnowledgeHighlight) => {
+  const emphasis = highlight.emphasis ? ` [${highlight.emphasis}]` : "";
+  return `- ${highlight.bullet}${emphasis}`;
 };
 
 export const buildKnowledgeContext = (
@@ -68,16 +79,17 @@ export const buildKnowledgeContext = (
   const promptSections = ranked.map((entry, index) => {
     const sectionHighlights = entry.highlights
       .slice(0, 2)
-      .map((item) => `• ${item}`)
+      .map((item) => formatHighlight(item))
       .join("\n");
     const primarySource = entry.sources[0];
     const sourceLine = primarySource
-      ? `Zdroj: ${primarySource.label} (${primarySource.url}, navštíveno ${primarySource.accessed})`
+      ? `Zdroj: ${primarySource.label} (${primarySource.url}, navĹˇtĂ­veno ${primarySource.accessed})`
       : "";
-    return `[#${index + 1} ${entry.id}] ${entry.title}\nShrnutí: ${entry.summary}\nKlíčové body:\n${sectionHighlights}\n${sourceLine}`.trim();
+    const headerLabel = `${entry.kind === "party" ? "Strana" : "TĂ©ma"} ${entry.title}`;
+    return `[#${index + 1} ${entry.id}] ${headerLabel}\nShrnutĂ­: ${entry.summary}\nKlĂ­ÄŤovĂ© body:\n${sectionHighlights}\n${sourceLine}`.trim();
   });
 
-  const prompt = `Důvěryhodná fakta z interní databáze:\n${promptSections.join("\n\n")}`;
+  const prompt = `DĹŻvÄ›ryhodnĂˇ fakta z internĂ­ databĂˇze:\n${promptSections.join("\n\n")}`;
 
   const citations: KnowledgeCitation[] = ranked.map((entry) => ({
     id: entry.id,
@@ -89,3 +101,5 @@ export const buildKnowledgeContext = (
 
   return { prompt, citations };
 };
+
+
