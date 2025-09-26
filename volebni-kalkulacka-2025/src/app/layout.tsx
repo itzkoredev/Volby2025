@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -26,7 +26,13 @@ const libreBaskerville = localFont({
 export const metadata: Metadata = {
   title: "Volby 2025 - Hlavní rozcestník",
   description: "Kompletní volební portál pro české volby 2025. Volební kalkulačka, AI chatbot, profily stran, mapa a další nástroje pro informované rozhodování.",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
@@ -36,9 +42,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-      </head>
       <body
         className={`min-h-screen font-serif antialiased ${libreBaskerville.variable}`}
       >

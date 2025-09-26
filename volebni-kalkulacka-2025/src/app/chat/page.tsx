@@ -9,7 +9,196 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Send, Bot, User, ArrowLeft, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Document } from 'flexsearch';
+import { withBasePath } from '@/lib/utils';
+
+type ChatRole = 'user' | 'assistant';
+
+type PuterChatPayload = Array<{ role: ChatRole | 'system'; content: string }>;
+
+type Puter = {
+  ai?: {
+    chat: (
+      prompt: string | PuterChatPayload,
+      options?: Record<string, unknown>
+    ) => Promise<unknown>;
+  };
+};
+
+declare global {
+  interface Window {
+    puter?: Puter;
+  }
+}
+
+const PUTER_SCRIPT_SRC = 'https://js.puter.com/v2/';
+const DEFAULT_MODEL = 'gpt-4o-mini'; // Rychlejší model
+const MAX_CONTEXT_MESSAGES = 8;
+const BASE_SYSTEM_PROMPT = `Jsi nestranný politický asistent pro českou scénu 2025. Odpovídej stručně česky, drž se faktů a ověřených zdrojů. Pokud si nejsi jistý, přiznej to.`;
+
+let puterLoader: Promise<Puter> | null = null;
+
+const loadPuterScript = (): Promise<void> =>
+  new Promise((resolve, reject) => {
+    if (typeof document === 'undefined') {
+      reject(new Error('Puter SDK je dostupný jen v prohlížeči.'));
+      return;
+    }
+
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      `script[src="${PUTER_SCRIPT_SRC}"]`
+    );
+
+    if (existingScript) {
+      if (window.puter?.ai?.chat) {
+        resolve();
+        return;
+      }
+
+      existingScript.addEventListener('load', () => resolve(), { once: true });
+      existingScript.addEventListener(
+        'error',
+        () => reject(new Error('Načtení Puter SDK selhalo.')),
+        { once: true }
+      );
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = PUTER_SCRIPT_SRC;
+    script.async = true;
+    script.addEventListener('load', () => resolve(), { once: true });
+    script.addEventListener(
+      'error',
+      () => reject(new Error('Načtení Puter SDK selhalo.')),
+      { once: true }
+    );
+
+    document.body.appendChild(script);
+  });
+
+const ensurePuter = async (): Promise<Puter> => {
+  if (typeof window === 'undefined') {
+    throw new Error('Puter SDK je dostupný jen v prohlížeči.');
+  }
+
+  if (window.puter?.ai?.chat) {
+    return window.puter;
+  }
+
+  if (!puterLoader) {
+    puterLoader = loadPuterScript()
+      .then(async () => {
+        if (!window.puter?.ai?.chat) {
+          throw new Error('Puter SDK načten, ale chat API není dostupné.');
+        }
+
+
+
+        return window.puter;
+      })
+      .catch((error) => {
+        puterLoader = null;
+        throw error;
+      });
+  }
+
+  return puterLoader;
+};
+
+const extractAssistantText = (payload: unknown): string => {
+  if (!payload) {
+    return 'Odpověď je prázdná.';
+  }
+
+  if (typeof payload === 'string') {
+    return payload;
+  }
+
+  if (typeof payload === 'object') {
+    const data = payload as Record<string, unknown>;
+
+    const readMessage = (message: unknown): string | null => {
+      if (!message) return null;
+
+      if (typeof message === 'string') return message;
+
+      if (Array.isArray(message)) {
+        const joined = message
+          .map((part) => {
+            if (typeof part === 'string') return part;
+            if (
+              part &&
+              typeof part === 'object' &&
+              'text' in part &&
+              typeof (part as { text?: unknown }).text === 'string'
+            ) {
+              return (part as { text: string }).text;
+            }
+            return '';
+          })
+          .join('');
+
+        return joined.trim() ? joined : null;
+      }
+
+      if (typeof message === 'object') {
+        const objectMessage = message as Record<string, unknown>;
+
+        if (typeof objectMessage.content === 'string') {
+          return objectMessage.content;
+        }
+
+        if (Array.isArray(objectMessage.content)) {
+          const joined = objectMessage.content
+            .map((part) => {
+              if (typeof part === 'string') return part;
+              if (
+                part &&
+                typeof part === 'object' &&
+                'text' in part &&
+                typeof (part as { text?: unknown }).text === 'string'
+              ) {
+                return (part as { text: string }).text;
+              }
+              return '';
+            })
+            .join('');
+
+          return joined.trim() ? joined : null;
+        }
+      }
+
+      return null;
+    };
+
+    const candidates: unknown[] = [
+      data.message,
+      data.response,
+      data.result,
+      data.data,
+    ];
+
+    for (const candidate of candidates) {
+      const value = readMessage(candidate);
+      if (value) {
+        return value;
+      }
+    }
+
+    if (Array.isArray(data.choices)) {
+      const choice = data.choices[0] as Record<string, unknown> | undefined;
+      if (choice?.message) {
+        const value = readMessage(choice.message);
+        if (value) {
+          return value;
+        }
+      }
+    }
+  }
+
+  console.warn('Unexpected Puter chat response', payload);
+  return 'Odpověď se nepodařilo zpracovat.';
+};
 
 interface Message {
   id: string;
@@ -33,7 +222,7 @@ function SourceBadge({ passage }: { passage: Passage }) {
   return (
     <div className="mt-2 p-2 border rounded-md bg-gray-50 text-xs text-gray-600">
       <p className="font-semibold flex items-center"><BookOpen className="h-3 w-3 mr-1.5" /> Zdroj:</p>
-      <p className="mt-1 italic">"{passage.content}"</p>
+  <p className="mt-1 italic">&bdquo;{passage.content}&ldquo;</p>
       <p className="mt-1 text-gray-500">
         {passage.metadata.type === 'party' && `(Profil strany: ${passage.metadata.partyName})`}
         {passage.metadata.type === 'position' && `(Postoj strany: ${passage.metadata.partyName})`}
@@ -56,8 +245,15 @@ export default function ChatPage() {
     // Načtení vyhledávacího indexu
     async function loadSearchIndex() {
       try {
-        const response = await fetch('/data/search-index.json');
-        const data = await response.json();
+        const [flexsearchModule, data] = await Promise.all([
+          import('flexsearch'),
+          fetch(withBasePath('/data/search-index.json')).then((res) => res.json()),
+        ]);
+
+        const { Document } = flexsearchModule as { Document: any };
+        if (!Document) {
+          throw new Error('FlexSearch Document API není k dispozici');
+        }
         
         const docIndex = new Document({
           tokenize: 'full',
@@ -124,71 +320,71 @@ export default function ChatPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        // Přidáme kontext do těla požadavku
-        body: JSON.stringify({ messages: [...messages, userMessage], context }),
-      });
-
-      if (!response.body) {
-        throw new Error('ReadableStream not available');
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let assistantResponse = '';
       const assistantMessageId = (Date.now() + 1).toString();
 
-      // Přidáme prázdnou zprávu asistenta
+      // Přidáme prázdnou zprávu asistenta, kterou později naplníme
       setMessages(prev => [...prev, { id: assistantMessageId, text: '', role: 'assistant' }]);
 
-      // eslint-disable-next-line no-constant-condition
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+      const puter = await ensurePuter();
 
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split('\\n\\n');
+      const trimmedHistory = [...messages, userMessage].slice(-MAX_CONTEXT_MESSAGES);
+      const conversation: PuterChatPayload = [
+        { role: 'system', content: BASE_SYSTEM_PROMPT },
+      ];
 
-        for (const line of lines) {
-          if (line.startsWith('data: ')) {
-            try {
-              const json = JSON.parse(line.substring(6));
-              assistantResponse += json.part;
-              setMessages(prev =>
-                prev.map(msg =>
-                  msg.id === assistantMessageId
-                    ? { ...msg, text: assistantResponse }
-                    : msg
-                )
-              );
-            } catch (error) {
-              // Ignorovat chyby při parsování, může se stát u nekompletních zpráv
-            }
-          }
-        }
+      if (context) {
+        conversation.push({
+          role: 'system',
+          content: `Relevantní fakta (drž se jich, pokud odpovídají dotazu):\n${context}`,
+        });
       }
 
-      // Po dokončení streamu přidáme k zprávě zdroje
+      conversation.push(
+        ...trimmedHistory.map((message) => ({
+          role: message.role,
+          content: message.text,
+        }))
+      );
+
+      let response: unknown;
+      const puterToken = process.env.NEXT_PUBLIC_PUTER_TOKEN;
+      const chatOptions: Record<string, unknown> = { model: DEFAULT_MODEL };
+      
+      // Přidáme token do options pokud je k dispozici
+      if (puterToken) {
+        chatOptions.token = puterToken;
+      }
+
+      try {
+        response = await puter.ai?.chat?.(conversation, chatOptions);
+      } catch (conversationError) {
+        console.warn('Puter chat failed with conversation payload, retrying as plain prompt', conversationError);
+        const fallbackPrompt = `${BASE_SYSTEM_PROMPT}\n\n${
+          context ? `Kontext:\n${context}\n\n` : ''
+        }Poslední dotaz: ${userMessage.text}\nOdpověď:`;
+        response = await puter.ai?.chat?.(fallbackPrompt, chatOptions);
+      }
+
+      const assistantResponse = extractAssistantText(response);
+
       setMessages(prev =>
         prev.map(msg =>
           msg.id === assistantMessageId
-            ? { ...msg, sources: foundSources }
+            ? { ...msg, text: assistantResponse, sources: foundSources }
             : msg
         )
       );
 
     } catch (error) {
       console.error('Chyba při komunikaci s API:', error);
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: "Omlouvám se, došlo k chybě. Zkuste to prosím znovu.",
-        role: 'assistant',
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages(prev => [
+        ...prev,
+        {
+          id: (Date.now() + 2).toString(),
+          text: 'Omlouvám se, došlo k chybě. Zkuste to prosím znovu.',
+          role: 'assistant',
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -220,7 +416,11 @@ export default function ChatPage() {
           <CardContent className="flex-1 flex flex-col p-0">
             <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
               <div className="space-y-6">
-                {messages.map((message, index) => (
+                {messages.map((message, index) => {
+                  if (message.role === 'assistant' && !message.text.trim()) {
+                    return null;
+                  }
+                  return (
                   <motion.div
                     key={message.id}
                     initial={{ opacity: 0, y: 10 }}
@@ -258,7 +458,8 @@ export default function ChatPage() {
                       </Avatar>
                     )}
                   </motion.div>
-                ))}
+                  );
+                })}
                 {isLoading && (
                   <motion.div
                     initial={{ opacity: 0 }}

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 import { calculateScores, applyRedLinePolicy, generateDetailedComparison } from '../scoring';
 import type { UserAnswer, ScoreResult } from '../scoring';
 import { PartyPosition, Party, Thesis } from '../types'; // Importujeme typy
@@ -9,11 +9,11 @@ import {
   FAQDataSchema,
   IssuesDataSchema,
   SourcesDataSchema
-} from '../schemas'; // Importujeme Zod schémata
+} from '../schemas'; // Importujeme Zod schĂ©mata
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-// Testovací data - zjednodušená, aby se předešlo typovým chybám
+// TestovacĂ­ data - zjednoduĹˇenĂˇ, aby se pĹ™edeĹˇlo typovĂ˝m chybĂˇm
 const mockParties: any[] = [
   { id: 'party1', name: 'Strana A', category: 'main' },
   { id: 'party2', name: 'Strana B', category: 'main' },
@@ -51,20 +51,20 @@ describe('Scoring Engine', () => {
 
       const results = calculateScores(userAnswers, mockPartyPositions, mockParties);
 
-      // Strana A by měla mít nejnižší skóre
+      // Strana A by mÄ›la mĂ­t nejniĹľĹˇĂ­ skĂłre
       const partyAResult = results.find(r => r.partyId === 'party1');
       expect(partyAResult?.agreementPercentage).toBeLessThan(50);
     });
 
     it('should handle weighted answers correctly', () => {
       const userAnswers: Record<string, UserAnswer> = {
-        thesis1: { thesisId: 'thesis1', value: 2, weight: 3 }, // Vysoká důležitost
-        thesis2: { thesisId: 'thesis2', value: -1, weight: 1 }  // Nízká důležitost
+        thesis1: { thesisId: 'thesis1', value: 2, weight: 3 }, // VysokĂˇ dĹŻleĹľitost
+        thesis2: { thesisId: 'thesis2', value: -1, weight: 1 }  // NĂ­zkĂˇ dĹŻleĹľitost
       };
 
       const results = calculateScores(userAnswers, mockPartyPositions, mockParties);
 
-      // Strana A by měla stále vyhrát díky vysoké váze u thesis1
+      // Strana A by mÄ›la stĂˇle vyhrĂˇt dĂ­ky vysokĂ© vĂˇze u thesis1
       expect(results[0].partyId).toBe('party1');
     });
 
@@ -80,20 +80,20 @@ describe('Scoring Engine', () => {
 
       const results = calculateScores(userAnswers, limitedPositions, mockParties);
 
-      // Strana A by měla mít výsledek jen pro thesis1
+      // Strana A by mÄ›la mĂ­t vĂ˝sledek jen pro thesis1
       const partyAResult = results.find(r => r.partyId === 'party1');
       expect(partyAResult?.thesisResults).toHaveLength(1);
     });
 
     it('should sort results by agreement percentage', () => {
       const userAnswers: Record<string, UserAnswer> = {
-        thesis1: { thesisId: 'thesis1', value: 0, weight: 1 }, // Nejblíže Straně C
-        thesis2: { thesisId: 'thesis2', value: 1, weight: 1 }   // Nejblíže Straně B
+        thesis1: { thesisId: 'thesis1', value: 0, weight: 1 }, // NejblĂ­Ĺľe StranÄ› C
+        thesis2: { thesisId: 'thesis2', value: 1, weight: 1 }   // NejblĂ­Ĺľe StranÄ› B
       };
 
       const results = calculateScores(userAnswers, mockPartyPositions, mockParties);
 
-      // Výsledky by měly být seřazené sestupně podle shody
+      // VĂ˝sledky by mÄ›ly bĂ˝t seĹ™azenĂ© sestupnÄ› podle shody
       expect(results[0].agreementPercentage).toBeGreaterThanOrEqual(results[1].agreementPercentage);
       expect(results[1].agreementPercentage).toBeGreaterThanOrEqual(results[2].agreementPercentage);
     });
@@ -101,16 +101,34 @@ describe('Scoring Engine', () => {
     it('should ignore answers with zero weight (skipped questions)', () => {
       const userAnswers: Record<string, UserAnswer> = {
         thesis1: { thesisId: 'thesis1', value: 2, weight: 1 },
-        thesis2: { thesisId: 'thesis2', value: 2, weight: 0 }  // Neshoda se Stranou A, ale váha 0
+        thesis2: { thesisId: 'thesis2', value: 2, weight: 0 }  // Neshoda se Stranou A, ale vĂˇha 0
       };
 
       const results = calculateScores(userAnswers, mockPartyPositions, mockParties);
       const partyAResult = results.find(r => r.partyId === 'party1');
 
-      // Protože druhá otázka má váhu 0, měla by být ignorována.
-      // Strana A má u první teze shodu, takže výsledek by měl být 100% z jediné relevantní otázky.
+      // ProtoĹľe druhĂˇ otĂˇzka mĂˇ vĂˇhu 0, mÄ›la by bĂ˝t ignorovĂˇna.
+      // Strana A mĂˇ u prvnĂ­ teze shodu, takĹľe vĂ˝sledek by mÄ›l bĂ˝t 100% z jedinĂ© relevantnĂ­ otĂˇzky.
       expect(partyAResult?.agreementPercentage).toBe(100);
       expect(partyAResult?.thesisResults).toHaveLength(1);
+    });
+
+    it('computes coverage relative to answered questions', () => {
+      const userAnswers: Record<string, UserAnswer> = {
+        thesis1: { thesisId: 'thesis1', value: 2, weight: 1 },
+        thesis2: { thesisId: 'thesis2', value: -1, weight: 1 }
+      };
+
+      const partialPositions = mockPartyPositions.filter(
+        (position: any) => !(position.partyId === 'party1' && position.thesisId === 'thesis2')
+      );
+
+      const results = calculateScores(userAnswers, partialPositions, mockParties);
+      const partyA = results.find((result) => result.partyId === 'party1');
+      const partyB = results.find((result) => result.partyId === 'party2');
+
+      expect(partyA?.coveragePercentage).toBe(50);
+      expect(partyB?.coveragePercentage).toBe(100);
     });
   });
 
@@ -124,12 +142,13 @@ describe('Scoring Engine', () => {
           maxPossibleScore: 8,
           agreementPercentage: 100,
           confidenceScore: 1.0,
+          coveragePercentage: 50,
           thesisResults: [
             {
               thesisId: 'thesis1',
               userValue: -2,
               partyValue: 2,
-              difference: 4, // Velký nesouhlas
+              difference: 4, // VelkĂ˝ nesouhlas
               weight: 1,
               confidence: 1.0,
               contribution: 0
@@ -140,7 +159,7 @@ describe('Scoring Engine', () => {
 
       const penalizedResults = applyRedLinePolicy(mockResults, ['thesis1']);
 
-      // Měla by být aplikována penalizace -20%
+      // MÄ›la by bĂ˝t aplikovĂˇna penalizace -20%
       expect(penalizedResults[0].agreementPercentage).toBe(80);
     });
 
@@ -153,7 +172,8 @@ describe('Scoring Engine', () => {
           maxPossibleScore: 8,
           agreementPercentage: 100,
           confidenceScore: 1.0,
-          thesisResults: []
+          coveragePercentage: 100,
+          thesisResults: [],
         }
       ];
 
@@ -171,7 +191,13 @@ describe('Scoring Engine', () => {
       };
 
       const mockResult: ScoreResult = {
-        partyId: 'party1', partyName: 'Strana A', totalScore: 0, maxPossibleScore: 0, agreementPercentage: 0, confidenceScore: 0,
+        partyId: 'party1',
+        partyName: 'Strana A',
+        totalScore: 0,
+        maxPossibleScore: 0,
+        agreementPercentage: 0,
+        confidenceScore: 0,
+        coveragePercentage: 0,
         thesisResults: [
           { thesisId: 'thesis1', userValue: 2, partyValue: 2, difference: 0, weight: 1, confidence: 1, contribution: 1 },
           { thesisId: 'thesis2', userValue: 0, partyValue: -2, difference: 2, weight: 1, confidence: 1, contribution: 0.5 },
@@ -190,38 +216,38 @@ describe('Scoring Engine', () => {
     });
   });
 
-  // Test s reálnými daty z český voleb 2025
+  // Test s reĂˇlnĂ˝mi daty z ÄŤeskĂ˝ voleb 2025
   describe('Real Data Integration Test', () => {
     it('should work with real Czech election data', () => {
       const dataPath = join(process.cwd(), 'public', 'data');
       const realParties: Party[] = JSON.parse(readFileSync(join(dataPath, 'parties.json'), 'utf8'));
       const realPositions: PartyPosition[] = JSON.parse(readFileSync(join(dataPath, 'party_positions.json'), 'utf8'));
 
-      // Simulujeme uživatele, který souhlasí s levicovými pozicemi
+      // Simulujeme uĹľivatele, kterĂ˝ souhlasĂ­ s levicovĂ˝mi pozicemi
       const leftLeaningUser: Record<string, UserAnswer> = {
-        thesis_001: { thesisId: 'thesis_001', value: 2, weight: 1 }, // Daně pro střední třídu - souhlas se snížením (paradoxně levicové)
-        thesis_002: { thesisId: 'thesis_002', value: 2, weight: 1 }, // Státní investice - souhlas  
-        thesis_003: { thesisId: 'thesis_003', value: 2, weight: 1 }, // Minimální mzda - souhlas s růstem
+        thesis_001: { thesisId: 'thesis_001', value: 2, weight: 1 }, // DanÄ› pro stĹ™ednĂ­ tĹ™Ă­du - souhlas se snĂ­ĹľenĂ­m (paradoxnÄ› levicovĂ©)
+        thesis_002: { thesisId: 'thesis_002', value: 2, weight: 1 }, // StĂˇtnĂ­ investice - souhlas  
+        thesis_003: { thesisId: 'thesis_003', value: 2, weight: 1 }, // MinimĂˇlnĂ­ mzda - souhlas s rĹŻstem
       };      const results = calculateScores(leftLeaningUser, realPositions, realParties);
 
-      // Ověříme, že výsledky jsou logické
+      // OvÄ›Ĺ™Ă­me, Ĺľe vĂ˝sledky jsou logickĂ©
       expect(results).toBeDefined();
       expect(results.length).toBe(realParties.length);
       expect(results[0].agreementPercentage).toBeGreaterThan(0);
       
-      // Najdeme Stačilo! a ANO (měly by být vysoko u levicového uživatele)
-      const staciloResult = results.find(r => r.partyId === 'stacilo');
-      const anoResult = results.find(r => r.partyId === 'ano');
-      const odsResult = results.find(r => r.partyId === 'ods');
+      // Najdeme StaÄŤilo! a ANO (mÄ›ly by bĂ˝t vysoko u levicovĂ©ho uĹľivatele)
+  const staciloResult = results.find(r => r.partyId === 'stacilo');
+  const anoResult = results.find(r => r.partyId === 'ano');
+  const spoluResult = results.find(r => r.partyId === 'spolu');
       
       expect(staciloResult).toBeDefined();
       expect(anoResult).toBeDefined();
-      expect(odsResult).toBeDefined();
+      expect(spoluResult).toBeDefined();
 
-      // Stačilo! a ANO by měly být výše než ODS u levicového uživatele
-      if (staciloResult && anoResult && odsResult) {
-        expect(staciloResult.agreementPercentage).toBeGreaterThan(odsResult.agreementPercentage);
-        expect(anoResult.agreementPercentage).toBeGreaterThan(odsResult.agreementPercentage);
+      // StaÄŤilo! a ANO by mÄ›ly bĂ˝t vĂ˝Ĺˇe neĹľ SPOLU u levicovĂ©ho uĹľivatele
+      if (staciloResult && anoResult && spoluResult) {
+        expect(staciloResult.agreementPercentage).toBeGreaterThan(spoluResult.agreementPercentage);
+        expect(anoResult.agreementPercentage).toBeGreaterThan(spoluResult.agreementPercentage);
       }
     });
   });
@@ -247,7 +273,7 @@ describe('Scoring Engine', () => {
       try {
         const fileContent = readFileSync(filePath, 'utf-8');
         const data = JSON.parse(fileContent);
-        // @ts-ignore - Zod schema je zde validní, ale TS má problém s typy
+        // @ts-ignore - Zod schema je zde validnĂ­, ale TS mĂˇ problĂ©m s typy
         const validationResult = schema.safeParse(data);
         expect(validationResult.success).toBe(true);
         if (!validationResult.success) {
@@ -255,9 +281,9 @@ describe('Scoring Engine', () => {
         }
       } catch (error: any) {
         if (!optional) {
-          throw new Error(`Povinný soubor ${name} chybí nebo je nečitelný: ${error.message}`);
+          throw new Error(`PovinnĂ˝ soubor ${name} chybĂ­ nebo je neÄŤitelnĂ˝: ${error.message}`);
         }
-        // Pokud je volitelný a chybí, je to v pořádku
+        // Pokud je volitelnĂ˝ a chybĂ­, je to v poĹ™Ăˇdku
         expect(error.code).toBe('ENOENT');
       }
     });
@@ -274,10 +300,10 @@ describe('Scoring Engine', () => {
 
       positions.forEach(pos => {
           if (!partyIds.has(pos.partyId)) {
-              errors.push(`Neexistující partyId v party_positions.json: ${pos.partyId}`);
+              errors.push(`NeexistujĂ­cĂ­ partyId v party_positions.json: ${pos.partyId}`);
           }
           if (!thesisIds.has(pos.thesisId)) {
-              errors.push(`Neexistující thesisId v party_positions.json: ${pos.thesisId}`);
+              errors.push(`NeexistujĂ­cĂ­ thesisId v party_positions.json: ${pos.thesisId}`);
           }
       });
 

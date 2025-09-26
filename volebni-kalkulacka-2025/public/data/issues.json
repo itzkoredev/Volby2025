@@ -68,5 +68,12 @@
     "description": "Soudnictví, transparentnost, korupce, lidská práva",
     "category": "demokracie",
     "order": 10
+  },
+  {
+    "id": "doprava",
+    "title": "Doprava a infrastruktura",
+    "description": "Silnice, železnice, veřejná doprava, mobilita a logistika",
+    "category": "infrastruktura",
+    "order": 11
   }
 ]

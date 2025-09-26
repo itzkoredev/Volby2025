@@ -43,6 +43,7 @@ export interface ScoreResult {
   maxPossibleScore: number;
   agreementPercentage: number;
   confidenceScore: number;
+  coveragePercentage: number;
   thesisResults: any[]; // Zjednodušeno prozatím
 }
 

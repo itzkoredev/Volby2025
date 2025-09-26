@@ -9,6 +9,7 @@ export interface ScoreResult {
   maxPossibleScore: number;
   agreementPercentage: number;
   confidenceScore: number;
+  coveragePercentage: number;
   thesisResults: ThesisResult[];
 }
 
@@ -35,10 +36,11 @@ export function calculateScores(
   parties: Array<{ id: string; name: string }>
 ): ScoreResult[] {
   const results: ScoreResult[] = [];
+  const effectiveAnswerCount = Object.values(answers).filter(answer => answer.weight > 0).length;
 
   // Projdi každou stranu
   for (const party of parties) {
-    const partyResults = calculatePartyScore(answers, partyPositions, party.id, party.name);
+    const partyResults = calculatePartyScore(answers, partyPositions, party.id, party.name, effectiveAnswerCount);
     results.push(partyResults);
   }
 
@@ -53,7 +55,8 @@ function calculatePartyScore(
   answers: Record<string, UserAnswer>,
   partyPositions: PartyPosition[],
   partyId: string,
-  partyName: string
+  partyName: string,
+  effectiveAnswerCount: number
 ): ScoreResult {
   const thesisResults: ThesisResult[] = [];
   let totalWeightedScore = 0;
@@ -67,7 +70,11 @@ function calculatePartyScore(
   // Projdi všechny odpovědi uživatele
   Object.entries(answers).forEach(([thesisId, userAnswer]) => {
     const partyPosition = partyTheses.find(p => p.thesisId === thesisId);
-    
+
+    if (userAnswer.weight <= 0) {
+      return;
+    }
+
     if (!partyPosition) {
       // Strana nemá pozici k této tezi - přeskoč
       return;
@@ -113,6 +120,10 @@ function calculatePartyScore(
     ? totalConfidence / answeredTheses 
     : 0;
 
+  const coveragePercentage = effectiveAnswerCount > 0
+    ? (thesisResults.length / effectiveAnswerCount) * 100
+    : 0;
+
   return {
     partyId,
     partyName,
@@ -120,6 +131,7 @@ function calculatePartyScore(
     maxPossibleScore: maxPossibleWeightedScore,
     agreementPercentage: Math.round(agreementPercentage * 100) / 100,
     confidenceScore: Math.round(averageConfidence * 100) / 100,
+    coveragePercentage: Math.round(coveragePercentage * 100) / 100,
     thesisResults
   };
 }

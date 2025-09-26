@@ -7,6 +7,7 @@ import { ArrowLeft, TrendingUp, TrendingDown, Calendar, Users, BarChart3, Activi
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Party } from '@/lib/types';
+import { withBasePath } from '@/lib/utils';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -120,13 +121,13 @@ export default function StemPollsPage() {
     async function fetchData() {
       try {
         const [pollsData, partiesData] = await Promise.all([
-          fetch('/data/complete-polls.json').then((response) => {
+          fetch(withBasePath('/data/complete-polls.json')).then((response) => {
             if (!response.ok) {
               throw new Error('Nepodařilo se načíst data průzkumů');
             }
             return response.json();
           }),
-          fetch('/data/parties.json').then((response) => {
+          fetch(withBasePath('/data/parties.json')).then((response) => {
             if (!response.ok) {
               throw new Error('Nepodařilo se načíst data stran');
             }

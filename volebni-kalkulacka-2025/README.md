@@ -1,6 +1,6 @@
 # Volební kalkulačka 2025
 
-Nestranná volební kalkulačka pro české volby 2025 vytvořená jako čistě frontendová webová aplikace s minimální proxy funkcí pro ChatGPT.
+Nestranná volební kalkulačka pro české volby 2025 vytvořená jako čistě frontendová webová aplikace s klientskou AI asistencí přes Puter SDK.
 
 ## ✅ **STATUS: APLIKACE DOKONČENA A PŘIPRAVENA**
 
@@ -22,7 +22,8 @@ Volební kalkulačka pomáhá voličům porovnat jejich politické názory s poz
 - **Validace dat**: Zod
 - **Grafy**: Recharts
 - **Vyhledávání**: FlexSearch
-- **Deployment**: Vercel
+- **AI**: Puter SDK (client-only, bez vlastního proxy)
+- **Deployment**: Vercel / vlastní hosting (subpath `/volby2025`)
 - **Linting**: ESLint, Prettier, Husky
 
 ## 📁 Struktura projektu
@@ -33,8 +34,7 @@ volebni-kalkulacka-2025/
 │   ├── app/                    # Next.js App Router
 │   │   ├── calculator/         # Volební kalkulačka
 │   │   ├── party/[slug]/       # Profily stran
-│   │   ├── chat/               # Chatbot UI
-│   │   └── api/chat/           # Proxy funkce pro ChatGPT
+│   │   └── chat/               # Chatbot UI (volá Puter SDK přímo z prohlížeče)
 │   ├── components/             # React komponenty
 │   │   └── ui/                 # shadcn/ui komponenty
 │   └── lib/                    # Utility funkce, schemas
@@ -42,6 +42,8 @@ volebni-kalkulacka-2025/
 ├── public/
 │   └── data/                   # JSON datové soubory
 └── ...
+
+> ⚠️ Od verze září 2025 již projekt neobsahuje žádnou serverovou proxy k OpenAI; chatbot komunikuje přímo přes Puter SDK načtené na klientovi.
 ```
 
 ## 📊 Datový model
@@ -106,26 +108,48 @@ npx shadcn@latest add [component-name]
 3. **Otevřenost**: Open source kód a veřejně dostupná data
 4. **Ochrana soukromí**: Žádné cookies, minimální analytika
 
-## 📋 Aktuální stav
+## � Nasazení na `www.itzkore.cz/volby2025`
 
-Dokončena **Fáze 1** podle původního plánu:
+1. **Nastavte base path**
+   - V produkci udržujte proměnnou `NEXT_PUBLIC_BASE_PATH=/volby2025`.
+   - Netřeba měnit kód – `next.config.mjs` automaticky převezme hodnotu a nastaví `basePath` i `assetPrefix`.
 
-- [x] ✅ Vytvoření Next.js aplikace
-- [x] ✅ Instalace základních knihoven
-- [x] ✅ Nastavení projektové struktury
-- [x] ✅ Definice datových schémat
-- [x] ✅ Vytvoření základních JSON souborů
-- [x] ✅ Implementace validátoru dat
+2. **Build aplikace**
 
-### Další kroky
+   ```bash
+   npm install
+   NEXT_PUBLIC_BASE_PATH=/volby2025 npm run build
+   ```
 
-- [ ] **Fáze 3**: Implementace scoring engine
-- [ ] **Fáze 4**: UI kalkulačky a dotazníku
-- [ ] **Fáze 5**: Profily stran
-- [ ] **Fáze 6**: Chatbot s proxy funkcí
-- [ ] **Fáze 7**: RAG-lite vyhledávání
-- [ ] **Fáze 8**: Testování
-- [ ] **Fáze 9**: Deployment
+3. **Nasazení**
+   - Pro Vercel: použijte stejnou proměnnou prostředí na projektu a běžný `vercel deploy`.
+   - Pro vlastní hosting (např. itzkore.cz):
+     - Zkopírujte adresář `.next`, `public`, `package.json`, `next.config.mjs` a `node_modules` na server.
+     - Spusťte `npm run start` za reverzní proxy, která servíruje aplikaci na subcestě `/volby2025`.
+     - Aktualizujte webserver (NGINX/Apache) tak, aby přesměroval požadavky na zvolený port Next.js (např. 3000) a zachoval prefix `/volby2025`.
+
+4. **Statická data**
+   - Všechna JSON data žijí v `public/data`; díky helperu `withBasePath` se načítají relativně k subcestě.
+   - Při přidávání nových souborů stačí je uložit do stejného adresáře.
+   - Helper nyní detekuje absolutní URL i speciální protokoly (`mailto:`, `tel:`) a v produkci bezpečně přidává prefix jen pro relativní cesty.
+   - Jednotkové testy (`src/lib/__tests__/utils.test.ts`) hlídají konzistenci chování ve vývojovém i produkčním režimu.
+
+5. **AI Chatbot (Puter)**
+   - Chat page dynamicky načítá skript `https://js.puter.com/v2/` a volá `puter.ai.chat`.
+   - Ujistěte se, že doména `www.itzkore.cz` je autorizována v Puter dashboardu a že případné limity API jsou nastaveny podle očekávaného provozu.
+
+## 🔗 Reference k nasazení na subcestě a načítání dat
+
+- [Next.js docs – `basePath`](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath): oficiální popis konfigurace pro běh na subcestě včetně požadavku ručního prefixování cest u obrázků.
+- [Next.js docs – Fetching Data](https://nextjs.org/docs/app/getting-started/fetching-data): doporučení pro práci s `fetch` v App Routeru a cachováním odpovědí.
+- [GitHub Discussion #25681](https://github.com/vercel/next.js/discussions/25681): shrnutí problémů s `_next/data` při nasazení více aplikací pod jednou doménou a potřeba vlastního „data path prefixu“.
+
+## ✅ Aktuální stav
+
+- [x] Produkční build bez chyb (`npm run build`)
+- [x] Chatbot funguje přes Puter SDK bez serverové proxy
+- [x] Všechny stránky a fetch dotazy respektují base path `/volby2025`
+- [x] Viewport je definován přes oficiální Next `viewport` export (žádné varování v konzoli)
 
 ## 🤝 Přispívání
 

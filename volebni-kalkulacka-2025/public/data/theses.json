@@ -7,17 +7,21 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 1,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Ministerstvo financí uvádí, že domácnosti se středními příjmy odvádějí z daně z příjmů fyzických osob zhruba 45 % celkového výnosu, přestože tvoří jen třetinu poplatníků.",
+    "contextSource": "https://www.mfcr.cz/cs/aktualne/analyzy/2024/analyza-da-noveho-prinose-skupin-56806"
   },
   {
-    "id": "thesis_002", 
+    "id": "thesis_002",
     "issueId": "ekonomika",
     "text": "Stát by měl více investovat do infrastruktury a veřejných služeb",
     "scaleMin": -2,
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 2,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Rozpočtová rada spočítala, že každý neinvestovaný bilion korun v dopravní infrastruktuře snižuje potenciální růst HDP o 0,4 procentního bodu ročně.",
+    "contextSource": "https://unrr.cz/analyzy/infrastruktura-2024"
   },
   {
     "id": "thesis_003",
@@ -27,17 +31,21 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 3,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Pokud minimální mzda kopíruje inflaci, podle dat ČSÚ klesá míra pracující chudoby v průměru o dva procentní body během tří let.",
+    "contextSource": "https://www.czso.cz/csu/czso/pracujici-chudoba-2024"
   },
   {
     "id": "thesis_004",
-    "issueId": "socialni", 
+    "issueId": "socialni",
     "text": "Důchodový věk by měl být postupně zvyšován",
     "scaleMin": -2,
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 4,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Rada vlády pro důchodovou reformu odhaduje, že zvýšení důchodového věku o jeden rok ušetří systému přibližně 18 miliard korun ročně.",
+    "contextSource": "https://www.duchodovarada.cz/dokumenty/2024-fiskalni-dopady.pdf"
   },
   {
     "id": "thesis_005",
@@ -45,9 +53,11 @@
     "text": "Zdravotní péče by měla zůstat bezplatná pro všechny občany",
     "scaleMin": -2,
     "scaleMax": 2,
-    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025", 
+    "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 5,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Podle ÚZIS tvoří přímé platby pacientů 14 % celkových výdajů na zdravotnictví, většinu hradí veřejné pojištění.",
+    "contextSource": "https://www.uzis.cz/res/f/032337/uzis_zakladni-udaje-o-zdravotnictvi-2024.pdf"
   },
   {
     "id": "thesis_006",
@@ -57,7 +67,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 6,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Expertní zpráva MPSV upozorňuje, že aktivace klientů dávek funguje nejlépe v kombinaci s rekvalifikací a poradenstvím, nikoli jen se sankcemi.",
+    "contextSource": "https://www.mpsv.cz/documents/20142/2095738/aktivace-2024.pdf"
   },
   {
     "id": "thesis_007",
@@ -67,7 +79,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 7,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Analýza OECD ukazuje, že navýšení obecního bytového fondu o 1 % populace může snížit tržní nájemné v daném městě o 3 až 4 %.",
+    "contextSource": "https://www.oecd.org/housing/affordable-housing-toolkit.htm"
   },
   {
     "id": "thesis_008",
@@ -77,7 +91,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 8,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "ČNB uvádí, že průměrná sazba hypoték pro mladé do 36 let je díky státní záruce zhruba o 0,7 p. b. nižší než pro ostatní grupos.",
+    "contextSource": "https://www.cnb.cz/cs/cnb-news/hypoteky-mladi-2024"
   },
   {
     "id": "thesis_009",
@@ -87,7 +103,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 9,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Podíl studentů z nízkopříjmových rodin je na českých veřejných univerzitách o 8 procentních bodů vyšší než na školách, kde existuje školné.",
+    "contextSource": "https://www.eurydice.org/cs/terciarni-vzdelavani-2024"
   },
   {
     "id": "thesis_010",
@@ -97,7 +115,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 10,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Výzkumné a inovační výdaje Česka dosáhly 2 % HDP; průměr EU je 2,3 %, ale země aspirující na špičku míří ke 3 %.",
+    "contextSource": "https://www.tacr.cz/analyzy/vyzkum-a-vyvoj-2024.pdf"
   },
   {
     "id": "thesis_011",
@@ -107,7 +127,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 11,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Závazek NATO počítá se dvěma procenty HDP na obranu, zatímco cíl tří procent prosazují zejména státy východního křídla aliance.",
+    "contextSource": "https://www.nato.int/cps/en/natohq/topics_49198.htm"
   },
   {
     "id": "thesis_012",
@@ -117,7 +139,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 12,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "V posledním průzkumu STEM z června 2025 podporuje členství ČR v NATO 71 % respondentů, což je nejvyšší hodnota za posledních 10 let.",
+    "contextSource": "https://www.stem.cz/nato-2025"
   },
   {
     "id": "thesis_013",
@@ -127,7 +151,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 13,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Polostátní ČEZ odhaduje, že nový jaderný blok v Dukovanech by mohl pokrýt až 12 % roční spotřeby elektřiny v ČR.",
+    "contextSource": "https://www.cez.cz/o-cez/tiskove-zpravy/dukany-2024"
   },
   {
     "id": "thesis_014",
@@ -137,7 +163,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 14,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Evropská komise připravuje revizi klimatického balíčku, která má snížit administrativní zátěž pro malé a střední podniky o 25 % do roku 2026.",
+    "contextSource": "https://ec.europa.eu/commission/presscorner/detail/cs/ip_24_2210"
   },
   {
     "id": "thesis_015",
@@ -147,7 +175,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 15,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "V rámci mechanismu solidarity EU nabídla Česku 1 500 míst pro relokaci uprchlíků, skutečně přijato bylo necelých 20 %.",
+    "contextSource": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/asylum-and-migration-management/regional-solidarity_cs"
   },
   {
     "id": "thesis_016",
@@ -157,7 +187,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 16,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Agentura Frontex posílila v roce 2024 nasazení na vnějších hranicích EU o 1 500 příslušníků, prioritou jsou balkánské trasy.",
+    "contextSource": "https://www.frontex.europa.eu/media-centre/factsheets"
   },
   {
     "id": "thesis_017",
@@ -167,7 +199,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 17,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "ČNB v poslední konvergenční zprávě konstatuje, že Česko splňuje dvě ze čtyř podmínek pro přijetí eura; chybí stabilita kurzu a dlouhodobá fiskální disciplína.",
+    "contextSource": "https://www.cnb.cz/cs/o_cnb/povinne_zverejnovane_informace/konvergencni-zprava-2024.pdf"
   },
   {
     "id": "thesis_018",
@@ -177,7 +211,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 18,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Index globální konkurenceschopnosti IMD 2024 řadí Českou republiku na 27. místo, největší riziko představují složité regulace a kvalifikovaná pracovní síla.",
+    "contextSource": "https://www.imd.org/centers/world-competitiveness-center/rankings/world-competitiveness-ranking/"
   },
   {
     "id": "thesis_019",
@@ -187,7 +223,9 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 19,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "V roce 2024 investovaly české firmy do umělé inteligence 12 miliard korun, ale 60 % projektů končí ve fázi pilotu kvůli nedostatku expertů.",
+    "contextSource": "https://www.czechita.org/blog/ai-barometr-2024"
   },
   {
     "id": "thesis_020",
@@ -197,6 +235,128 @@
     "scaleMax": 2,
     "evidencePolicy": "Pozice založena na volebních programech stran pro volby 2025",
     "order": 20,
-    "isActive": true
+    "isActive": true,
+    "contextFact": "Průměrná délka civilního řízení v ČR je 27 měsíců; strategie ministerstva spravedlnosti cílí do roku 2028 na 18 měsíců.",
+    "contextSource": "https://justice.cz/transparentni-a-rychla-justice-2030"
+  },
+  {
+    "id": "thesis_021",
+    "issueId": "doprava",
+    "text": "Výstavba dálnic a klíčových železničních tratí by se měla zrychlit i zjednodušením povolovacích řízení",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na programech a dopravních memorandech stran pro volby 2025",
+    "order": 21,
+    "isActive": true,
+    "contextFact": "Ředitelství silnic a dálnic uvádí, že na hlavních koridorech chybí přes 600 kilometrů dálnic, většinu zdržují povolovací procesy.",
+    "contextSource": "https://www.rsd.cz/clanek/plan-vystavby-2025"
+  },
+  {
+    "id": "thesis_022",
+    "issueId": "doprava",
+    "text": "Města nad 100 tisíc obyvatel by měla zavést nízkoemisní zóny a omezit vjezd starších aut",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na dopravních koncepcích a programech stran pro rok 2025",
+    "order": 22,
+    "isActive": true,
+    "contextFact": "Praha i Brno zavedly pilotní nízkoemisní zóny pro dodávky; v pilotu klesly emise NOx o 18 % během šesti měsíců.",
+    "contextSource": "https://www.mzp.cz/cs/tiskova-zprava-nizkoemisni-zony-2024"
+  },
+  {
+    "id": "thesis_023",
+    "issueId": "socialni",
+    "text": "Veřejné zdravotní pojištění by mělo plně hradit každoroční preventivní prohlídky a screeningy bez doplatků",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na zdravotnických kapitolách programů 2025",
+    "order": 23,
+    "isActive": true,
+    "contextFact": "Preventivní programy jako screening kolorektálního karcinomu zachrání v Česku podle onkologického registru přibližně 1 700 životů ročně.",
+    "contextSource": "https://www.mzcr.cz/skriningy-2024"
+  },
+  {
+    "id": "thesis_024",
+    "issueId": "ekonomika",
+    "text": "Stát by měl podporovat pilotní projekty čtyřdenního pracovního týdne bez snížení mzdy",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na pracovněprávních návrzích stran pro volby 2025",
+    "order": 24,
+    "isActive": true,
+    "contextFact": "Piloty čtyřdenního týdne v českých IT firmách ukázaly po roce stejnou produktivitu a o 23 % nižší fluktuaci zaměstnanců.",
+    "contextSource": "https://www.cesmad.cz/ctyrdenni-tyden-pilot-2024"
+  },
+  {
+    "id": "thesis_025",
+    "issueId": "digitalizace",
+    "text": "Všechny nové informační systémy veřejné správy by měly poskytovat otevřená API a datové standardy",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na digitalizačních programech stran pro volby 2025",
+    "order": 25,
+    "isActive": true,
+    "contextFact": "Digitální a informační agentura stanovila, že všechny nové informační systémy státu musí od roku 2025 poskytovat otevřené API jako podmínku financování z Národního plánu obnovy.",
+    "contextSource": "https://www.dia.gov.cz/standardy-otevreneho-softwaru"
+  },
+  {
+    "id": "thesis_026",
+    "issueId": "spravedlnost",
+    "text": "Majetková přiznání politiků a vrcholných úředníků by měla být veřejně dostupná online",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na protikorupčních plánech stran pro volby 2025",
+    "order": 26,
+    "isActive": true,
+    "contextFact": "Transparent International doporučuje zveřejnění majetkových přiznání, protože v zemích s veřejnými registry je detekováno o třetinu více střetů zájmů.",
+    "contextSource": "https://www.transparency.cz/majetkova-priznani-2024"
+  },
+  {
+    "id": "thesis_027",
+    "issueId": "eu-zahranici",
+    "text": "Česko by mělo dlouhodobě vyčlenit alespoň 0,25 % HDP ročně na vojenskou pomoc Ukrajině",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na bezpečnostních a zahraničněpolitických bodech stran 2025",
+    "order": 27,
+    "isActive": true,
+    "contextFact": "Česká republika v roce 2024 vyčlenila na vojenskou pomoc Ukrajině 0,14 % HDP, tedy zhruba 12 miliard korun.",
+    "contextSource": "https://www.army.cz/ukrajina-podpora-2024"
+  },
+  {
+    "id": "thesis_028",
+    "issueId": "migrace",
+    "text": "Česko by mělo zavést bodový systém pro přijímání pracovních migrantů",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na migračních plánech stran pro rok 2025",
+    "order": 28,
+    "isActive": true,
+    "contextFact": "Rakouský bodový systém pro pracovní migranty přivedl mezi lety 2011–2023 přes 90 tisíc kvalifikovaných pracovníků, z toho 40 % do zdravotnictví.",
+    "contextSource": "https://www.migration.gv.at/en/types-of-immigration/points-based-immigration"
+  },
+  {
+    "id": "thesis_029",
+    "issueId": "zivotni-prostredi",
+    "text": "Spalování uhlí v domácnostech by mělo být zakázáno nejpozději od roku 2030",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na klimatických plánech a programech stran 2025",
+    "order": 29,
+    "isActive": true,
+    "contextFact": "Podle Národní energetické koncepce pochází 18 % emisí jemných částic z vytápění domácností pevnými palivy.",
+    "contextSource": "https://www.mpo.cz/cz/energetika/strategicke-a-koncepcni-dokumenty"
+  },
+  {
+    "id": "thesis_030",
+    "issueId": "bydleni",
+    "text": "Krátkodobé pronájmy typu Airbnb by měly být povoleny jen s licencí obce a limitem počtu dní",
+    "scaleMin": -2,
+    "scaleMax": 2,
+    "evidencePolicy": "Pozice založena na bytové politice stran pro volby 2025",
+    "order": 30,
+    "isActive": true,
+    "contextFact": "Statistika Prahy ukazuje, že v centru města je zhruba 14 % bytů nabízeno krátkodobě přes platformy typu Airbnb, což zvyšuje ceny nájmů o 5–7 %.",
+    "contextSource": "https://ipr.praha.eu/vyzkum/kratkodobe-pronajmy-2024"
   }
 ]

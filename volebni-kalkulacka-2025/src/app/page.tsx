@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Bot, ArrowRight } from 'lucide-react'
 
 export default function Home() {
   const [statsVisible, setStatsVisible] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const timer = setTimeout(() => setStatsVisible(true), 500)
@@ -27,9 +29,9 @@ export default function Home() {
       icon: '🤖',
       title: 'AI Chatbot',
       description: 'Ptejte se AI na cokoliv o volbách, programech stran a politických tématech. Rychlé a přesné odpovědi.',
-      href: '#',
-      status: '🚧 Připravujeme',
-      statusColor: 'bg-orange-500'
+      href: '/chat',
+      status: '✅ Hotovo',
+      statusColor: 'bg-green-500'
     },
     {
       icon: '👥',
@@ -93,7 +95,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-6">
             <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Funkce</a>
             <a href="#about" className="text-gray-600 hover:text-blue-600 transition-colors">O projektu</a>
-            <a href="/calculator" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Kalkulačka</a>
+            <Link href="/calculator" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Kalkulačka</Link>
           </div>
         </nav>
       </header>
@@ -110,13 +112,13 @@ export default function Home() {
               Vyberte si, co vás zajímá - kalkulačka, AI chatbot, profily stran a mnoho dalšího.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md sm:max-w-none mx-auto">
-              <a 
-                href="/calculator-setup"
-                className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-50 transition-all transform hover:-translate-y-1 hover:shadow-xl text-center font-medium text-lg"
-              >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
+              <Link href="/calculator-setup" className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-50 transition-all transform hover:-translate-y-1 hover:shadow-xl text-center font-medium text-lg">
                 🧮 Volební kalkulačka
-              </a>
+              </Link>
+              <Link href="/chat" className="bg-purple-600 text-white px-8 py-4 rounded-lg hover:bg-purple-700 transition-all transform hover:-translate-y-1 hover:shadow-xl text-center font-medium text-lg">
+                🤖 AI Chatbot
+              </Link>
               <a 
                 href="#features"
                 className="bg-white/20 text-white border-2 border-white/30 px-8 py-4 rounded-lg hover:bg-white/30 transition-all transform hover:-translate-y-1 hover:shadow-xl text-center font-medium text-lg backdrop-blur-sm"
@@ -142,12 +144,8 @@ export default function Home() {
                   onClick={() => {
                     if (feature.href === '#') {
                       alert(`${feature.title} bude brzy k dispozici! 🚀\n\nPracujeme na této funkci a bude přidána v následujících týdnech. Zatím si můžete vyzkoušet Volební kalkulačku.`)
-                    } else if (feature.title === 'Volební kalkulačka') {
-                      window.location.href = '/calculator-setup'
-                    } else if (feature.title === 'Profily stran') {
-                      window.location.href = '/party-profiles'
                     } else {
-                      window.location.href = feature.href
+                      router.push(feature.href)
                     }
                   }}
                 >
@@ -279,7 +277,7 @@ export default function Home() {
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4 text-center">
           <div className="flex flex-wrap justify-center gap-6 mb-6">
-            <a href="/calculator" className="hover:text-blue-400 transition-colors">Kalkulačka</a>
+            <Link href="/calculator" className="hover:text-blue-400 transition-colors">Kalkulačka</Link>
             <a href="#about" className="hover:text-blue-400 transition-colors">O projektu</a>
             <a href="#privacy" className="hover:text-blue-400 transition-colors">Ochrana dat</a>
             <a href="#contact" className="hover:text-blue-400 transition-colors">Kontakt</a>

@@ -116,8 +116,8 @@ export default function CalculatorSetup() {
                   onClick={() => setProfile({...profile, testMode: 'full'})}
                 >
                   <div className="font-semibold text-lg mb-2">🎯 Podrobný test</div>
-                  <div className="text-gray-600 mb-2">20 otázek pokrývající všechny oblasti</div>
-                  <div className="text-sm text-gray-500">⏱️ Cca 8-12 minut</div>
+                  <div className="text-gray-600 mb-2">30 otázek pokrývajících všechny oblasti</div>
+                  <div className="text-sm text-gray-500">⏱️ Cca 12-15 minut</div>
                 </button>
               </div>
             </CardContent>
@@ -263,7 +263,7 @@ export default function CalculatorSetup() {
             <div className="mb-4">
               <h3 className="font-semibold text-lg mb-2">Připraveno ke startu!</h3>
               <p className="text-gray-600">
-                {profile.testMode === 'quick' ? 'Rychlý test - 10 otázek' : 'Podrobný test - 20 otázek'}
+                {profile.testMode === 'quick' ? 'Rychlý test - 10 otázek' : 'Podrobný test - 30 otázek'}
               </p>
             </div>
             <Button 
