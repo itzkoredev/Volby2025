@@ -85,17 +85,32 @@ describe('Scoring Engine', () => {
       expect(partyAResult?.thesisResults).toHaveLength(1);
     });
 
-    it('should sort results by agreement percentage', () => {
+    it('prioritizes hlavní strany while keeping scores ordered within each category', () => {
       const userAnswers: Record<string, UserAnswer> = {
-        thesis1: { thesisId: 'thesis1', value: 0, weight: 1 }, // NejblĂ­Ĺľe StranÄ› C
-        thesis2: { thesisId: 'thesis2', value: 1, weight: 1 }   // NejblĂ­Ĺľe StranÄ› B
+        thesis1: { thesisId: 'thesis1', value: 0, weight: 1 }, // Nejblíže Straně C
+        thesis2: { thesisId: 'thesis2', value: 2, weight: 1 }   // Opět preferuje Stranu C (secondary)
       };
 
       const results = calculateScores(userAnswers, mockPartyPositions, mockParties);
 
-      // VĂ˝sledky by mÄ›ly bĂ˝t seĹ™azenĂ© sestupnÄ› podle shody
-      expect(results[0].agreementPercentage).toBeGreaterThanOrEqual(results[1].agreementPercentage);
-      expect(results[1].agreementPercentage).toBeGreaterThanOrEqual(results[2].agreementPercentage);
+      const mainResults = results.filter((result) => result.partyCategory === 'main');
+      const secondaryResults = results.filter((result) => result.partyCategory !== 'main');
+
+      expect(mainResults.length).toBeGreaterThan(0);
+      expect(results.slice(0, mainResults.length)).toEqual(mainResults);
+      expect(results[0].partyCategory).toBe('main');
+
+      for (let index = 1; index < mainResults.length; index += 1) {
+        expect(mainResults[index - 1].agreementPercentage).toBeGreaterThanOrEqual(mainResults[index].agreementPercentage);
+      }
+
+      for (let index = 1; index < secondaryResults.length; index += 1) {
+        expect(secondaryResults[index - 1].agreementPercentage).toBeGreaterThanOrEqual(secondaryResults[index].agreementPercentage);
+      }
+
+      if (secondaryResults.length > 0) {
+        expect(results[mainResults.length].partyCategory).toBe('secondary');
+      }
     });
 
     it('should ignore answers with zero weight (skipped questions)', () => {
@@ -138,6 +153,7 @@ describe('Scoring Engine', () => {
         {
           partyId: 'party1',
           partyName: 'Strana A',
+          partyCategory: 'main',
           totalScore: 8,
           maxPossibleScore: 8,
           agreementPercentage: 100,
@@ -168,6 +184,7 @@ describe('Scoring Engine', () => {
         {
           partyId: 'party1',
           partyName: 'Strana A',
+          partyCategory: 'main',
           totalScore: 8,
           maxPossibleScore: 8,
           agreementPercentage: 100,
@@ -193,6 +210,7 @@ describe('Scoring Engine', () => {
       const mockResult: ScoreResult = {
         partyId: 'party1',
         partyName: 'Strana A',
+        partyCategory: 'main',
         totalScore: 0,
         maxPossibleScore: 0,
         agreementPercentage: 0,

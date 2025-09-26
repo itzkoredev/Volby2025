@@ -39,6 +39,7 @@ export interface CalculatorState {
 export interface ScoreResult {
   partyId: string;
   partyName: string;
+  partyCategory: Party['category'];
   totalScore: number;
   maxPossibleScore: number;
   agreementPercentage: number;

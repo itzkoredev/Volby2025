@@ -12,27 +12,36 @@ import { Label } from "@/components/ui/label";
 import type { UserAnswer, Thesis } from "@/lib/types";
 import { withBasePath } from "@/lib/utils";
 
-// Na����t��n�� re��ln��ch dat z JSON soubor��
+// Načítání reálných dat z JSON souborů
 async function loadTheses(): Promise<Thesis[]> {
   const response = await fetch(withBasePath("/data/theses.json"));
   if (!response.ok) {
-    throw new Error("Nepoda�tilo se na����st data tez��");
+    throw new Error("Nepodařilo se načíst data tezí");
   }
   return response.json();
 }
 
 const scaleLabels = [
-  "Rozhodn�> nesouhlas��m",
-  "Sp���e nesouhlas��m",
-  "Nev��m / Neutr��ln��",
-  "Sp���e souhlas��m",
-  "Rozhodn�> souhlas��m"
+  "Rozhodně nesouhlasím",
+  "Spíše nesouhlasím",
+  "Nevím / Neutrální",
+  "Spíše souhlasím",
+  "Rozhodně souhlasím"
 ];
 
-const importanceLabels = ["M��lo d��le��it�c", "St�tedn�> d��le��it�c", "Velmi d��le��it�c"];
+const importanceLabels = ["Málo důležité", "Středně důležité", "Velmi důležité"];
 const sliderPositions = [-2, -1, 0, 1, 2] as const;
 
 type SliderValue = (typeof sliderPositions)[number];
+
+function shuffleArray<T>(items: T[]): T[] {
+  const array = [...items];
+  for (let index = array.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
+  }
+  return array;
+}
 
 interface UserProfile {
   age?: string;
@@ -56,6 +65,7 @@ function CalculatorContent() {
   const [error, setError] = useState<string | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [factOpen, setFactOpen] = useState(false);
+  const [confirmedQuestionIds, setConfirmedQuestionIds] = useState<Record<string, true>>({});
 
   useEffect(() => {
     async function fetchData() {
@@ -65,11 +75,19 @@ function CalculatorContent() {
           .filter((thesis) => thesis.isActive !== false)
           .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
-        const filteredTheses = mode === "quick" ? activeTheses.slice(0, 10) : activeTheses;
-        setTheses(filteredTheses);
-        setLoading(false);
+        const randomizedTheses = shuffleArray(activeTheses);
+        const filteredTheses = mode === "quick"
+          ? randomizedTheses.slice(0, Math.min(10, randomizedTheses.length))
+          : randomizedTheses;
+  setTheses(filteredTheses);
+  setAnswers({});
+  setConfirmedQuestionIds({});
+  setCurrentThesis(0);
+  setCurrentValue(0);
+  setCurrentWeight(2);
+  setLoading(false);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Nezn��m�� chyba");
+        setError(err instanceof Error ? err.message : "Neznámá chyba");
         setLoading(false);
       }
     }
@@ -79,7 +97,7 @@ function CalculatorContent() {
       try {
         setUserProfile(JSON.parse(savedProfile));
       } catch (err) {
-        console.warn("Nepoda�tilo se na����st u��ivatelsk�� profil:", err);
+        console.warn("Nepodařilo se načíst uživatelský profil:", err);
       }
     }
 
@@ -88,11 +106,19 @@ function CalculatorContent() {
 
   const totalTheses = theses.length;
   const currentThesisData = theses[currentThesis];
-  const answeredCount = useMemo(() => Object.keys(answers).length, [answers]);
+  const currentThesisId = currentThesisData?.id;
+  const answeredCount = useMemo(() => Object.keys(confirmedQuestionIds).length, [confirmedQuestionIds]);
   const progress = totalTheses > 0 ? Math.round((answeredCount / totalTheses) * 100) : 0;
 
   useEffect(() => {
-    const existingAnswer = currentThesisData ? answers[currentThesisData.id] : undefined;
+    if (!currentThesisId) {
+      setCurrentValue(0);
+      setCurrentWeight(2);
+      setFactOpen(false);
+      return;
+    }
+
+    const existingAnswer = answers[currentThesisId];
     if (existingAnswer) {
       setCurrentValue(existingAnswer.value as SliderValue);
       setCurrentWeight(existingAnswer.weight);
@@ -101,7 +127,7 @@ function CalculatorContent() {
       setCurrentWeight(2);
     }
     setFactOpen(false);
-  }, [currentThesis, currentThesisData?.id, answers]);
+  }, [answers, currentThesisId, currentThesisData]);
 
   const convertSliderValue = useCallback((sliderValue: number): SliderValue => {
     return sliderPositions[Math.max(0, Math.min(sliderPositions.length - 1, sliderValue))];
@@ -131,6 +157,7 @@ function CalculatorContent() {
       };
 
       setAnswers(updatedAnswers);
+      setConfirmedQuestionIds((prev) => ({ ...prev, [currentThesisData.id]: true }));
 
       if (currentThesis < totalTheses - 1) {
         setCurrentThesis((prev) => prev + 1);
@@ -144,23 +171,56 @@ function CalculatorContent() {
   );
 
   const handleSkip = useCallback(() => {
+    if (!currentThesisData) {
+      return;
+    }
+
+    setAnswers((prev) => {
+      if (!prev[currentThesisData.id]) {
+        return prev;
+      }
+      const updated = { ...prev };
+      delete updated[currentThesisData.id];
+      return updated;
+    });
+
+    setConfirmedQuestionIds((prev) => {
+      if (!prev[currentThesisData.id]) {
+        return prev;
+      }
+      const updated = { ...prev };
+      delete updated[currentThesisData.id];
+      return updated;
+    });
+
     if (currentThesis < totalTheses - 1) {
       setCurrentThesis((prev) => prev + 1);
     }
-  }, [currentThesis, totalTheses]);
+  }, [currentThesis, currentThesisData, totalTheses]);
 
   const handlePrevious = useCallback(() => {
     if (currentThesis > 0) {
+      const previousThesis = theses[currentThesis - 1];
+      if (previousThesis) {
+        setConfirmedQuestionIds((prev) => {
+          if (!prev[previousThesis.id]) {
+            return prev;
+          }
+          const updated = { ...prev };
+          delete updated[previousThesis.id];
+          return updated;
+        });
+      }
+
       setCurrentThesis((prev) => prev - 1);
     }
-  }, [currentThesis]);
+  }, [currentThesis, theses]);
 
   const handleQuickAnswer = useCallback(
     (value: SliderValue) => {
       setCurrentValue(value);
-      handleAnswer(value, currentWeight);
     },
-    [handleAnswer, currentWeight]
+    []
   );
 
   useEffect(() => {
@@ -203,7 +263,7 @@ function CalculatorContent() {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4" />
-          <div className="text-gray-600">Na����t��n�� ot��zek...</div>
+          <div className="text-gray-600">Načítání otázek...</div>
         </div>
       </div>
     );
@@ -213,7 +273,7 @@ function CalculatorContent() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-red-600 mb-4">��� Chyba</div>
+          <div className="text-red-600 mb-4">❌ Chyba</div>
           <div className="text-gray-600">{error}</div>
         </div>
       </div>
@@ -223,7 +283,7 @@ function CalculatorContent() {
   if (!currentThesisData) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="text-center text-gray-600">����dn�c ot��zky k zobrazen��.</div>
+        <div className="text-center text-gray-600">Žádné otázky k zobrazení.</div>
       </div>
     );
   }
@@ -245,10 +305,10 @@ function CalculatorContent() {
                 className="flex items-center gap-2 text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Zm�>nit nastaven��
+                Změnit nastavení
               </Button>
               <div className="hidden sm:block w-px h-6 bg-gray-300" />
-              <div className="text-lg font-bold text-gray-900">Ы�R Volebn�� kalkula��ka</div>
+              <div className="text-lg font-bold text-gray-900">ČR Volební kalkulačka</div>
             </div>
             {userProfile && (
               <div className="hidden md:block text-sm text-gray-600">
@@ -265,21 +325,21 @@ function CalculatorContent() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
             <div className="flex items-center gap-3">
               <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-                {mode === "quick" ? "Rychl�� test" : "Podrobn�� test"}
+                {mode === "quick" ? "Rychlý test" : "Podrobný test"}
               </h1>
               {userProfile?.interests && userProfile.interests.length > 0 && (
                 <div className="text-sm text-blue-600 bg-blue-50 px-2 py-1 rounded">
-                  Zam�>�teno na va��e z��jmy
+                  Zaměřeno na vaše zájmy
                 </div>
               )}
             </div>
-            <div className="text-sm text-gray-600">{answeredCount} / {totalTheses} ot��zek</div>
+            <div className="text-sm text-gray-600">{answeredCount} / {totalTheses} otázek</div>
           </div>
 
           <div className="space-y-2">
             <div className="flex justify-between text-sm text-gray-600">
-              <span>Ot��zka {currentThesis + 1} z {totalTheses}</span>
-              <span>{progress}% dokon��eno</span>
+              <span>Otázka {currentThesis + 1} z {totalTheses}</span>
+              <span>{progress}% dokončeno</span>
             </div>
             <Progress value={progress} className="h-2" />
           </div>
@@ -289,7 +349,7 @@ function CalculatorContent() {
           <CardHeader className="pb-4 space-y-3">
             <div className="flex items-center gap-2 flex-wrap text-sm text-blue-700">
               <Badge variant="secondary" className="bg-blue-100 text-blue-700 border-transparent">
-                T�cma: {currentThesisData.issueId}
+                Téma: {currentThesisData.issueId}
               </Badge>
               {currentThesisData.contextSource && (
                 <a
@@ -305,7 +365,7 @@ function CalculatorContent() {
             <CardTitle className="text-lg sm:text-xl leading-relaxed">
               {currentThesisData.text}
             </CardTitle>
-            {(currentThesisData.contextFact ?? "") !== " && (
+            {(currentThesisData.contextFact ?? "") !== "" && (
               <div className="rounded-lg border border-blue-100 bg-blue-50/70 p-3">
                 <button
                   type="button"
@@ -314,7 +374,7 @@ function CalculatorContent() {
                 >
                   <span className="flex items-center gap-2">
                     <Info className="w-4 h-4" />
-                    {factOpen ? "Skr�t fakta a souvislosti" : "Zobrazit fakta k ot��zce"}
+                    {factOpen ? "Skrýt fakta a souvislosti" : "Zobrazit fakta k otázce"}
                   </span>
                   {factOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                 </button>
@@ -329,7 +389,7 @@ function CalculatorContent() {
 
           <CardContent className="space-y-6 md:space-y-8">
             <div className="space-y-4">
-              <Label className="text-base font-medium">Jak moc s t��mto v��rokem souhlas��te?</Label>
+              <Label className="text-base font-medium">Jak moc s tímto výrokem souhlasíte?</Label>
               <div className="space-y-3">
                 <Slider
                   value={[convertToSliderValue(currentValue)]}
@@ -356,7 +416,7 @@ function CalculatorContent() {
                       key={label}
                       variant={value === currentValue ? "default" : "outline"}
                       onClick={() => handleQuickAnswer(value)}
-                      className="flex-1 min-w-[120px]"
+                      className="flex-1 min-w-[140px] h-auto min-h-[3rem] whitespace-normal break-words text-center leading-snug px-4 py-3"
                     >
                       {label}
                     </Button>
@@ -366,7 +426,7 @@ function CalculatorContent() {
             </div>
 
             <div className="space-y-4">
-              <Label className="text-base font-medium">Jak d��le��it�c je pro v��s toto t�cma?</Label>
+              <Label className="text-base font-medium">Jak důležité je pro vás toto téma?</Label>
               <div className="space-y-3">
                 <Slider
                   value={[currentWeight]}
@@ -401,7 +461,7 @@ function CalculatorContent() {
             className="flex items-center justify-center gap-2 min-h-[44px] touch-manipulation"
           >
             <ArrowLeft className="h-4 w-4" />
-            P�tedchoz��
+            Předchozí
           </Button>
 
           <div className="flex gap-2 sm:gap-2">
@@ -411,14 +471,14 @@ function CalculatorContent() {
               className="flex items-center justify-center gap-2 flex-1 sm:flex-none min-h-[44px] touch-manipulation"
             >
               <SkipForward className="h-4 w-4" />
-              P�tesko��it
+              Přeskočit
             </Button>
 
             <Button
               onClick={() => handleAnswer()}
               className="flex items-center justify-center gap-2 flex-1 sm:flex-none min-h-[44px] touch-manipulation"
             >
-              {currentThesis === totalTheses - 1 ? "Dokon��it" : "Dal����"}
+              {currentThesis === totalTheses - 1 ? "Dokončit" : "Další"}
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
@@ -426,7 +486,7 @@ function CalculatorContent() {
 
         <div className="mt-4 sm:mt-6 grid gap-4 sm:grid-cols-2">
           <div className="bg-gray-100 rounded-full p-2 sm:p-3 text-center text-sm sm:text-base text-gray-600">
-            <strong>Zodpov�>zeno: {answeredCount} z {totalTheses} ot��zek</strong>
+            <strong>Zodpovězeno: {answeredCount} z {totalTheses} otázek</strong>
             <div className="mt-1 w-full bg-gray-300 rounded-full h-2">
               <div
                 className="bg-blue-600 h-2 rounded-full transition-all duration-300"
@@ -438,7 +498,7 @@ function CalculatorContent() {
           <div className="bg-white/80 border border-gray-200 rounded-xl p-3 text-sm text-gray-600 flex items-center gap-3">
             <Keyboard className="w-4 h-4 text-gray-500" />
             <div>
-              Kl�vesy 1-5 nastav� hodnotu, ➡ nebo Enter posune d��l, ⬅ vr�t�� zp�t, mezern��k přesko�� ot��zku.
+              Klávesy 1–5 nastaví hodnotu, ➡ nebo Enter posune dál, ⬅ vrátí zpět, mezerník přeskočí otázku.
             </div>
           </div>
         </div>
@@ -451,7 +511,7 @@ export const dynamic = "force-dynamic";
 
 export default function CalculatorPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center"><div className="text-lg">Na����t��m dotazn��k...</div></div>}>
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center"><div className="text-lg">Načítám dotazník...</div></div>}>
       <CalculatorContent />
     </Suspense>
   );

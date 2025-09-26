@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense, useMemo } from 'react';
+import { useState, useEffect, Suspense, useMemo, useId } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,10 +11,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Progress } from '@/components/ui/progress';
 import { ArrowLeft, ExternalLink, Users, TrendingUp, Calendar, Globe, ChevronDown, Quote, ListChecks, Vote, BookOpen, Filter, Compass, Sparkles, ArrowUpDown, CheckCircle2, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Radar } from 'react-chartjs-2';
 import { Party, PartyPosition, Thesis, Issue } from '@/lib/types';
-import { withBasePath } from '@/lib/utils';
+import { cn, withBasePath } from '@/lib/utils';
 import { 
   Chart as ChartJS, 
   CategoryScale, 
@@ -29,6 +30,11 @@ import {
   Tooltip, 
   Legend
 } from 'chart.js';
+import {
+  calculatePartyMetrics,
+  type PartyMetrics,
+  type PartyMetricsIssue,
+} from './metrics';
 
 ChartJS.register(
   CategoryScale,
@@ -47,7 +53,7 @@ ChartJS.register(
 // Barevné schéma pro politické strany podle jejich oficiálních barev
 const partyColors: Record<string, { primary: string; secondary: string; accent: string; light: string }> = {
   'ano': { primary: '#0B1F5D', secondary: '#112E7A', accent: '#27459F', light: '#E8ECFA' },
-  'stan': { primary: '#FF6FBF', secondary: '#FF8BD0', accent: '#FFB1E2', light: '#FFE8F5' },
+  'stan': { primary: '#FF6FBF', secondary: '#FF8BD0', accent: '#FFB1E2', light: '#FFE6F5' },
   'spolu': { primary: '#37E28A', secondary: '#5FF5A4', accent: '#8CFFBE', light: '#E8FFF2' },
   'spd': { primary: '#7B1113', secondary: '#92181B', accent: '#B02225', light: '#F7E6E7' },
   'pirati': { primary: '#000000', secondary: '#1C1C1C', accent: '#3A3A3A', light: '#F5F5F5' },
@@ -76,24 +82,6 @@ const partyColors: Record<string, { primary: string; secondary: string; accent: 
 type CategoryFilter = 'all' | 'main' | 'secondary';
 type SortOption = 'poll' | 'coverage' | 'alphabetical';
 
-interface PartyMetricsIssue {
-  issueId: string;
-  count: number;
-  avgValue: number;
-  avgConfidence: number;
-}
-
-interface PartyMetrics {
-  positionCount: number;
-  avgConfidence: number;
-  coverageRatio: number;
-  avgValue: number;
-  positiveShare: number;
-  negativeShare: number;
-  neutralShare: number;
-  topIssues: PartyMetricsIssue[];
-  latestUpdate?: string;
-}
 
 async function loadParties(): Promise<Party[]> {
   const response = await fetch(withBasePath('/data/parties.json'));
@@ -128,93 +116,6 @@ async function loadIssues(): Promise<Issue[]> {
   return response.json();
 }
 
-function calculatePartyMetrics(positions: PartyPosition[], theses: Thesis[]): Record<string, PartyMetrics> {
-  const thesisById = new Map(theses.map(thesis => [thesis.id, thesis]));
-  const totalTheses = Math.max(theses.length, 1);
-
-  type IssueAccumulator = { count: number; totalValue: number; totalConfidence: number };
-  type MetricsAccumulator = {
-    positionCount: number;
-    totalConfidence: number;
-    totalValue: number;
-    positive: number;
-    negative: number;
-    neutral: number;
-    issues: Record<string, IssueAccumulator>;
-    latestTimestamp?: number;
-  };
-
-  const accumulator: Record<string, MetricsAccumulator> = {};
-
-  positions.forEach(position => {
-    const thesis = thesisById.get(position.thesisId);
-    if (!thesis) return;
-
-    const entry = accumulator[position.partyId] ??= {
-      positionCount: 0,
-      totalConfidence: 0,
-      totalValue: 0,
-      positive: 0,
-      negative: 0,
-      neutral: 0,
-      issues: {},
-      latestTimestamp: undefined,
-    };
-
-    entry.positionCount += 1;
-    entry.totalConfidence += position.confidence;
-    entry.totalValue += position.value;
-
-    if (position.value > 0) {
-      entry.positive += 1;
-    } else if (position.value < 0) {
-      entry.negative += 1;
-    } else {
-      entry.neutral += 1;
-    }
-
-    const issueId = thesis.issueId;
-    const issueEntry = entry.issues[issueId] ??= { count: 0, totalValue: 0, totalConfidence: 0 };
-    issueEntry.count += 1;
-    issueEntry.totalValue += position.value;
-    issueEntry.totalConfidence += position.confidence;
-
-    const latestDate = position.lastUpdated || position.source?.date;
-    if (latestDate) {
-      const timestamp = new Date(latestDate).getTime();
-      if (!Number.isNaN(timestamp)) {
-        entry.latestTimestamp = entry.latestTimestamp ? Math.max(entry.latestTimestamp, timestamp) : timestamp;
-      }
-    }
-  });
-
-  const metrics: Record<string, PartyMetrics> = {};
-
-  Object.entries(accumulator).forEach(([partyId, value]) => {
-    const { positionCount } = value;
-    const coverageRatio = positionCount / totalTheses;
-    const topIssues = Object.entries(value.issues).map(([issueId, stats]) => ({
-      issueId,
-      count: stats.count,
-      avgValue: stats.totalValue / Math.max(stats.count, 1),
-      avgConfidence: stats.totalConfidence / Math.max(stats.count, 1),
-    })).sort((a, b) => b.count - a.count || Math.abs(b.avgValue) - Math.abs(a.avgValue));
-
-    metrics[partyId] = {
-      positionCount,
-      avgConfidence: positionCount ? value.totalConfidence / positionCount : 0,
-      coverageRatio,
-      avgValue: positionCount ? value.totalValue / positionCount : 0,
-      positiveShare: positionCount ? value.positive / positionCount : 0,
-      negativeShare: positionCount ? value.negative / positionCount : 0,
-      neutralShare: positionCount ? value.neutral / positionCount : 0,
-      topIssues,
-      latestUpdate: value.latestTimestamp ? new Date(value.latestTimestamp).toISOString() : undefined,
-    };
-  });
-
-  return metrics;
-}
 
 function formatAverageStance(value: number): string {
   if (value >= 1.5) return 'Rozhodně souhlasí';
@@ -244,6 +145,7 @@ function formatPercent(value: number, fractionDigits = 0): string {
 
 function PartyProfilesContent() {
   const searchParams = useSearchParams();
+  const searchInputId = useId();
   const [parties, setParties] = useState<Party[]>([]);
   const [selectedParty, setSelectedParty] = useState<Party | null>(null);
   const [partyPositions, setPartyPositions] = useState<PartyPosition[]>([]);
@@ -256,6 +158,7 @@ function PartyProfilesContent() {
   const [minPoll, setMinPoll] = useState(0);
   const [onlyProfiled, setOnlyProfiled] = useState(false);
   const [sortOption, setSortOption] = useState<SortOption>('poll');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -298,6 +201,12 @@ function PartyProfilesContent() {
 
     fetchAllData();
   }, [searchParams]);
+
+  useEffect(() => {
+    if (selectedParty) {
+      setIsFilterOpen(false);
+    }
+  }, [selectedParty]);
 
   const issueTitleMap = useMemo(
     () => Object.fromEntries(issues.map(issue => [issue.id, issue.title])),
@@ -452,7 +361,16 @@ function PartyProfilesContent() {
                 Kompletní přehled všech 26 politických stran kandidujících ve volbách 2025
               </p>
             </div>
-            <div className="flex gap-2 mt-4 sm:mt-0">
+            <div className="flex flex-wrap gap-2 mt-4 sm:mt-0 justify-end">
+              <Button
+                variant={isFilterOpen || hasActiveFilters ? 'secondary' : 'outline'}
+                size="sm"
+                onClick={() => setIsFilterOpen(prev => !prev)}
+                className="whitespace-nowrap"
+              >
+                <Filter className="h-4 w-4 mr-2" />
+                {isFilterOpen ? 'Skrýt chytrý filtr' : hasActiveFilters ? 'Upravit chytrý filtr' : 'Zobrazit chytrý filtr'}
+              </Button>
               <Link href="/stem-polls">
                 <Button variant="outline">
                   <TrendingUp className="h-4 w-4 mr-2" />
@@ -469,17 +387,31 @@ function PartyProfilesContent() {
           </div>
         </div>
 
-        {!selectedParty && (
+        {!selectedParty && isFilterOpen && (
           <div className="mb-8 space-y-4">
             <Card className="border-0 shadow-xl bg-white/90 backdrop-blur">
               <CardContent className="flex flex-col gap-6">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                 <div className="flex-1">
-                  <label className="flex items-center text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">
-                    <Filter className="h-4 w-4 mr-2 text-gray-400" />
-                    Chytrý filtr
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label
+                      htmlFor={searchInputId}
+                      className="flex items-center text-xs font-semibold uppercase tracking-wide text-gray-500"
+                    >
+                      <Filter className="h-4 w-4 mr-2 text-gray-400" />
+                      Chytrý filtr
+                    </label>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setIsFilterOpen(false)}
+                      className="text-gray-500 hover:text-gray-900"
+                    >
+                      Skrýt filtr
+                    </Button>
+                  </div>
                   <Input
+                    id={searchInputId}
                     placeholder="Hledejte podle názvu nebo zkratky..."
                     value={searchTerm}
                     onChange={(event) => setSearchTerm(event.target.value)}
@@ -595,6 +527,23 @@ function PartyProfilesContent() {
               </div>
             </CardContent>
           </Card>
+          </div>
+        )}
+
+        {!selectedParty && !isFilterOpen && hasActiveFilters && (
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-indigo-100 bg-indigo-50/70 px-4 py-3 text-sm text-indigo-700">
+            <span>
+              Aktivní chytrý filtr: nalezeno {filteredCount} z {parties.length} stran
+              {filteredCount > 0 && ` • ${profiledCount} s analyzovanými postoji`}
+            </span>
+            <div className="flex flex-wrap gap-2">
+              <Button size="sm" variant="outline" onClick={() => setIsFilterOpen(true)} className="whitespace-nowrap">
+                Upravit filtr
+              </Button>
+              <Button size="sm" variant="ghost" onClick={resetFilters} className="text-indigo-700 hover:text-indigo-900">
+                Vymazat
+              </Button>
+            </div>
           </div>
         )}
 
@@ -766,27 +715,16 @@ function PartyCard({ party, colors, onClick, isMainParty = true, metrics, issueT
               )}
             </div>
             <div 
-              className={`${isMainParty ? 'w-12 h-12' : 'w-8 h-8'} rounded-full flex items-center justify-center text-white font-bold ${isMainParty ? 'text-lg' : 'text-sm'} shadow-md overflow-hidden`}
+              className={`${isMainParty ? 'w-12 h-12' : 'w-8 h-8'} relative rounded-full flex items-center justify-center text-white font-bold ${isMainParty ? 'text-lg' : 'text-sm'} shadow-md overflow-hidden`}
               style={{ backgroundColor: colors.primary }}
             >
-              {party.logo ? (
-                <img 
-                  src={party.logo} 
-                  alt={`${party.name} logo`}
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    // Fallback na iniciály pokud se logo nepodaří načíst
-                    e.currentTarget.style.display = 'none';
-                    const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
-                    if (nextElement) nextElement.style.display = 'block';
-                  }}
-                />
-              ) : null}
-              <span 
-                className={party.logo ? "hidden" : "block"}
-              >
-                {party.shortName?.charAt(0) || party.name.charAt(0)}
-              </span>
+              <PartyLogo
+                logo={party.logo}
+                name={party.name}
+                shortName={party.shortName}
+                sizes={isMainParty ? '48px' : '32px'}
+                fallbackColor={colors.primary}
+              />
             </div>
           </div>
         </CardHeader>
@@ -919,24 +857,16 @@ function DetailedPartyProfile({ party, colors, onBack, positions, theses, issues
               </p>
             </div>
             <div className="mt-6 md:mt-0 md:ml-8">
-              <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm overflow-hidden">
-                {party.logo ? (
-                  <img 
-                    src={party.logo} 
-                    alt={`${party.name} logo`}
-                    className="w-16 h-16 object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
-                      if (nextElement) nextElement.style.display = 'block';
-                    }}
-                  />
-                ) : null}
-                <span 
-                  className={party.logo ? "hidden text-4xl font-bold" : "text-4xl font-bold"}
-                >
-                  {party.shortName?.charAt(0) || party.name.charAt(0)}
-                </span>
+              <div className="relative w-24 h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm overflow-hidden">
+                <PartyLogo
+                  logo={party.logo}
+                  name={party.name}
+                  shortName={party.shortName}
+                  sizes="96px"
+                  fallbackClassName="text-4xl font-bold"
+                  fallbackColor={colors.primary}
+                  imageClassName="object-contain"
+                />
               </div>
             </div>
           </div>
@@ -1032,21 +962,12 @@ function DetailedPartyProfile({ party, colors, onBack, positions, theses, issues
                 <div className="space-y-4">
                   {party.representatives.map((rep, index) => (
                     <div key={index} className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
-                        {rep.photo ? (
-                          <img 
-                            src={rep.photo} 
-                            alt={rep.name}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div 
-                            className="w-full h-full flex items-center justify-center text-white font-bold text-xl"
-                            style={{ backgroundColor: colors.primary }}
-                          >
-                            {rep.name.charAt(0)}
-                          </div>
-                        )}
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+                        <RepresentativePhoto
+                          src={rep.photo}
+                          name={rep.name}
+                          fallbackColor={colors.primary}
+                        />
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-800">{rep.name}</h4>
@@ -1060,136 +981,134 @@ function DetailedPartyProfile({ party, colors, onBack, positions, theses, issues
           )}
         </div>
 
-        {/* Politické postoje - sloupec 2 a 3 */}
-        <div className="lg:col-span-2">
-          <PartyPositionsDisplay 
-            positions={positions}
-            theses={theses}
-            issues={issues}
-            colors={colors}
-          />
-        </div>
-      </div>
-
-      {/* Ostatní sekce pod hlavní mřížkou */}
-      <div className="mt-8 space-y-8">
-        {/* Historické úspěchy */}
-        {party.historicalAchievements && party.historicalAchievements.length > 0 && (
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center" style={{ color: colors.primary }}>
-                <Calendar className="h-5 w-5 mr-2" />
-                Historické milníky
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {party.historicalAchievements.map((achievement, index) => (
-                  <div key={index} className="flex items-start">
-                    <div 
-                      className="w-3 h-3 rounded-full mt-2 mr-3 flex-shrink-0"
-                      style={{ backgroundColor: colors.primary }}
-                    ></div>
-                    <span className="text-gray-700">{achievement}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Kauzy */}
-        {party.controversies && party.controversies.length > 0 && (
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center text-orange-600">
-                <ExternalLink className="h-5 w-5 mr-2" />
-                Kauzy a kritické body
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {party.controversies.map((controversy, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="w-3 h-3 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700">{controversy}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Timeline - časová linka událostí */}
-        {party.timeline && party.timeline.length > 0 && (
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="flex items-center" style={{ color: colors.primary }}>
-                <Calendar className="h-5 w-5 mr-2" />
-                Aktuální dění
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="relative">
-                {/* Vertikální linka */}
-                <div 
-                  className="absolute left-4 top-0 bottom-0 w-0.5"
-                  style={{ backgroundColor: colors.secondary }}
-                ></div>
-                
-                <div className="space-y-6">
-                  {party.timeline.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((event, index) => (
-                    <div key={index} className="relative flex items-start pl-10">
-                      {/* Tečka na timeline */}
+        {/* Kontextové sekce - sloupec 2 a 3 */}
+        <div className="lg:col-span-2 space-y-8">
+          {party.historicalAchievements && party.historicalAchievements.length > 0 && (
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center" style={{ color: colors.primary }}>
+                  <Calendar className="h-5 w-5 mr-2" />
+                  Historické milníky
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {party.historicalAchievements.map((achievement, index) => (
+                    <div key={index} className="flex items-start">
                       <div 
-                        className="absolute left-2 w-4 h-4 rounded-full border-2 border-white shadow-md -translate-x-1/2"
-                        style={{ 
-                          backgroundColor: event.type === 'success' ? '#10B981' : 
-                                         event.type === 'controversy' ? '#F59E0B' :
-                                         event.type === 'poll' ? colors.primary :
-                                         event.type === 'election' ? '#8B5CF6' :
-                                         colors.secondary
-                        }}
+                        className="w-3 h-3 rounded-full mt-2 mr-3 flex-shrink-0"
+                        style={{ backgroundColor: colors.primary }}
                       ></div>
-                      
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-1">
-                          <h4 className="font-semibold text-gray-800">{event.title}</h4>
-                          <span className="text-xs text-gray-500">
-                            {new Date(event.date).toLocaleDateString('cs-CZ')}
-                          </span>
-                        </div>
-                        <p className="text-sm text-gray-600">{event.description}</p>
-                        <span 
-                          className="inline-block px-2 py-1 rounded-full text-xs font-medium mt-2"
-                          style={{ 
-                            backgroundColor: event.type === 'success' ? '#D1FAE5' : 
-                                           event.type === 'controversy' ? '#FEF3C7' :
-                                           event.type === 'poll' ? colors.light :
-                                           event.type === 'election' ? '#EDE9FE' :
-                                           '#F3F4F6',
-                            color: event.type === 'success' ? '#065F46' : 
-                                   event.type === 'controversy' ? '#92400E' :
-                                   event.type === 'poll' ? colors.primary :
-                                   event.type === 'election' ? '#5B21B6' :
-                                   '#374151'
-                          }}
-                        >
-                          {event.type === 'success' && 'Úspěch'}
-                          {event.type === 'controversy' && 'Kauza'}
-                          {event.type === 'poll' && 'Průzkum'}
-                          {event.type === 'election' && 'Volby'}
-                          {event.type === 'program' && 'Program'}
-                          {event.type === 'milestone' && 'Milník'}
-                        </span>
-                      </div>
+                      <span className="text-gray-700">{achievement}</span>
                     </div>
                   ))}
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+              </CardContent>
+            </Card>
+          )}
+
+          {party.controversies && party.controversies.length > 0 && (
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center text-orange-600">
+                  <ExternalLink className="h-5 w-5 mr-2" />
+                  Kauzy a kritické body
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {party.controversies.map((controversy, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="w-3 h-3 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <span className="text-gray-700">{controversy}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {party.timeline && party.timeline.length > 0 && (
+            <Card className="shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center" style={{ color: colors.primary }}>
+                  <Calendar className="h-5 w-5 mr-2" />
+                  Aktuální dění
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="relative">
+                  {/* Vertikální linka */}
+                  <div 
+                    className="absolute left-4 top-0 bottom-0 w-0.5"
+                    style={{ backgroundColor: colors.secondary }}
+                  ></div>
+                  
+                  <div className="space-y-6">
+                    {party.timeline
+                      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                      .map((event, index) => (
+                        <div key={index} className="relative flex items-start pl-10">
+                          {/* Tečka na timeline */}
+                          <div 
+                            className="absolute left-2 w-4 h-4 rounded-full border-2 border-white shadow-md -translate-x-1/2"
+                            style={{ 
+                              backgroundColor: event.type === 'success' ? '#10B981' : 
+                                             event.type === 'controversy' ? '#F59E0B' :
+                                             event.type === 'poll' ? colors.primary :
+                                             event.type === 'election' ? '#8B5CF6' :
+                                             colors.secondary
+                            }}
+                          ></div>
+                          
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between mb-1">
+                              <h4 className="font-semibold text-gray-800">{event.title}</h4>
+                              <span className="text-xs text-gray-500">
+                                {new Date(event.date).toLocaleDateString('cs-CZ')}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-600">{event.description}</p>
+                            <span 
+                              className="inline-block px-2 py-1 rounded-full text-xs font-medium mt-2"
+                              style={{ 
+                                backgroundColor: event.type === 'success' ? '#D1FAE5' : 
+                                               event.type === 'controversy' ? '#FEF3C7' :
+                                               event.type === 'poll' ? colors.light :
+                                               event.type === 'election' ? '#EDE9FE' :
+                                               '#F3F4F6',
+                                color: event.type === 'success' ? '#065F46' : 
+                                       event.type === 'controversy' ? '#92400E' :
+                                       event.type === 'poll' ? colors.primary :
+                                       event.type === 'election' ? '#5B21B6' :
+                                       '#374151'
+                              }}
+                            >
+                              {event.type === 'success' && 'Úspěch'}
+                              {event.type === 'controversy' && 'Kauza'}
+                              {event.type === 'poll' && 'Průzkum'}
+                              {event.type === 'election' && 'Volby'}
+                              {event.type === 'program' && 'Program'}
+                              {event.type === 'milestone' && 'Milník'}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      </div>
+
+      <div className="mt-10">
+        <PartyPositionsDisplay 
+          positions={positions}
+          theses={theses}
+          issues={issues}
+          colors={colors}
+        />
       </div>
     </motion.div>
   );
@@ -1244,8 +1163,8 @@ function PartyInsights({ party, metrics, theses, issues, colors }: PartyInsights
     labels: topIssues.map(issue => issueMap.get(issue.issueId)?.title ?? issue.issueId),
     datasets: [
       {
-        label: 'Intenzita postoje',
-        data: topIssues.map(issue => Number(issue.avgValue.toFixed(2))),
+        label: 'Programová angažovanost',
+        data: topIssues.map(issue => Number(issue.engagementScore.toFixed(1))),
         backgroundColor: colors.accent + '33',
         borderColor: colors.primary,
         borderWidth: 2,
@@ -1262,15 +1181,20 @@ function PartyInsights({ party, metrics, theses, issues, colors }: PartyInsights
       legend: { display: false },
       tooltip: {
         callbacks: {
-          label: (context: any) => `${context.label}: ${context.parsed.r.toFixed(2)}`,
+          label: (context: any) => `${context.label}: ${context.parsed.r.toFixed(1)}%`,
         },
       },
     },
     scales: {
       r: {
-        suggestedMin: -2,
-        suggestedMax: 2,
-        ticks: { stepSize: 1, display: false },
+        suggestedMin: 0,
+        suggestedMax: 100,
+        ticks: {
+          stepSize: 20,
+          display: true,
+          showLabelBackdrop: false,
+          callback: (value: number | string) => `${value}%`,
+        },
         grid: { color: '#e5e7eb' },
         angleLines: { color: '#e5e7eb' },
         pointLabels: { font: { size: 11 }, color: '#4b5563' },
@@ -1354,13 +1278,19 @@ function PartyInsights({ party, metrics, theses, issues, colors }: PartyInsights
                 <div className="flex items-center justify-between text-sm font-semibold text-gray-800">
                   <span>{meta?.title ?? issue.issueId}</span>
                   <Badge variant="outline" className="bg-white/80 text-[11px]">
-                    {issue.count}×
+                    {issue.count}× postoj
                   </Badge>
                 </div>
                 {meta?.description && (
                   <p className="text-xs text-gray-500 mt-1">{meta.description}</p>
                 )}
                 <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500 mt-2">
+                  <Badge variant="outline" className="bg-white/80">
+                    Angažovanost {Math.round(issue.engagementScore)}%
+                  </Badge>
+                  <Badge variant="outline" className="bg-white/80">
+                    Pokrytí {Math.round(issue.coverage * 100)}%
+                  </Badge>
                   <Badge variant="outline" className="bg-white/80">
                     {formatAverageStance(issue.avgValue)}
                   </Badge>
@@ -1402,18 +1332,32 @@ type ProgramHighlight = {
   sourceDate?: string;
 };
 
+function uniqueBy<T>(items: T[], getKey: (item: T) => string | number): T[] {
+  const seen = new Set<string | number>();
+  return items.filter(item => {
+    const key = getKey(item);
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+}
+
 function PartyProsCons({ party, positions, theses, issues, colors }: PartyProsConsProps) {
   const thesisMap = useMemo(() => new Map(theses.map(thesis => [thesis.id, thesis])), [theses]);
   const issueMap = useMemo(() => new Map(issues.map(issue => [issue.id, issue])), [issues]);
 
   const positiveHighlights = useMemo<ProgramHighlight[]>(() => {
-    return positions
+    const ranked = positions
       .filter(position => position.value >= 1)
       .sort((a, b) => {
         const intensityDiff = Math.abs(b.value) - Math.abs(a.value);
         if (intensityDiff !== 0) return intensityDiff;
         return b.confidence - a.confidence;
-      })
+      });
+
+    return uniqueBy(ranked, position => position.thesisId)
       .slice(0, 3)
       .map(position => {
         const thesis = thesisMap.get(position.thesisId);
@@ -1432,13 +1376,15 @@ function PartyProsCons({ party, positions, theses, issues, colors }: PartyProsCo
   }, [positions, thesisMap, issueMap]);
 
   const negativeHighlights = useMemo<ProgramHighlight[]>(() => {
-    return positions
+    const ranked = positions
       .filter(position => position.value <= -1)
       .sort((a, b) => {
         const intensityDiff = Math.abs(b.value) - Math.abs(a.value);
         if (intensityDiff !== 0) return intensityDiff;
         return b.confidence - a.confidence;
-      })
+      });
+
+    return uniqueBy(ranked, position => position.thesisId)
       .slice(0, 3)
       .map(position => {
         const thesis = thesisMap.get(position.thesisId);
@@ -1822,71 +1768,8 @@ function PartyPositionsDisplay({ positions, theses, issues, colors }: PartyPosit
         </Badge>
       </CardHeader>
       <CardContent className="space-y-8">
-        {visibleIssueSections.length === 0 && positions.length > 0 && (
-          <p className="text-sm text-gray-500">
-            Pro vybrané téma zatím nemáme u této strany zaznamenané postoje. Zkuste vybrat jiné téma.
-          </p>
-        )}
-
-        {visibleIssueSections.map(([issueId, issuePositions]) => {
-          const issueMeta = issuesById.get(issueId);
-          const averageValue = issuePositions.reduce((acc, pos) => acc + pos.value, 0) / issuePositions.length;
-          const averageConfidence = Math.round(
-            (issuePositions.reduce((acc, pos) => acc + pos.confidence, 0) / issuePositions.length) * 100
-          );
-          const sortedPositions = [...issuePositions].sort((a, b) => {
-            const orderA = thesesById.get(a.thesisId)?.order ?? 0;
-            const orderB = thesesById.get(b.thesisId)?.order ?? 0;
-            return orderA - orderB;
-          });
-
-          return (
-            <div key={issueId} className="space-y-4" id={issueId}>
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  {issueMeta?.title ?? issueId.replace('-', ' ')}
-                </h3>
-                {issueMeta?.description && (
-                  <p className="text-sm text-gray-500 max-w-3xl">{issueMeta.description}</p>
-                )}
-                <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
-                  <Badge variant="outline" className="bg-white/80">
-                    {issuePositions.length} {issuePositions.length === 1 ? 'postoj' : 'postojů'}
-                  </Badge>
-                  <Badge variant="outline" className="bg-white/80" style={{ borderColor: colors.primary, color: colors.primary }}>
-                    {formatAverageStance(averageValue)}
-                  </Badge>
-                  <Badge variant="outline" className="bg-white/80">
-                    Důvěra {averageConfidence}%
-                  </Badge>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {sortedPositions.map(position => {
-                  const thesis = thesesById.get(position.thesisId);
-                  if (!thesis) return null;
-
-                  return (
-                    <PartyPositionItem
-                      key={position.thesisId}
-                      position={position}
-                      thesis={thesis}
-                      colors={colors}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
-
-        {positions.length === 0 && (
-          <p className="text-gray-500">Pro tuto stranu zatím nebyly zpracovány žádné postoje.</p>
-        )}
-
         {positions.length > 0 && (
-          <div className="pt-6 border-t border-gray-100 space-y-3">
+          <div className="space-y-3 border-b border-gray-100 pb-6">
             <div>
               <h4 className="text-sm font-semibold text-gray-700">Filtr tezí</h4>
               <p className="text-xs text-gray-500">Vyberte téma, které chcete u této strany prozkoumat. Výchozí zobrazení ukazuje všechny dostupné postoje.</p>
@@ -1917,9 +1800,183 @@ function PartyPositionsDisplay({ positions, theses, issues, colors }: PartyPosit
             </div>
           </div>
         )}
+
+        {positions.length === 0 ? (
+          <p className="text-gray-500">Pro tuto stranu zatím nebyly zpracovány žádné postoje.</p>
+        ) : (
+          <>
+            {visibleIssueSections.length === 0 && (
+              <p className="text-sm text-gray-500">
+                Pro vybrané téma zatím nemáme u této strany zaznamenané postoje. Zkuste vybrat jiné téma.
+              </p>
+            )}
+
+            {visibleIssueSections.map(([issueId, issuePositions]) => {
+              const issueMeta = issuesById.get(issueId);
+              const averageValue = issuePositions.reduce((acc, pos) => acc + pos.value, 0) / issuePositions.length;
+              const averageConfidence = Math.round(
+                (issuePositions.reduce((acc, pos) => acc + pos.confidence, 0) / issuePositions.length) * 100
+              );
+              const sortedPositions = [...issuePositions].sort((a, b) => {
+                const orderA = thesesById.get(a.thesisId)?.order ?? 0;
+                const orderB = thesesById.get(b.thesisId)?.order ?? 0;
+                return orderA - orderB;
+              });
+
+              return (
+                <div key={issueId} className="space-y-4" id={issueId}>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {issueMeta?.title ?? issueId.replace('-', ' ')}
+                    </h3>
+                    {issueMeta?.description && (
+                      <p className="text-sm text-gray-500 max-w-3xl">{issueMeta.description}</p>
+                    )}
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                      <Badge variant="outline" className="bg-white/80">
+                        {issuePositions.length} {issuePositions.length === 1 ? 'postoj' : 'postojů'}
+                      </Badge>
+                      <Badge variant="outline" className="bg-white/80" style={{ borderColor: colors.primary, color: colors.primary }}>
+                        {formatAverageStance(averageValue)}
+                      </Badge>
+                      <Badge variant="outline" className="bg-white/80">
+                        Důvěra {averageConfidence}%
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    {sortedPositions.map(position => {
+                      const thesis = thesesById.get(position.thesisId);
+                      if (!thesis) return null;
+
+                      return (
+                        <PartyPositionItem
+                          key={position.thesisId}
+                          position={position}
+                          thesis={thesis}
+                          colors={colors}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </>
+        )}
       </CardContent>
     </Card>
   );
+}
+
+interface PartyLogoProps {
+  logo?: string | null;
+  name: string;
+  shortName?: string | null;
+  sizes?: string;
+  fallbackColor?: string;
+  fallbackClassName?: string;
+  imageClassName?: string;
+}
+
+function PartyLogo({
+  logo,
+  name,
+  shortName,
+  sizes = '64px',
+  fallbackColor = '#1f2937',
+  fallbackClassName,
+  imageClassName,
+}: PartyLogoProps) {
+  const [loadFailed, setLoadFailed] = useState(false);
+  const initials = getInitials(shortName || name);
+
+  if (!logo || loadFailed) {
+    return (
+      <span
+        role="img"
+        aria-label={`${name} logo fallback`}
+        className={cn(
+          'flex h-full w-full items-center justify-center text-xs font-semibold uppercase text-white',
+          fallbackClassName
+        )}
+        style={{ backgroundColor: fallbackColor }}
+      >
+        {initials}
+      </span>
+    );
+  }
+
+  return (
+    <Image
+      src={withBasePath(logo)}
+      alt={`${name} logo`}
+      fill
+      sizes={sizes}
+      className={cn('object-contain', imageClassName)}
+      onError={() => setLoadFailed(true)}
+    />
+  );
+}
+
+interface RepresentativePhotoProps {
+  src?: string | null;
+  name: string;
+  fallbackColor?: string;
+  sizes?: string;
+  className?: string;
+  fallbackClassName?: string;
+}
+
+function RepresentativePhoto({
+  src,
+  name,
+  fallbackColor = '#1f2937',
+  sizes = '64px',
+  className,
+  fallbackClassName,
+}: RepresentativePhotoProps) {
+  const [loadFailed, setLoadFailed] = useState(false);
+  const initials = getInitials(name);
+
+  if (!src || loadFailed) {
+    return (
+      <span
+        role="img"
+        aria-label={`${name} fotografie není k dispozici`}
+        className={cn(
+          'flex h-full w-full items-center justify-center text-white uppercase',
+          fallbackClassName
+        )}
+        style={{ backgroundColor: fallbackColor }}
+      >
+        {initials}
+      </span>
+    );
+  }
+
+  return (
+    <Image
+      src={withBasePath(src)}
+      alt={name}
+      fill
+      sizes={sizes}
+      className={cn('object-cover', className)}
+      onError={() => setLoadFailed(true)}
+    />
+  );
+}
+
+function getInitials(value: string): string {
+  const clean = value.trim();
+  if (!clean) return '?';
+  const parts = clean
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 3);
+  const initials = parts.map(part => part.charAt(0).toUpperCase()).join('');
+  return initials || '?';
 }
 
 export default function PartyProfilesPage() {

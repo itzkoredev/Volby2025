@@ -1,10 +1,11 @@
-import { PartyPosition, UserAnswer } from '@/lib/types';
+import { Party, PartyPosition, UserAnswer } from '@/lib/types';
 
 export type { UserAnswer };
 
 export interface ScoreResult {
   partyId: string;
   partyName: string;
+  partyCategory: Party['category'];
   totalScore: number; // 0-100 procent shody
   maxPossibleScore: number;
   agreementPercentage: number;
@@ -33,19 +34,32 @@ export interface ThesisResult {
 export function calculateScores(
   answers: Record<string, UserAnswer>,
   partyPositions: PartyPosition[],
-  parties: Array<{ id: string; name: string }>
+  parties: Array<Pick<Party, 'id' | 'name' | 'category'>>
 ): ScoreResult[] {
   const results: ScoreResult[] = [];
   const effectiveAnswerCount = Object.values(answers).filter(answer => answer.weight > 0).length;
 
   // Projdi každou stranu
   for (const party of parties) {
-    const partyResults = calculatePartyScore(answers, partyPositions, party.id, party.name, effectiveAnswerCount);
+    const partyResults = calculatePartyScore(
+      answers,
+      partyPositions,
+      party.id,
+      party.name,
+      party.category ?? 'secondary',
+      effectiveAnswerCount
+    );
     results.push(partyResults);
   }
 
-  // Seřaď podle celkového skóre (sestupně)
-  return results.sort((a, b) => b.agreementPercentage - a.agreementPercentage);
+  // Seřaď podle důležitosti strany (hlavní strany mají přednost) a následně podle skóre
+  return results.sort((a, b) => {
+    if (a.partyCategory !== b.partyCategory) {
+      return a.partyCategory === 'main' ? -1 : 1;
+    }
+
+    return b.agreementPercentage - a.agreementPercentage;
+  });
 }
 
 /**
@@ -56,6 +70,7 @@ function calculatePartyScore(
   partyPositions: PartyPosition[],
   partyId: string,
   partyName: string,
+  partyCategory: Party['category'],
   effectiveAnswerCount: number
 ): ScoreResult {
   const thesisResults: ThesisResult[] = [];
@@ -127,6 +142,7 @@ function calculatePartyScore(
   return {
     partyId,
     partyName,
+    partyCategory,
     totalScore: totalWeightedScore,
     maxPossibleScore: maxPossibleWeightedScore,
     agreementPercentage: Math.round(agreementPercentage * 100) / 100,

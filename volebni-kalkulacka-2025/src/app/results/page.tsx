@@ -208,6 +208,31 @@ function ResultsContent(): JSX.Element {
   );
   const skippedCount = totalAsked - answeredCount;
 
+  const mainResults = useMemo(() => results.filter((result) => result.partyCategory === 'main'), [results]);
+  const secondaryResults = useMemo(
+    () => results.filter((result) => result.partyCategory !== 'main'),
+    [results]
+  );
+  const prioritizedResults = useMemo(() => {
+    if (mainResults.length === 0) {
+      return results;
+    }
+    return [...mainResults, ...secondaryResults];
+  }, [mainResults, secondaryResults, results]);
+
+  const topResult = prioritizedResults[0] ?? null;
+
+  const insights = useMemo(() => {
+    if (!topResult) {
+      return [];
+    }
+    return buildIssueInsights(topResult, thesisMap, issueMap);
+  }, [topResult, thesisMap, issueMap]);
+
+  const bestIssues = insights.filter((insight) => insight.alignment >= 0.6 && insight.avgConfidence >= 60);
+
+  const watchIssues = insights.filter((insight) => insight.alignment <= -0.6 && insight.avgConfidence >= 60);
+
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
@@ -258,7 +283,7 @@ function ResultsContent(): JSX.Element {
     );
   }
 
-  const topResult = results[0];
+  const ensuredTopResult = (topResult ?? prioritizedResults[0] ?? results[0])!;
 
   return (
     <div className="container mx-auto max-w-5xl px-4 py-10">
@@ -270,8 +295,9 @@ function ResultsContent(): JSX.Element {
       </div>
 
       <OverviewCard
-        topResult={topResult}
-        results={results}
+        topResult={ensuredTopResult}
+        results={prioritizedResults}
+        secondaryResults={secondaryResults}
         answeredCount={answeredCount}
         skippedCount={skippedCount}
         totalAsked={totalAsked}
@@ -288,7 +314,7 @@ function ResultsContent(): JSX.Element {
       </div>
 
       <div className="mt-8 space-y-6">
-        {results.map((result, index) => (
+        {prioritizedResults.map((result, index) => (
           <ResultCard
             key={result.partyId}
             result={result}
@@ -323,6 +349,7 @@ function ResultsContent(): JSX.Element {
 interface OverviewCardProps {
   topResult: ScoreResult;
   results: ScoreResult[];
+  secondaryResults: ScoreResult[];
   answeredCount: number;
   skippedCount: number;
   totalAsked: number;
@@ -330,14 +357,24 @@ interface OverviewCardProps {
   issueMap: Map<string, Issue>;
 }
 
-function OverviewCard({ topResult, results, answeredCount, skippedCount, totalAsked, thesisMap, issueMap }: OverviewCardProps) {
-  const runnerUps = results.slice(1, 3);
+function OverviewCard({ topResult, results, secondaryResults, answeredCount, skippedCount, totalAsked, thesisMap, issueMap }: OverviewCardProps) {
+  const mainRunnerUps = results.filter((result) => result.partyCategory === 'main').slice(1, 3);
+  const alternativeSuggestions = secondaryResults
+    .filter((party) => party.partyId !== topResult.partyId)
+    .slice(0, 3);
   const top3 = results.slice(0, Math.min(3, results.length));
   const averageTop3 =
     top3.reduce((sum, item) => sum + item.agreementPercentage, 0) / Math.max(1, top3.length);
 
   const coverageDisplay = Math.round(topResult.coveragePercentage);
   const confidenceDisplay = Math.round(topResult.confidenceScore * 100);
+
+  // Calculate issue insights from the top result
+  const insights = buildIssueInsights(topResult, thesisMap, issueMap);
+  
+  // Filter insights into strong agreement and areas to watch
+  const bestIssues = insights.filter(insight => insight.alignment >= 0.6 && insight.avgConfidence >= 60);
+  const watchIssues = insights.filter(insight => insight.alignment <= -0.6 && insight.avgConfidence >= 60);
 
   return (
     <Card className="border-0 bg-white/95 shadow-xl">
@@ -379,27 +416,51 @@ function OverviewCard({ topResult, results, answeredCount, skippedCount, totalAs
               </span>
             </div>
           </div>
-          <div className="space-y-3 rounded-lg border border-slate-200 bg-slate-50 p-4">
-            <p className="text-sm font-semibold text-slate-700">Další favorité</p>
-            <ul className="space-y-2 text-sm text-slate-600">
-              {runnerUps.length > 0 ? (
-                runnerUps.map((party) => (
-                  <li key={party.partyId} className="flex items-center justify-between rounded-md bg-white p-2 shadow-sm">
-                    <span className="font-medium text-slate-800">{party.partyName}</span>
-                    <span className="flex items-center gap-2 text-sm text-slate-600">
-                      {Math.round(party.agreementPercentage)}%
-                      <Badge variant="outline" className={`text-xs ${getCoverageBadgeClass(Math.round(party.coveragePercentage))}`}>
-                        {Math.round(party.coveragePercentage)}% pokrytí
-                      </Badge>
-                    </span>
+          <div className="space-y-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+            <div>
+              <p className="text-sm font-semibold text-slate-700">Další favorité</p>
+              <ul className="mt-2 space-y-2 text-sm text-slate-600">
+                {mainRunnerUps.length > 0 ? (
+                  mainRunnerUps.map((party) => (
+                    <li key={party.partyId} className="flex items-center justify-between rounded-md bg-white p-2 shadow-sm">
+                      <span className="font-medium text-slate-800">{party.partyName}</span>
+                      <span className="flex items-center gap-2 text-sm text-slate-600">
+                        {Math.round(party.agreementPercentage)}%
+                        <Badge variant="outline" className={`text-xs ${getCoverageBadgeClass(Math.round(party.coveragePercentage))}`}>
+                          {Math.round(party.coveragePercentage)}% pokrytí
+                        </Badge>
+                      </span>
+                    </li>
+                  ))
+                ) : (
+                  <li className="rounded-md bg-white p-3 text-xs text-slate-500 shadow-sm">
+                    Při vašich odpovědích se žádná další hlavní strana výrazně nepřibližuje top výsledku.
                   </li>
-                ))
-              ) : (
-                <li className="rounded-md bg-white p-3 text-xs text-slate-500 shadow-sm">
-                  Při vašich odpovědích se žádná další strana neblíží top výsledku.
-                </li>
-              )}
-            </ul>
+                )}
+              </ul>
+            </div>
+
+            {alternativeSuggestions.length > 0 && (
+              <div className="rounded-lg border border-amber-200 bg-amber-50/70 p-3">
+                <p className="text-sm font-semibold text-amber-700">Alternativní volby</p>
+                <ul className="mt-2 space-y-2 text-sm text-amber-700">
+                  {alternativeSuggestions.map((party) => (
+                    <li key={party.partyId} className="flex items-center justify-between rounded-md bg-white/90 p-2 shadow-sm">
+                      <span className="font-medium text-amber-800">{party.partyName}</span>
+                      <span className="flex items-center gap-2 text-sm">
+                        {Math.round(party.agreementPercentage)}%
+                        <Badge variant="outline" className="text-xs border-amber-200 bg-amber-100 text-amber-700">
+                          {Math.round(party.coveragePercentage)}% pokrytí
+                        </Badge>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-xs text-amber-700">
+                  Menší nebo novější strany, které stojí za zvážení jako doplňkové možnosti.
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -525,6 +586,7 @@ function ResultCard({
   totalUserAnswered,
 }: ResultCardProps) {
   const [isExpanded, setIsExpanded] = useState(isTopResult);
+  const isAlternative = result.partyCategory !== 'main';
 
   const comparison = useMemo(
     () => generateDetailedComparison(userAnswers, result),
@@ -570,6 +632,15 @@ function ResultCard({
                 <CardTitle className="text-2xl font-semibold text-slate-900">{result.partyName}</CardTitle>
                 <p className="mt-1 text-sm text-slate-500">Celková shoda s vašimi odpověďmi</p>
                 <div className="mt-3 flex flex-wrap gap-2">
+                  {isAlternative ? (
+                    <Badge variant="outline" className="border-amber-300 bg-amber-100 text-amber-700">
+                      Alternativní doporučení
+                    </Badge>
+                  ) : (
+                    <Badge variant="outline" className="border-indigo-200 bg-indigo-50 text-indigo-700">
+                      Hlavní strana
+                    </Badge>
+                  )}
                   <Badge variant="outline" className={getCoverageBadgeClass(coverageDisplay)}>
                     Pokrytí {coverageDisplay}%
                   </Badge>
